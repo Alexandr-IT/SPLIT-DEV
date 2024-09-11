@@ -1,0 +1,196 @@
+<link rel="stylesheet" href="{{ 'collection.min.css' | asset_url }}" type="text/css" />
+
+<section class="collection-section">
+  <div class="collection_main">
+    <div class="container">
+      <div class="collection__header">
+        <div class="collection__header-title Mobile_H3 mobile">{{ section.settings.header-title }}</div>
+        <h3 class="collection__header-title desktop">{{ section.settings.header-title }}</h3>
+        <a href="{{ section.settings.header-subtitle_link }}" class="p2 collection__header-subtitle">{{ section.settings.header-subtitle }}</a>
+      </div>
+      <div class="collection swiper-container"> 
+        <div class="collection__wrapper swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide collection__slide">
+              <div class="collection__slide-wrapper">
+                {% if block.settings.sold %}
+                  <div class="collection__sold-cloud"></div>
+                {% endif %}
+                <img class="collection__bg" src="{{ block.settings.product_image | img_url: 'master' }}" alt="Product Photo">
+                <div class="collection__options">
+                  {% if block.settings.fast %}
+                    <div class="collection__fast">{{ block.settings.text_fast }}</div>
+                  {% endif %}
+                  {% if block.settings.action %}
+                    <div class="collection__action">{{ block.settings.text_action }}</div>
+                  {% endif %}
+                  {% if block.settings.sold %}
+                    <div class="collection__sold">{{ block.settings.text_sold }}</div>
+                  {% endif %}
+                  {% if block.settings.show_sizes %}
+                    <div class="collection__sizes desktop">
+                      {% assign sizes = block.settings.sizes | split: ',' %}
+                      {% for size in sizes %}
+                        <span class="collection__size">{{ size }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div> 
+              </div>
+              <div class="collection__slide-discription-wrapper">
+                <div class="collection__slide-discription-product_name p2 desktop">{{ block.settings.product_name }}</div>
+                <div class="collection__slide-discription-product_name css12_20 mobile">{{ block.settings.product_name }}</div>
+                {% if block.settings.action %}
+                  <div class="collection__slide-discription-price-red">{{ block.settings.price }}</div>
+                {% else %}
+                  <div class="collection__slide-discription-price p2">{{ block.settings.price }}</div>
+                {% endif %}
+                {% if block.settings.action %}
+                  <div class="collection__slide-discription-old_price">{{ block.settings.old_price }}</div>
+                {% endif %}
+                <a class="collection__slide-discription-bag" src="{{ block.settings.link_discription-bag }}">
+                  <img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag" class="collection__slide-discription-img_bag">
+                </a>
+              </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination collection-pagination desktop"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const swiper_reviews = new Swiper('.collection', {
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 2,
+    spaceBetween: 8, 
+    allowTouchMove: true,
+    pagination: {
+        el: '.collection-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 4, 
+            spaceBetween: 16,
+        }
+    }
+});
+
+</script>
+
+{% schema %}
+    {
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header-title",
+          "label": "Collection Name",
+          "default": "Best Sellers"
+        },
+        {
+          "type": "url",
+          "id": "header-subtitle_link",
+          "label": "Link To Collection"
+        },
+        {
+          "type": "text",
+          "id": "header-subtitle",
+          "label": "Text To Link",
+          "default": "View all"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "slide",
+          "name": "Slide",
+          "settings": [
+            {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Product Image"
+            },
+            {
+              "type": "checkbox",
+              "id": "fast",
+              "label": "Selling Fast?"
+            },
+            {
+              "type": "text",
+              "id": "text_fast",
+              "label": "Text For Element `SELLING FAST`",
+              "default": "SELLING FAST"
+            },
+            {
+              "type": "checkbox",
+              "id": "action",
+              "label": "Action?"
+            },
+            {
+              "type": "text",
+              "id": "text_action",
+              "label": "Text For Element `ACTION`",
+              "default": "-20% OFF"
+            },
+            {
+              "type": "checkbox",
+              "id": "sold",
+              "label": "Sold Out?"
+            },
+            {
+              "type": "text",
+              "id": "text_sold",
+              "label": "Text For Element `SOLD OUT`",
+              "default": "SOLD OUT"
+            },
+            {
+              "type": "url",
+              "id": "link_discription-bag",
+              "label": "Link For Bag"
+            },
+            {
+              "type": "text",
+              "id": "product_name",
+              "label": "Product Name",
+              "default": "Product Name"
+            },
+            {
+              "type": "text",
+              "id": "price",
+              "label": "Price",
+              "default": "$54"
+            },
+            {
+              "type": "text",
+              "id": "old_price",
+              "label": "Old Price",
+              "default": "$138"
+            },
+            {
+              "type": "checkbox",
+              "id": "show_sizes",
+              "label": "Show Sizes?"
+            },
+            {
+              "type": "text",
+              "id": "sizes",
+              "label": "Sizes (comma separated)",
+              "default": "S, M, L, XL"
+            }
+          ]
+        }
+      ],
+
+      "presets": [
+        {
+          "name": "Collection",
+          "category": "Custom sections"
+        }
+      ]
+    }
+    {% endschema %}

@@ -1,0 +1,63 @@
+
+<link rel="stylesheet" href="{{ 'hero.min.css' | asset_url }}" type="text/css" />
+ 
+<section class="hero-section">
+  <div class="hero">
+    <div class="hero__bg desktop">
+        <img src="{{ section.settings.bg_desktop | img_url: 'master' }}" alt="" class="hero__bg-img">
+    </div>
+    <div class="hero__wrapper-text container">
+        <h1 class="hero__wrapper-text--title Mobile_H1 mobile">{{ section.settings.hero_title }}</h1>
+        <div class="hero__wrapper-text--subtitle p2 mobile">{{ section.settings.hero_subtitle }}</div>
+        <h2 class="hero__wrapper-text--title desktop">{{ section.settings.hero_title }}</h1>
+        <div class="hero__wrapper-text--subtitle css18_26 desktop">{{ section.settings.hero_subtitle }}</div>
+        <div class="button">{{ section.settings.hero_button }}</div>
+    </div>
+    <div class="hero__bg mobile">
+        <img src="{{ section.settings.bg_mobile | img_url: 'master' }}" alt="" class="hero__bg-img">
+    </div>
+  </div> 
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Background Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_desktop",
+      "label": "Background Desktop"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "MAKE A GREAT FIRST IMPRESSION"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Add images and text to give focus to your chosen product, collection, or blog post"
+    },
+    {
+      "type": "text",
+      "id": "hero_button",
+      "label": "Hero Button",
+      "default": "Shop Now"
+    },
+
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "category": "Custom sections"
+    }
+  ]
+}
+{% endschema %} 

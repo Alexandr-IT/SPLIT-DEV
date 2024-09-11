@@ -1,0 +1,235 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "header_title": "FREE UNITED KINGDOM SHIPPING $200 +",
+        "menu_link_1": "",
+        "menu_text_1": "Crew Necks",
+        "menu_link_2": "",
+        "menu_text_2": "V-Necks",
+        "menu_link_3": "",
+        "menu_text_3": "Activewear",
+        "menu_link_4": "",
+        "menu_text_4": "Bundles",
+        "menu_link_search": "",
+        "menu_link_user": "",
+        "menu_link_bag": "",
+        "menu_dropdown_item_1_link": "",
+        "menu_dropdown_item_1_text": "First",
+        "menu_dropdown_item_2_link": "",
+        "menu_dropdown_item_2_text": "Second",
+        "menu_dropdown_item_3_link": "",
+        "menu_dropdown_item_3_text": "Third",
+        "menu_dropdown_item_4_link": "",
+        "menu_dropdown_item_4_text": "Fourth"
+      }
+    },
+    "hero_gJ8djH": {
+      "type": "hero",
+      "settings": {
+        "bg_mobile": "shopify:\/\/shop_images\/Banner_Photo_Mobile_9df9fe40-e9c6-4c6b-8546-b13a4526f223.jpg",
+        "bg_desktop": "shopify:\/\/shop_images\/Banner_Photo_1_1.jpg",
+        "hero_title": "MAKE A GREAT FIRST IMPRESSION",
+        "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
+        "hero_button": "Shop Now"
+      }
+    },
+    "collection_JVYTzq": {
+      "type": "collection",
+      "blocks": {
+        "slide_rTLE4r": {
+          "type": "slide",
+          "settings": {
+            "product_image": "shopify:\/\/shop_images\/Product_3.jpg",
+            "fast": true,
+            "text_fast": "SELLING FAST",
+            "action": true,
+            "text_action": "-30% OFF",
+            "sold": false,
+            "text_sold": "SOLD OUT",
+            "link_discription-bag": "",
+            "product_name": "AO Elongated Tee",
+            "price": "$8",
+            "old_price": "$103",
+            "show_sizes": false,
+            "sizes": "S, M, L, XL"
+          }
+        },
+        "slide_9BdpnJ": {
+          "type": "slide",
+          "settings": {
+            "product_image": "shopify:\/\/shop_images\/Product_2.jpg",
+            "fast": false,
+            "text_fast": "SELLING FAST",
+            "action": true,
+            "text_action": "-80% OFF",
+            "sold": false,
+            "text_sold": "SOLD OUT",
+            "link_discription-bag": "",
+            "product_name": "The Colour 3-Pack",
+            "price": "$5",
+            "old_price": "$999",
+            "show_sizes": false,
+            "sizes": "S, M, L, XL"
+          }
+        },
+        "slide_KYrVym": {
+          "type": "slide",
+          "settings": {
+            "product_image": "shopify:\/\/shop_images\/Product_1.jpg",
+            "fast": false,
+            "text_fast": "SELLING FAST",
+            "action": false,
+            "text_action": "-20% OFF",
+            "sold": true,
+            "text_sold": "SOLD OUT",
+            "link_discription-bag": "",
+            "product_name": "Product Name",
+            "price": "$54",
+            "old_price": "$138",
+            "show_sizes": false,
+            "sizes": "S, M, L, XL"
+          }
+        },
+        "slide_GaKHcm": {
+          "type": "slide",
+          "settings": {
+            "product_image": "shopify:\/\/shop_images\/Product_2.jpg",
+            "fast": true,
+            "text_fast": "SELLING FAST",
+            "action": false,
+            "text_action": "-20% OFF",
+            "sold": true,
+            "text_sold": "SOLD OUT",
+            "link_discription-bag": "",
+            "product_name": "Product Name",
+            "price": "$54",
+            "old_price": "$138",
+            "show_sizes": true,
+            "sizes": "S, M, L, XL"
+          }
+        },
+        "slide_yW8RfK": {
+          "type": "slide",
+          "settings": {
+            "product_image": "shopify:\/\/shop_images\/Product_3.jpg",
+            "fast": true,
+            "text_fast": "SELLING FAST",
+            "action": false,
+            "text_action": "-20% OFF",
+            "sold": false,
+            "text_sold": "SOLD OUT",
+            "link_discription-bag": "",
+            "product_name": "Product Name",
+            "price": "$54",
+            "old_price": "$138",
+            "show_sizes": true,
+            "sizes": "S, M, L, XL, M, L"
+          }
+        }
+      },
+      "block_order": [
+        "slide_rTLE4r",
+        "slide_9BdpnJ",
+        "slide_KYrVym",
+        "slide_GaKHcm",
+        "slide_yW8RfK"
+      ],
+      "settings": {
+        "header-title": "Best Sellers",
+        "header-subtitle_link": "",
+        "header-subtitle": "View all"
+      }
+    },
+    "properties_zxHww6": {
+      "type": "properties",
+      "blocks": {
+        "slide_DAWkNM": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/1.svg",
+            "properties_title": "FLATTERING FIT"
+          }
+        },
+        "slide_CXd8A7": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/2.svg",
+            "properties_title": "ESPECIALLY FORMULATED FABRIC"
+          }
+        },
+        "slide_eeqreY": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/3.svg",
+            "properties_title": "BUTTERY SOFT"
+          }
+        },
+        "slide_fh7wzk": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/4.svg",
+            "properties_title": "FIT AND COLOUR RETENTION"
+          }
+        },
+        "slide_BhiywC": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/5.svg",
+            "properties_title": "PRE-SHRUNK"
+          }
+        },
+        "slide_YXrgHL": {
+          "type": "slide",
+          "settings": {
+            "properties_image": "shopify:\/\/shop_images\/6.svg",
+            "properties_title": "DURABLE"
+          }
+        }
+      },
+      "block_order": [
+        "slide_DAWkNM",
+        "slide_CXd8A7",
+        "slide_eeqreY",
+        "slide_fh7wzk",
+        "slide_BhiywC",
+        "slide_YXrgHL"
+      ],
+      "settings": {
+      }
+    },
+    "sweep_cm78LJ": {
+      "type": "sweep",
+      "settings": {
+        "header-title": "Compare In Different Size",
+        "sweep-option_1": "Medium",
+        "sweep-option_2": "Large",
+        "sweep-option_3": "X-Large",
+        "slider-photo_1": "shopify:\/\/shop_images\/Banner_Color.jpg",
+        "slider-photo_1-mobile": "shopify:\/\/shop_images\/Banner_Color_Mobile.jpg",
+        "slider-photo_2--title": "Other Brands",
+        "slider-photo_2": "shopify:\/\/shop_images\/Banner_Negative_2a7ebf34-c989-493f-8abe-dd65a741e7eb.jpg",
+        "slider-photo_2-mobile": "shopify:\/\/shop_images\/Banner_Negative_Mobile.jpg"
+      }
+    }
+  },
+  "order": [
+    "header",
+    "hero_gJ8djH",
+    "collection_JVYTzq",
+    "properties_zxHww6",
+    "sweep_cm78LJ"
+  ]
+}

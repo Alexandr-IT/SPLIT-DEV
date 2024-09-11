@@ -1,0 +1,173 @@
+<link rel="stylesheet" href="{{ 'header.min.css' | asset_url }}" type="text/css" />
+<section class="header-section">
+  <header class="header">
+    <div class="header_title container">
+      <a class="header_title">{{ section.settings.header_title }}</a> 
+    </div> 
+    <div class="header_navigation container">
+      <div class="header_navigation_left">
+        <div class="header_navigation_left_icon burger mobile">
+          <input id="burger__input" type="checkbox" />
+          <label class="burger__btn" for="burger__input">
+            <span></span>
+          </label>
+          <ul class="burger__list">
+            <li><a class="burger__item" href="{{ section.settings.menu_link_1 }}">{{ section.settings.menu_text_1 }}</a></li>
+            <li><a class="burger__item" href="{{ section.settings.menu_link_2 }}">{{ section.settings.menu_text_2 }}</a></li>
+            <li><a class="burger__item" href="{{ section.settings.menu_link_3 }}">{{ section.settings.menu_text_3 }}</a></li>
+            <li><a class="burger__item" href="{{ section.settings.menu_link_4 }}">{{ section.settings.menu_text_4 }}</a></li>
+          </ul>
+        </div>
+        <a class="header_navigation_left_icon search mobile" href="{{ section.settings.menu_link_search }}"><img src="{{ 'Search.svg' | asset_url }}" alt="Icon Search"></a>
+        <a class="header_navigation_left_item first desktop" href="{{ section.settings.menu_link_1 }}">{{ section.settings.menu_text_1 }}</a>
+        <a class="header_navigation_left_item desktop" href="{{ section.settings.menu_link_2 }}">{{ section.settings.menu_text_2 }}</a>
+        <a class="header_navigation_left_item desktop" href="{{ section.settings.menu_link_3 }}">{{ section.settings.menu_text_3 }}</a>
+        <ul class="header_navigation_left_item dropdown desktop">
+          <li>
+            <input type="checkbox" id="dropdown-toggle" class="dropdown__checkbox">
+            <label for="dropdown-toggle" class="dropdown__label">{{ section.settings.menu_text_4 }}</label>
+            <ul class="dropdown__list">
+              <li><a href="{{ section.settings.menu_dropdown_item_1_link }}">{{ section.settings.menu_dropdown_item_1_text }}</a></li>
+              <li><a href="{{ section.settings.menu_dropdown_item_2_link }}">{{ section.settings.menu_dropdown_item_2_text }}</a></li>
+              <li><a href="{{ section.settings.menu_dropdown_item_3_link }}">{{ section.settings.menu_dropdown_item_3_text }}</a></li>
+              <li><a href="{{ section.settings.menu_dropdown_item_4_link }}">{{ section.settings.menu_dropdown_item_4_text }}</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+      <div class="header_navigation_right">
+        <a class="header_navigation_right_icon desktop" href="{{ section.settings.menu_link_search }}"><img src="{{ 'Search.svg' | asset_url }}" alt="Icon Search"></a>
+        <a class="header_navigation_right_icon desktop" href="{{ section.settings.menu_link_user }}"><img src="{{ 'User.svg' | asset_url }}" alt="Icon User"></a>
+        <a class="header_navigation_right_icon last" href="{{ section.settings.menu_link_bag }}"><img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag"></a>
+      </div>
+        <a class="header_navigation_logo" href="{{ section.settings.menu_link_logo }}"><img src="{{ 'Logo.svg' | asset_url }}" alt="Icon Bag"></a>
+        <a class="header_navigation_logo-hover" href="{{ section.settings.menu_link_logo_hover }}"><img src="{{ 'Alter_logo.png' | asset_url }}" alt="Icon Bag"></a>
+      
+    </div>
+  </header> 
+</section>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Header Title",
+      "default": "FREE UNITED KINGDOM SHIPPING $200 +"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_1",
+      "label": "Item 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_text_1",
+      "label": "Item 1",
+      "default": "Crew Necks"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_2",
+      "label": "Item 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_text_2",
+      "label": "Item 2",
+      "default": "V-Necks"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_3",
+      "label": "Item 3 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_text_3",
+      "label": "Item 3",
+      "default": "Activewear"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_4",
+      "label": "Item 4 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_text_4",
+      "label": "Item 4",
+      "default": "Bundles"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_search", 
+      "label": "Search Link"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_user", 
+      "label": "UserLink"
+    },
+    {
+      "type": "url",
+      "id": "menu_link_bag", 
+      "label": "Bag Link"
+    },
+    {
+      "type": "url",
+      "id": "menu_dropdown_item_1_link", 
+      "label": "List Item 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_dropdown_item_1_text",
+      "label": "List Item 1 Text",
+      "default": "First"
+    },
+    {
+      "type": "url",
+      "id": "menu_dropdown_item_2_link", 
+      "label": "List Item 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_dropdown_item_2_text",
+      "label": "List Item 2 Text",
+      "default": "Second"
+    },
+    {
+      "type": "url",
+      "id": "menu_dropdown_item_3_link", 
+      "label": "List Item 3 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_dropdown_item_3_text",
+      "label": "List Item 3 Text",
+      "default": "Third"
+    },
+    {
+      "type": "url",
+      "id": "menu_dropdown_item_4_link", 
+      "label": "List Item 4 Link"
+    },
+    {
+      "type": "text",
+      "id": "menu_dropdown_item_4_text",
+      "label": "List Item 4 Text",
+      "default": "Fourth"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "category": "Custom sections"
+    }
+  ]
+}
+{% endschema %} 

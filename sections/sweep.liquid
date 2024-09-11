@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="{{ 'sweep.min.css' | asset_url }}" type="text/css" />
+
+
+<section class="sweep">
+  <div class="sweep">
+    <div class="container">
+      <div class="sweep__header">
+          <div class="sweep-title Mobile_H3 mobile">{{ section.settings.header-title }}</div>
+          <h3 class="sweep-title desktop">{{ section.settings.header-title }}</h3>
+          <div class="sweep-options">
+              <a href="" class="sweep-option p1">{{ section.settings.sweep-option_1 }}</a>
+              <a href="" class="sweep-option p1">{{ section.settings.sweep-option_2 }}</a>
+              <a href="" class="sweep-option p1">{{ section.settings.sweep-option_3 }}</a>
+          </div>
+      </div>
+    </div>
+    <div class="sweep__slider">
+        <div class="sweep__slider-photo_1">
+            <div class="sweep__slider-photo_1--title">
+              <img src="{{ section.settings.slider-photo_1--logo | default: 'Logo.svg' | asset_url }}" alt=""></div>
+            <div class="sweep__slider-photo_1--image">
+                <img src="{{ section.settings.slider-photo_1 | img_url: 'master' }}" alt="" class="desktop">
+                <img src="{{ section.settings.slider-photo_1-mobile | img_url: 'master' }}" alt="" class="mobile">
+            </div>
+            </div>
+        <div class="controller">
+          <div class="controller-circle"></div>
+        </div>
+        <div class="sweep__slider-photo_2">
+            <div class="sweep__slider-photo_2--title">{{ section.settings.slider-photo_2--title }}</div>
+            <div class="sweep__slider-photo_2--image">
+                <img src="{{ section.settings.slider-photo_2 | img_url: 'master' }}" alt="" class="sweep__slider-photo_2--img desktop">
+                <img src="{{ section.settings.slider-photo_2-mobile | img_url: 'master' }}" alt="" class="sweep__slider-photo_2--img mobile">
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+const options = document.querySelectorAll('.sweep-option');
+
+if (options.length > 0) {
+  options[0].classList.add('active');
+}
+
+options.forEach(function(option) {
+  option.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    
+    options.forEach(function(opt) {
+      opt.classList.remove('active');
+    });
+
+    this.classList.add('active');
+  });
+});
+const controller = document.querySelector('.controller');
+const photo2 = document.querySelector('.sweep__slider-photo_2');
+const sliderContainer = document.querySelector('.sweep__slider');
+const widthSliderContainer = sliderContainer.offsetWidth;
+const leftStop = widthSliderContainer / 100 * 8;
+const leftStopMobile = widthSliderContainer / 100 * 12;
+const rightStop = widthSliderContainer / 100 * 92;
+let isDragging = false;
+
+controller.addEventListener('mousedown', () => {
+  isDragging = true;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const rect = sliderContainer.getBoundingClientRect();
+    let offsetX = e.clientX - rect.left;
+
+
+    if (widthSliderContainer < 375) {
+      if (offsetX < leftStopMobile) offsetX = leftStopMobile;
+      if (offsetX > rightStop) offsetX = rightStop;
+    } else {
+
+      if (offsetX < leftStop) offsetX = leftStop;
+      if (offsetX > rightStop) offsetX = rightStop;
+    }
+
+    controller.style.left = offsetX + 'px';
+
+    const percent = (offsetX / rect.width) * 100;
+    photo2.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+  }
+});
+
+</script>
+
+{% schema %}
+    {
+      "name": "Sweep",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header-title",
+          "label": "Type Of Sizes",
+          "default": "Compare In Different Size"
+        },
+        {
+          "type": "text",
+          "id": "sweep-option_1",
+          "label": "Size 1",
+          "default": "Medium"
+        },
+        {
+          "type": "text",
+          "id": "sweep-option_2",
+          "label": "Size 2",
+          "default": "Large"
+        },
+        {
+          "type": "text",
+          "id": "sweep-option_3",
+          "label": "Size 3",
+          "default": "X-Large"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider-photo_1--logo",
+          "label": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider-photo_1",
+          "label": "Photo Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider-photo_1-mobile",
+          "label": "Photo Color Mobile"
+        },
+        {
+          "type": "text",
+          "id": "slider-photo_2--title",
+          "label": "Title 2",
+          "default": "Other Brands"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider-photo_2",
+          "label": "Photo Black"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider-photo_2-mobile",
+          "label": "Photo Black Mobile"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Sweep",
+          "category": "Custom sections"
+        }
+      ]
+    }
+    {% endschema %}
