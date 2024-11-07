@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Dawn",
-    "theme_version": "15.0.0",
+    "theme_version": "15.2.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
@@ -98,6 +98,53 @@
           "on_secondary_button": "secondary_button_label",
           "secondary_button_border": "secondary_button_label"
         }
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__1.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.heading_scale.label",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__2.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.body_scale.label",
+        "default": 100
       }
     ]
   },
@@ -1416,153 +1463,6 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
-      }
-    ]
-  },
-  {
-    "name": "Header",
-    "settings": [
-      {
-        "type": "text",
-        "id": "header_title",
-        "label": "Header Title",
-        "default": "FREE UNITED KINGDOM SHIPPING $200 +"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_1",
-        "label": "Item 1 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_text_1",
-        "label": "Item 1",
-        "default": "Crew Necks"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_2",
-        "label": "Item 2 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_text_2",
-        "label": "Item 2",
-        "default": "V-Necks"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_3",
-        "label": "Item 3 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_text_3",
-        "label": "Item 3",
-        "default": "Activewear"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_4",
-        "label": "Item 4 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_text_4",
-        "label": "Item 4",
-        "default": "Bundles"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_search",
-        "label": "Search Link"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_user",
-        "label": "User Link"
-      },
-      {
-        "type": "url",
-        "id": "menu_link_bag",
-        "label": "Bag Link"
-      },
-      {
-        "type": "url",
-        "id": "menu_dropdown_item_1_link",
-        "label": "List Item 1 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_dropdown_item_1_text",
-        "label": "List Item 1 Text",
-        "default": "First"
-      },
-      {
-        "type": "url",
-        "id": "menu_dropdown_item_2_link",
-        "label": "List Item 2 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_dropdown_item_2_text",
-        "label": "List Item 2 Text",
-        "default": "Second"
-      },
-      {
-        "type": "url",
-        "id": "menu_dropdown_item_3_link",
-        "label": "List Item 3 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_dropdown_item_3_text",
-        "label": "List Item 3 Text",
-        "default": "Third"
-      },
-      {
-        "type": "url",
-        "id": "menu_dropdown_item_4_link",
-        "label": "List Item 4 Link"
-      },
-      {
-        "type": "text",
-        "id": "menu_dropdown_item_4_text",
-        "label": "List Item 4 Text",
-        "default": "Fourth"
-      }
-    ]
-  },
-  {
-    "name": "Hero",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "bg_mobile",
-        "label": "Background Mobile"
-      },
-      {
-        "type": "image_picker",
-        "id": "bg_desktop",
-        "label": "Background Desktop"
-      },
-      {
-        "type": "text",
-        "id": "hero_title",
-        "label": "Hero Title",
-        "default": "MAKE A GREAT FIRST IMPRESSION"
-      },
-      {
-        "type": "text",
-        "id": "hero_subtitle",
-        "label": "Hero Subtitle",
-        "default": "Add images and text to give focus to your chosen product, collection, or blog post"
-      },
-      {
-        "type": "text",
-        "id": "hero_button",
-        "label": "Hero Button",
-        "default": "Shop Now"
       }
     ]
   }
