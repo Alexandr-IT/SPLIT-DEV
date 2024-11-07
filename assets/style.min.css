@@ -1,0 +1,1 @@
+*{box-sizing:border-box;margin:0;padding:0}a{display:block;text-decoration:none}.container{margin:0 auto;padding:0 56px}@media(max-width: 767px){.container{padding:0 16px}}.mobile{display:none !important}@media(max-width: 767px){.mobile{display:flex !important}}.desktop{display:flex !important}@media(max-width: 767px){.desktop{display:none !important}}
