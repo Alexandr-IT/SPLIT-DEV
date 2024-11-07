@@ -53,35 +53,10 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "hero_V3L3yj": {
-      "type": "hero",
-      "settings": {
-        "hero_title": "MAKE A GREAT FIRST IMPRESSION",
-        "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
-        "hero_button": "Shop Now"
-      }
-    },
-    "sweep_mdP8KU": {
-      "type": "sweep",
-      "settings": {
-        "header-title": "Compare In Different Size",
-        "sweep-option_1": "Medium",
-        "sweep-option_2": "Large",
-        "sweep-option_3": "X-Large",
-        "slider-photo_1--logo": "shopify://shop_images/Alter_logo.png",
-        "slider-photo_1": "shopify://shop_images/Banner_Color.jpg",
-        "slider-photo_1-mobile": "shopify://shop_images/Banner_Color_Mobile.jpg",
-        "slider-photo_2--title": "Other Brands",
-        "slider-photo_2": "shopify://shop_images/Banner_Negative_2a7ebf34-c989-493f-8abe-dd65a741e7eb.jpg",
-        "slider-photo_2-mobile": "shopify://shop_images/Banner_Negative_Mobile.jpg"
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "hero_V3L3yj",
-    "sweep_mdP8KU"
+    "header"
   ]
 }
