@@ -1,1 +1,17 @@
 <link rel="stylesheet" href="{{ 'announcement-bar-new.min.css' | asset_url }}" type="text/css" />
+
+<h1>{{ section.settings.heading }}</h1>
+
+{% schema %}
+    {
+      "name": "My Custom Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Welcome to my section"
+        }
+      ]
+    }
+    {% endschema %}
