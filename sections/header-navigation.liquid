@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="{{ 'header-navigation.min.css' | asset_url }}" type="text/css" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="header-navigation section-{{ section.id }}">
+    <div class="container">
+        <div class="navigation">
+            <div class="navigation__logo">
+                <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
+            </div>
+            <div class="navigation_left">
+    {% for block in section.blocks %}
+        {% if block.type == 'text' %}
+            <div class="navigation_left__point p2">{{ block.settings.point }}</div>
+        {% elsif block.type == 'list' %}
+            <div class="dropdown">
+                <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
+                <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
+                <ul class="dropdown__list">
+                    {% if block.settings.list_item_1 != blank %}<li><a href="#">{{ block.settings.list_item_1 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_2 != blank %}<li><a href="#">{{ block.settings.list_item_2 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_3 != blank %}<li><a href="#">{{ block.settings.list_item_3 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_4 != blank %}<li><a href="#">{{ block.settings.list_item_4 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_5 != blank %}<li><a href="#">{{ block.settings.list_item_5 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_6 != blank %}<li><a href="#">{{ block.settings.list_item_6 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_7 != blank %}<li><a href="#">{{ block.settings.list_item_7 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_8 != blank %}<li><a href="#">{{ block.settings.list_item_8 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_9 != blank %}<li><a href="#">{{ block.settings.list_item_9 }}</a></li>{% endif %}
+                    {% if block.settings.list_item_10 != blank %}<li><a href="#">{{ block.settings.list_item_10 }}</a></li>{% endif %}
+                </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+
+            <div class="navigation_right">
+              {% for block in section.blocks %}
+                {% if block.type == 'image_picker' %}
+                  <div class="navigation_right__point">
+                    <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% comment %} 
+<script>
+  document.addEventListener('click', function(event) {
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      const checkbox = dropdown.querySelector('.dropdown__checkbox');
+      const dropdownList = dropdown.querySelector('.dropdown__list');
+      const label = dropdown.querySelector('.dropdown__label');
+              console.log(checkbox)
+      if (checkbox && !label.contains(event.target) && !dropdownList.contains(event.target)) {
+        checkbox.checked = true;
+      }
+    });
+  });
+</script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%- style -%}
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  
+    @media screen and (min-width: 767px) {
+      .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+    {
+      "name": "header-navigation",
+      "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Image Logo"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top_mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom_mobile",
+            "default": 0
+        }
+
+        ],
+      "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "point",
+            "label": "Text Point"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "name": "List",
+        "settings": [
+          {
+            "type": "text",
+            "id": "list_name",
+            "label": "Text List"
+          },
+          {
+            "type": "text",
+            "id": "list_item_1",
+            "label": "List Item 1"
+          },
+          {
+            "type": "text",
+            "id": "list_item_2",
+            "label": "List Item 2"
+          },
+          {
+            "type": "text",
+            "id": "list_item_3",
+            "label": "List Item 3"
+          },
+          {
+            "type": "text",
+            "id": "list_item_4",
+            "label": "List Item 4"
+          },
+          {
+            "type": "text",
+            "id": "list_item_5",
+            "label": "List Item 5"
+          },
+          {
+            "type": "text",
+            "id": "list_item_6",
+            "label": "List Item 6"
+          },
+          {
+            "type": "text",
+            "id": "list_item_7",
+            "label": "List Item 7"
+          },
+          {
+            "type": "text",
+            "id": "list_item_8",
+            "label": "List Item 8"
+          },
+          {
+            "type": "text",
+            "id": "list_item_9",
+            "label": "List Item 9"
+          },
+          {
+            "type": "text",
+            "id": "list_item_10",
+            "label": "List Item 10"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "name": "Icon",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "header-navigation",
+        "category": "Custom sections"
+      }
+    ]
+  }
+  {% endschema %}

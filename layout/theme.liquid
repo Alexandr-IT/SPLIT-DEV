@@ -157,7 +157,7 @@
         --blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
         --blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
         --blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
-
+ 
         --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
 
         --popup-border-width: {{ settings.popup_border_thickness }}px;
@@ -256,6 +256,10 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'button.min.css' | asset_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ 'fonts.min.css' | asset_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ 'style.min.css' | asset_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ 'typography.min.css' | asset_url }}" type="text/css" />
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}

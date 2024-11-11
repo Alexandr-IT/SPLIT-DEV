@@ -1,7 +1,23 @@
 <link rel="stylesheet" href="{{ 'announcement-bar-new.min.css' | asset_url }}" type="text/css" />
 
-<h1>{{ section.settings.heading }}</h1>
-
+<section class="announcement-bar-new-section section-{{ section.id }}">
+    <div class="announcement-bar-new">
+        <p class="announcement-bar-new__text">{{ section.settings.heading }}</p>
+    </div>
+</section>
+{%- style -%}
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  
+    @media screen and (min-width: 767px) {
+      .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
 {% schema %}
     {
       "name": "Announcement-bar-new",
@@ -10,8 +26,49 @@
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Welcome to my section"
+          "default": "FREE UNITED KINGDOM SHIPPING $200+"
+        },
+        {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 0
+        },
+        {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 0
+        },
+        {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top_mobile",
+        "default": 0
+        },
+        {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom_mobile",
+        "default": 0
         }
+
         ],
       "presets": [
         {
@@ -19,5 +76,5 @@
           "category": "Custom sections"
         }
       ]
-    }
+    } 
     {% endschema %}

@@ -6,18 +6,43 @@
     <div class="hero__bg desktop">
         <img src="{{ section.settings.bg_desktop | img_url: 'master' }}" alt="" class="hero__bg-img">
     </div>
-    <div class="hero__wrapper-text container">
-        <h1 class="hero__wrapper-text--title Mobile_H1 mobile">{{ section.settings.hero_title }}</h1>
-        <div class="hero__wrapper-text--subtitle p2 mobile">{{ section.settings.hero_subtitle }}</div>
-        <h2 class="hero__wrapper-text--title desktop">{{ section.settings.hero_title }}</h1>
-        <div class="hero__wrapper-text--subtitle css18_26 desktop">{{ section.settings.hero_subtitle }}</div>
-        <div class="button">{{ section.settings.hero_button }}</div>
+    <div class="container crutches">
+      <div class="hero__wrapper-text ">
+
+          <h1 class="hero__wrapper-text--title Mobile_H1 mobile">
+            {% for block in section.blocks %}
+              <span class="hero__wrapper-text--span 
+                {% if block.settings.italic_text %} italic {% endif %}
+                {% if block.settings.italic_margin %} italic_margin {% endif %}
+              ">
+                {{ block.settings.word }}
+              </span>
+            {% endfor %}
+          </h1>
+          
+          <div class="hero__wrapper-text--subtitle p2 mobile">{{ section.settings.hero_subtitle }}</div>
+          
+          <h2 class="hero__wrapper-text--title desktop">
+            {% for block in section.blocks %}
+              <span class="hero__wrapper-text--span 
+                {% if block.settings.italic_text %} italic {% endif %}
+                {% if block.settings.italic_margin %} italic_margin {% endif %}
+              ">
+                {{ block.settings.word }}
+              </span>
+            {% endfor %}
+          </h2>
+          
+          <div class="hero__wrapper-text--subtitle css18_26 desktop">{{ section.settings.hero_subtitle }}</div>
+          <div class="button">{{ section.settings.hero_button }}</div>
+      </div>
     </div>
     <div class="hero__bg mobile">
         <img src="{{ section.settings.bg_mobile | img_url: 'master' }}" alt="" class="hero__bg-img">
     </div>
   </div> 
 </section>
+
 
 {% schema %}
 {
@@ -34,24 +59,44 @@
       "label": "Background Desktop"
     },
     {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero Title",
-      "default": "MAKE A GREAT FIRST IMPRESSION"
+      "type": "checkbox",
+      "id": "remove_background",
+      "label": "Blur Background"
     },
     {
       "type": "text",
       "id": "hero_subtitle",
-      "label": "Hero Subtitle",
-      "default": "Add images and text to give focus to your chosen product, collection, or blog post"
+      "label": "Hero Subtitle"
     },
     {
       "type": "text",
       "id": "hero_button",
-      "label": "Hero Button",
-      "default": "Shop Now"
+      "label": "Hero Button"
     }
 
+    ],
+  "blocks": [
+    {
+      "type": "word_block",
+      "name": "Word Block",
+      "settings": [
+        {
+          "id": "word",
+          "type": "text",
+          "label": "Word"
+        },
+        {
+          "id": "italic_text",
+          "type": "checkbox",
+          "label": "Italic Text"
+        },
+        {
+          "id": "italic_margin",
+          "type": "checkbox",
+          "label": "Italic Margin" 
+        }
+      ]
+    }
   ],
   "presets": [
     {

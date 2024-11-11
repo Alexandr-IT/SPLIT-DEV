@@ -7,13 +7,29 @@ $lightgray: rgba(227,227,227,1);
     position: relative;
     padding: 15px 32px;
     margin-top: 40px;
-    width: 133px;
+    width: 186px;
     border-radius: 6px;
     background-color: $darkgray;
     word-wrap: break-word;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 10;
     @media(max-width: 767px) {
         width: 186px;
         margin-top: 16px;
+    }
+    &::before{
+        all: unset;
+    }
+    &::after{
+        all: unset;
     }
 }
 
@@ -21,4 +37,5 @@ $lightgray: rgba(227,227,227,1);
     box-shadow: 0.1em 0.3em 0.9em silver, -0.2em 0.3em .9em silver;
     font-weight: 600;
 }
+
 
