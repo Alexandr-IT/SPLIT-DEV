@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="{{ 'image-with-text-new.min.css' | asset_url }}" type="text/css" />
+
+<section class="image-text-section">
+  <div class="container">
+    <div class="image-text-wrapper{% if section.settings.image_position == 'left' %} reverse{% endif %}">
+      <div class="image">
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="Image" />
+      </div>
+      <div class="text-content">
+        <h2 class="title" style="text-align: {{ section.settings.title_alignment }};">{{ section.settings.title }}</h2>
+        {% for block in section.blocks %}
+          <p class="paragraph">{{ block.settings.paragraph_text }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image and Text Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "text",
+          "id": "paragraph_text",
+          "label": "Paragraph Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image and Text Section"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,33 @@
+.image-text-section .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-text-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .image-text-wrapper.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .image img {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .text-content {
+    max-width: 500px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .paragraph {
+    margin-bottom: 10px;
+  }
+  

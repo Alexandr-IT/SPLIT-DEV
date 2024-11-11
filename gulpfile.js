@@ -49,6 +49,13 @@ function headerNavigation(){
     .pipe(browserSync.stream())
 }
 
+function imageWithTextNew(){
+    return src('dev/scss/image-with-text-new.scss') 
+    .pipe(concat('image-with-text-new.min.css'))
+    .pipe(scss({outputStyle: 'compressed'}))
+    .pipe(dest('assets'))
+    .pipe(browserSync.stream())
+}
 
 
 function header() {
@@ -100,6 +107,7 @@ function watching() {
     watch(['dev/scss/button.scss'], button)
     watch(['dev/scss/announcement-bar-new.scss'], announcementBarNew)
     watch(['dev/scss/header-navigation.scss'], headerNavigation)
+    watch(['dev/scss/image-with-text-new.scss'], imageWithTextNew)
     watch(['dev/scss/header.scss'], header)
     watch(['dev/scss/fonts.scss'], fonts)
     watch(['dev/scss/hero.scss'], hero) 
@@ -125,6 +133,7 @@ exports.typography = typography;
 exports.button = button;
 exports.announcementBarNew = announcementBarNew;
 exports.headerNavigation = headerNavigation;
+exports.imageWithTextNew = imageWithTextNew;
 exports.header = header;
 exports.hero = hero; 
 exports.collection = collection;
@@ -135,4 +144,4 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
 
-exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);
+exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, imageWithTextNew, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);
