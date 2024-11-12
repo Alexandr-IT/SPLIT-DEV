@@ -1,0 +1,93 @@
+$bg: #FEF3EE;
+$gold: #D6AD8D;
+$black: #000000;
+$grey: #323232;
+$darkGray: #262626;
+$powder: #F9DBD0;
+$white: #FFFFFF;
+
+$text-minimal: 12px; //calc(0.95vw); // 
+$text-middle: 14px; //calc(1vw); // 
+$text-large: 16px; //calc(1.1vw); // 
+$extra_text-minimal: 20px; //calc(1.48vw); // 
+$extra_text-middle: 36px; //calc(2.5vw); // 
+$extra_text-large: 48px; //calc(3.5vw); // 
+
+.footer{
+    background-color: $darkGray;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.footer__upperline{
+    border-bottom: 1px solid $gold;
+    display: flex; 
+    flex-direction: column;
+    padding-bottom:  40px;
+    background-color: $darkGray;
+    width: 100%;
+}
+.footer_image_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px $gold solid;
+}
+.footer__upperline_social-networks_logo_mobile{
+    display: flex;
+    width: 112px;
+    padding: 39px 0 21px 0;
+}
+.footer__upperline_social-networks_logo{
+    display: none;
+}
+.footer__upperline_shop, .footer__upperline_company, .footer__upperline_customer-service, .footer__upperline_social-networks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+.footer__upperline_shop_title, .footer__upperline_company_title, .footer__upperline_customer-service_title{
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: $extra_text-minimal;
+    line-height: 25px;
+    color: $gold;
+}
+.footer__upperline_shop_link, .footer__upperline_company_link, .footer__upperline_customer-service_link{
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-size: $text-large;
+    line-height: 35px;
+    color: $gold;
+}
+.footer__upperline_social-networks-images{
+    justify-content: space-around;
+}
+#TikTok{
+    display: none;
+}
+.footer__upperline_social-networks_icon{
+    height: 43.2px;
+    width: 43.2px;
+}
+.footer__underline{
+    background-color: $darkGray;
+    margin: 0;
+    flex-direction: column-reverse;
+    padding-bottom: 40px;
+}
+.footer__underline_icon{
+    width: 36px;
+    height: 22px;
+    margin: 25px 2.5px;
+}
+.footer__underline_copyright, .footer__underline_text, .footer__underline_pay-systems{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: $text-large;
+    line-height: 25px;
+}

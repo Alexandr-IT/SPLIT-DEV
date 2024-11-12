@@ -1,0 +1,130 @@
+<link rel="stylesheet" href="{{ 'footer-new.min.css' | asset_url }}" type="text/css" />
+
+
+<section class="announcement-bar-new-section section-{{ section.id }}">
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_image_container">
+                <a href="{{ shop.url }}"><img src="{{ 'logo-powder.svg' | asset_url }}" alt="Logo" class="footer__upperline_social-networks_logo_mobile"></a>
+            </div>
+            <div class="footer__upperline">
+                <div class="footer__upperline_shop">
+                    <div class="footer__upperline_shop_title">SHOP</div>
+                    {% for link in section.settings.shop_links %}
+                        <a href="{{ link.url }}" class="footer__upperline_shop_link">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+                <div class="footer__upperline_company">
+                    <div class="footer__upperline_company_title">COMPANY</div>
+                    {% for link in section.settings.company_links %}
+                        <a href="{{ link.url }}" class="footer__upperline_company_link">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+                <div class="footer__upperline_customer-service">
+                    <div class="footer__upperline_customer-service_title">CUSTOMER SERVICE</div>
+                    {% for link in section.settings.customer_service_links %}
+                        <a href="{{ link.url }}" class="footer__upperline_customer-service_link">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+                <div class="footer__upperline_social-networks">
+                    <a class="footer__upperline_social-networks_logo" href="{{ shop.url }}"><img src="{{ 'logo-powder.svg' | asset_url }}" alt="Logo" class="footer__upperline_social-networks_logo"></a>
+                    <div class="footer__upperline_social-networks-images">
+                        {% for social in section.settings.social_links %}
+                            <a href="{{ social.url }}"><img src="{{ social.image | asset_url }}" alt="{{ social.title }}" class="footer__upperline_social-networks_icon"></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="footer__underline">
+                <span class="footer__underline_copyright">© 2021 {{ shop.name }}</span>
+                <span class="footer__underline_text">Purchases are secured</span>
+                <div class="footer__underline_pay-systems">
+                    {% for payment in section.settings.payment_icons %}
+                        <a href="{{ payment.url }}"><img src="{{ payment.image | asset_url }}" alt="{{ payment.title }}" class="footer__underline_icon"></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </footer>
+</section>
+
+{% schema %}
+{
+    "name": "Footer Section",
+    "settings": [
+    {
+        "type": "link_list",
+        "id": "shop_links",
+        "label": "Shop Links",
+        "default": "main-menu"
+    },
+    {
+        "type": "link_list",
+        "id": "company_links",
+        "label": "Company Links",
+        "default": "company-menu"
+    },
+    {
+        "type": "link_list",
+        "id": "customer_service_links",
+        "label": "Customer Service Links",
+        "default": "customer-service-menu"
+    },
+    {
+        "type": "text",
+        "id": "social_title",
+        "label": "Social Networks Title",
+        "default": "Follow Us"
+    },
+    {
+        "type": "list",
+        "id": "social_links",
+        "label": "Social Network Links",
+        "settings": [
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Social Link URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Social Icon"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Social Network Name"
+        }
+        ]
+    },
+    {
+        "type": "list",
+        "id": "payment_icons",
+        "label": "Payment Icons",
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Payment Icon Image"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Payment Link URL"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Payment Name"
+        }
+        ]
+    }
+    ],
+    "presets": [
+    {
+        "name": "Default"
+    }
+    ]
+}
+{% endschema %}
