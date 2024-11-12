@@ -1,10 +1,10 @@
 $bg: #FEF3EE;
 $gold: #D6AD8D;
 $black: #000000;
-$grey: #323232;
-$darkGray: #262626;
-$powder: #F9DBD0;
-$white: #FFFFFF;
+$grey: rgba(96,94,92,1);
+$darkGray: rgba(33,35,34,1);
+$milk: rgba(227,227,227,1);
+$white: rgba(241,241,241,1);
 
 $text-minimal: 12px; //calc(0.95vw); // 
 $text-middle: 14px; //calc(1vw); // 
@@ -13,81 +13,168 @@ $extra_text-minimal: 20px; //calc(1.48vw); //
 $extra_text-middle: 36px; //calc(2.5vw); // 
 $extra_text-large: 48px; //calc(3.5vw); // 
 
+.container{
+    margin: 0 auto;
+    padding: 0 114px;
+    width: 100%;
+}
+
 .footer{
     background-color: $darkGray;
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 55px 0 24px 0;
+    overflow: hidden;
 }
-.footer__upperline{
-    border-bottom: 1px solid $gold;
-    display: flex; 
-    flex-direction: column;
-    padding-bottom:  40px;
-    background-color: $darkGray;
+.footer__columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
 }
-.footer_image_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px $gold solid;
-}
-.footer__upperline_social-networks_logo_mobile{
-    display: flex;
-    width: 112px;
-    padding: 39px 0 21px 0;
-}
-.footer__upperline_social-networks_logo{
-    display: none;
-}
-.footer__upperline_shop, .footer__upperline_company, .footer__upperline_customer-service, .footer__upperline_social-networks{
+.footer__column{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: start;
+    align-items: start!important;
     width: 100%;
-    margin-top: 30px;
 }
-.footer__upperline_shop_title, .footer__upperline_company_title, .footer__upperline_customer-service_title{
-    font-family: "Open Sans";
-    font-weight: 700;
-    font-size: $extra_text-minimal;
-    line-height: 25px;
-    color: $gold;
+.footer__column-title{
+    padding-bottom: 16px;
+    color: $white;
 }
-.footer__upperline_shop_link, .footer__upperline_company_link, .footer__upperline_customer-service_link{
-    font-family: "Open Sans";
-    font-weight: 300;
-    font-size: $text-large;
-    line-height: 35px;
-    color: $gold;
+.footer__column-item{
+    margin-bottom: 8px;
+    color: $white;
 }
-.footer__upperline_social-networks-images{
-    justify-content: space-around;
+.email-input {
+    background: transparent; /* без фону */
+    border: none; /* без стандартної обводки */
+    border-bottom: 2px solid #000; /* нижня біла рамка товщиною 2 пікселі */
+    padding: 10px; /* внутрішній відступ */
+    font-size: 16px; /* розмір шрифту */
+    width: 250px; /* ширина поля */
+    outline: none; /* забрати виділення при фокусуванні */
+    position: relative; /* для розташування псевдоелемента */
 }
-#TikTok{
-    display: none;
+
+.email-input:focus {
+    border-color: #007bff; /* зміна кольору рамки при фокусуванні */
 }
-.footer__upperline_social-networks_icon{
-    height: 43.2px;
-    width: 43.2px;
+.email-input::placeholder {
+    color: $milk; /* Задайте бажаний колір */
+    opacity: 1; /* Щоб колір не був напівпрозорим (значення 1 – це 100% видимість) */
 }
-.footer__underline{
-    background-color: $darkGray;
-    margin: 0;
-    flex-direction: column-reverse;
-    padding-bottom: 40px;
+.footer__column_form{
+    position: relative;
 }
-.footer__underline_icon{
-    width: 36px;
-    height: 22px;
-    margin: 25px 2.5px;
+/* Псевдоелемент у вигляді стрілки */
+.footer__column_form::after {
+    content: ""; /* символ стрілки */
+    position: absolute;
+    right: 11.5px; /* відстань від правого краю */
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg); /* вертикальне вирівнювання */
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    border-top: 1.5px $milk solid;
+    border-right: 1.5px $milk solid;
 }
-.footer__underline_copyright, .footer__underline_text, .footer__underline_pay-systems{
+
+.footer__column-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-top: 26px;
+}
+.footer__column-icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+}
+.footer__column-icon img{
     width: 100%;
+    height: 100%;
+}
+.footer__down{
     display: flex;
     justify-content: center;
-    font-size: $text-large;
-    line-height: 25px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.footer__down_logo{
+    width: 224px;
+    height: 64.74px;
+    margin: 56px auto 0 auto;
+}
+.footer__cubes{
+    display: flex;
+    justify-content: space-between;
+}
+.footer__cube_left,
+.footer__cube_right {
+    position: relative;
+    width: 0;
+    height: 0;
+    overflow: visible; 
+    display: block!important;
+}
+
+.footer__cube_left {
+    &::before{
+       content: "";
+        top: -68px;
+        left: 103px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $grey;
+        position: absolute; 
+    }
+    &::after{
+        content: "";
+        top: -15px;
+        left: -11px;
+        border-top: 2px $grey solid;
+        border-left: 2px $grey solid;
+        transform: rotate(45deg);
+        width: 240px;
+        height: 240px;
+        position: absolute; 
+    }
+    
+}
+
+.footer__cube_right {
+    &::before{
+       content: "";
+        top: -142px;
+        left: -65px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $grey;
+        position: absolute; 
+    }
+    &::after{
+        content: "";
+        top: -138px;
+        left: -58px;
+        border-top: 2px $grey solid;
+        border-left: 2px $grey solid;
+        width: 240px;
+        height: 240px;
+        position: absolute; 
+    }
+    
+}
+
+
+.footer__content-top{
+    display: none;
+}
+div:empty{
+    display: block;
 }

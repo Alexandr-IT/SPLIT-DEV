@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'image-with-text-new.min.css' | asset_url }}" type="text/css" />
 
 <section class="image-text-section section-{{ section.id }}">
-  <div class="container">
+  <div class="container_limited">
     <div class="image-text-wrapper{% if section.settings.image_position == 'right' %} reverse{% endif %}">
       <div class="image-text-wrapper__image">
         <img src="{{ section.settings.image | img_url: 'master' }}" alt="Image" />

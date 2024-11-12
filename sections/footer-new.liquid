@@ -1,123 +1,146 @@
 <link rel="stylesheet" href="{{ 'footer-new.min.css' | asset_url }}" type="text/css" />
 
-
-<section class=" section-{{ section.id }}">
+<section class="section-{{ section.id }}">
     <footer class="footer">
         <div class="container">
-            <div class="footer_image_container">
-                <a href="{{ shop.url }}"><img src="{{ 'logo-powder.svg' | asset_url }}" alt="Logo" class="footer__upperline_social-networks_logo_mobile"></a>
-            </div>
-            <div class="footer__upperline">
-                <div class="footer__upperline_shop">
-                    <div class="footer__upperline_shop_title">SHOP</div>
-                    {% for link in section.settings.shop_links %}
-                        <a href="{{ link.url }}" class="footer__upperline_shop_link">{{ link.title }}</a>
-                    {% endfor %}
-                </div>
-                <div class="footer__upperline_company">
-                    <div class="footer__upperline_company_title">COMPANY</div>
-                    {% for link in section.settings.company_links %}
-                        <a href="{{ link.url }}" class="footer__upperline_company_link">{{ link.title }}</a>
-                    {% endfor %}
-                </div>
-                <div class="footer__upperline_customer-service">
-                    <div class="footer__upperline_customer-service_title">CUSTOMER SERVICE</div>
-                    {% for link in section.settings.customer_service_links %}
-                        <a href="{{ link.url }}" class="footer__upperline_customer-service_link">{{ link.title }}</a>
-                    {% endfor %}
-                </div>
-                <div class="footer__upperline_social-networks">
-                    <a class="footer__upperline_social-networks_logo" href="{{ shop.url }}"><img src="{{ 'logo-powder.svg' | asset_url }}" alt="Logo" class="footer__upperline_social-networks_logo"></a>
-                    <div class="footer__upperline_social-networks-images">
-                        {% for social in section.settings.social_links %}
-                            <a href="{{ social.url }}"><img src="{{ social.image | asset_url }}" alt="{{ social.title }}" class="footer__upperline_social-networks_icon"></a>
-                        {% endfor %}
+            <div class="footer__columns">
+                {% for block in section.blocks %}
+                    <div class="footer__column">
+                        <div class="footer__column-title p2">{{ block.settings.column_title }}</div>
+
+                        {% if block.settings.column_type == 'regular' %}
+                            <p class="footer__column-item p2">{{ block.settings.text_item_1 }}</p>
+                            <p class="footer__column-item p2">{{ block.settings.text_item_2 }}</p>
+                            <p class="footer__column-item p2">{{ block.settings.text_item_3 }}</p>
+                            <p class="footer__column-item p2">{{ block.settings.text_item_4 }}</p>
+                        {% elsif block.settings.column_type == 'email' %}
+                            <form action="#" method="post" class="footer__column_form">
+                                <input type="email" class="email-input" placeholder="{{ block.settings.text_for_email }}">
+                            </form>
+                            <div class="footer__column-icons">
+                                <img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt="">
+                                <img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt="">
+                                <img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt="">
+                                <img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt="">
+                                <img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt="">
+                            </div>
+                        {% endif %}
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            <div class="footer__underline">
-                <span class="footer__underline_copyright">© 2021 {{ shop.name }}</span>
-                <span class="footer__underline_text">Purchases are secured</span>
-                <div class="footer__underline_pay-systems">
-                    {% for payment in section.settings.payment_icons %}
-                        <a href="{{ payment.url }}"><img src="{{ payment.image | asset_url }}" alt="{{ payment.title }}" class="footer__underline_icon"></a>
-                    {% endfor %}
-                </div>
+            <div class="footer__down">
+                <img class="footer__down_logo" src="{{ section.settings.logo | img_url: 'master' }}" alt="">
+                <div class="footer__down_text p2">{{ section.settings.footer_down_text }}</div>
+            </div>
+            <div class="footer__cubes">
+                <div class="footer__cube_left"></div>
+                <div class="footer__cube_right"></div>
             </div>
         </div>
     </footer>
 </section>
+
 
 {% schema %}
     {
       "name": "footer-new",
       "settings": [
         {
-          "type": "link_list",
-          "id": "shop_links",
-          "label": "Shop Links"
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
         },
         {
-          "type": "link_list",
-          "id": "company_links",
-          "label": "Company Links"
-        },
-        {
-          "type": "link_list",
-          "id": "customer_service_links",
-          "label": "Customer Service Links"
+            "type": "text",
+            "id": "footer_down_text",
+            "label": "Footer Text"
         }
       ],
       "blocks": [
         {
-          "type": "social_link",
-          "name": "Social Network Link",
+          "type": "column",
+          "name": "Column",
           "settings": [
             {
-              "type": "url",
-              "id": "url",
-              "label": "Social Link URL"
+              "type": "text",
+              "id": "column_title",
+              "label": "Column Title"
             },
             {
-              "type": "image_picker",
-              "id": "image",
-              "label": "Social Icon"
+              "type": "radio",
+              "id": "column_type",
+              "label": "Choose Column Type",
+              "options": [
+                {
+                  "value": "regular",
+                  "label": "Regular Column"
+                },
+                {
+                  "value": "email",
+                  "label": "Email Column"
+                }
+              ],
+              "default": "regular"
             },
             {
               "type": "text",
-              "id": "title",
-              "label": "Social Network Name"
-            }
-          ]
-        },
-        {
-          "type": "payment_icon",
-          "name": "Payment Icon",
-          "settings": [
-            {
-              "type": "image_picker",
-              "id": "image",
-              "label": "Payment Icon Image"
-            },
-            {
-              "type": "url",
-              "id": "url",
-              "label": "Payment Link URL"
+              "id": "text_for_email",
+              "label": "Text for e-Mail"
             },
             {
               "type": "text",
-              "id": "title",
-              "label": "Payment Name"
+              "id": "text_item_1",
+              "label": "Text Item 1"
+            },
+            {
+              "type": "text",
+              "id": "text_item_2",
+              "label": "Text Item 2"
+            },
+            {
+              "type": "text",
+              "id": "text_item_3",
+              "label": "Text Item 3"
+            },
+            {
+              "type": "text",
+              "id": "text_item_4",
+              "label": "Text Item 4"
+            },
+            {
+              "type": "image_picker",
+              "id": "column_icon_1",
+              "label": "Column Icon 1"
+            },
+            {
+              "type": "image_picker",
+              "id": "column_icon_2",
+              "label": "Column Icon 2"
+            },
+            {
+              "type": "image_picker",
+              "id": "column_icon_3",
+              "label": "Column Icon 3"
+            },
+            {
+              "type": "image_picker",
+              "id": "column_icon_4",
+              "label": "Column Icon 4"
+            },
+            {
+              "type": "image_picker",
+              "id": "column_icon_5",
+              "label": "Column Icon 5"
             }
           ]
         }
       ],
       "presets": [
-      {
-        "name": "footer-new",
-        "category": "Custom sections"
-      }
-    ]
-  }
+        {
+          "name": "footer-new",
+          "category": "Custom sections"
+        }
+      ]
+    }
     {% endschema %}
     
