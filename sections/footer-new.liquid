@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'footer-new.min.css' | asset_url }}" type="text/css" />
 
 
-<section class="announcement-bar-new-section section-{{ section.id }}">
+<section class=" section-{{ section.id }}">
     <footer class="footer">
         <div class="container">
             <div class="footer_image_container">
@@ -50,7 +50,7 @@
 
 {% schema %}
 {
-    "name": "Footer Section",
+    "name": "Footer New",
     "settings": [
     {
         "type": "link_list",
@@ -122,9 +122,10 @@
     }
     ],
     "presets": [
-    {
-        "name": "Default"
-    }
-    ]
+        {
+          "name": "Footer New",
+          "category": "Custom sections"
+        }
+      ]
 }
 {% endschema %}
