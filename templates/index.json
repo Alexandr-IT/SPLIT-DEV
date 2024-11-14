@@ -136,11 +136,78 @@
         "title": "About PuriBloc",
         "title_alignment": "center"
       }
+    },
+    "footer_new_wKrfV7": {
+      "type": "footer-new",
+      "blocks": {
+        "column_QFmGgf": {
+          "type": "column",
+          "settings": {
+            "column_title": "SHOP",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Best Sellers",
+            "text_item_2": "Crew Neck",
+            "text_item_3": "V- Neck",
+            "text_item_4": "Bundle Builder"
+          }
+        },
+        "column_WiYjB7": {
+          "type": "column",
+          "settings": {
+            "column_title": "CONTACT",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Palm St, 465",
+            "text_item_2": "London, UK",
+            "text_item_3": "+ (345) 789 89 98",
+            "text_item_4": ""
+          }
+        },
+        "column_XD9zgy": {
+          "type": "column",
+          "settings": {
+            "column_title": "MORE INFO",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Blog",
+            "text_item_2": "Terms and conditions",
+            "text_item_3": "Private Policy",
+            "text_item_4": ""
+          }
+        },
+        "column_GkHhdM": {
+          "type": "column",
+          "settings": {
+            "column_title": "GET 10% OF CASHBACK",
+            "column_type": "email",
+            "text_for_email": "Your E-mail",
+            "text_item_1": "",
+            "text_item_2": "",
+            "text_item_3": "",
+            "text_item_4": "",
+            "column_icon_1": "shopify://shop_images/Vector.svg",
+            "column_icon_2": "shopify://shop_images/uil_facebook-f.svg",
+            "column_icon_3": "shopify://shop_images/ri_instagram-fill.svg"
+          }
+        }
+      },
+      "block_order": [
+        "column_QFmGgf",
+        "column_WiYjB7",
+        "column_XD9zgy",
+        "column_GkHhdM"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Rectangle_17.svg",
+        "footer_down_text": "© 2023 | Focused Fits | All Rights Reserved."
+      }
     }
   },
   "order": [
     "hero_dQt8qL",
     "image_with_text_new_hF787x",
-    "image_with_text_new_WMfzX3"
+    "image_with_text_new_WMfzX3",
+    "footer_new_wKrfV7"
   ]
 }
