@@ -7,7 +7,6 @@
                 {% for block in section.blocks %}
                     <div class="footer__column">
                         <div class="footer__column-title p2">{{ block.settings.column_title }}</div>
-
                         {% if block.settings.column_type == 'regular' %}
                             <p class="footer__column-item p2">{{ block.settings.text_item_1 }}</p>
                             <p class="footer__column-item p2">{{ block.settings.text_item_2 }}</p>
@@ -18,11 +17,11 @@
                                 <input type="email" class="email-input" placeholder="{{ block.settings.text_for_email }}">
                             </form>
                             <div class="footer__column-icons">
-                                <img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt="">
-                                <img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt="">
-                                <img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt="">
-                                <img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt="">
-                                <img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt="">
+                            {% if block.settings.column_icon_1 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt="">{% endif %}
+                            {% if block.settings.column_icon_2 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt="">{% endif %}
+                            {% if block.settings.column_icon_3 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt="">{% endif %}
+                            {% if block.settings.column_icon_4 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt="">{% endif %}
+                            {% if block.settings.column_icon_5 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt="">{% endif %}
                             </div>
                         {% endif %}
                     </div>
@@ -143,4 +142,4 @@
       ]
     }
     {% endschema %}
-    
+     

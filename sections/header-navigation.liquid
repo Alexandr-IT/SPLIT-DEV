@@ -3,6 +3,11 @@
 <section class="header-navigation section-{{ section.id }}">
     <div class="container">
         <div class="navigation">
+          <div class="navigation__logo_background">
+              <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
+                <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
+              </a>
+            </div>
             <div class="navigation__logo">
               <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
                 <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
@@ -26,9 +31,6 @@
                             {% if block.settings.list_item_5 != blank %}<li><a href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>{% endif %}
                             {% if block.settings.list_item_6 != blank %}<li><a href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>{% endif %}
                             {% if block.settings.list_item_7 != blank %}<li><a href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_8 != blank %}<li><a href="{{ block.settings.list_item_8_link }}">{{ block.settings.list_item_8 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_9 != blank %}<li><a href="{{ block.settings.list_item_9_link }}">{{ block.settings.list_item_9 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_10 != blank %}<li><a href="{{ block.settings.list_item_10_link }}">{{ block.settings.list_item_10 }}</a></li>{% endif %}
                         </ul>
                       </div>
                   {% elsif block.type == 'image' %}
@@ -109,6 +111,11 @@
             "type": "image_picker",
             "id": "logo",
             "label": "Image Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_bg",
+          "label": "Hidden Logo"
         },
         {
           "type": "url",
@@ -199,9 +206,19 @@
             "label": "List Item 2"
           },
           {
+            "type": "url",
+            "id": "list_item_2_link",
+            "label": "Item 2 Link"
+          },
+          {
             "type": "text",
             "id": "list_item_3",
             "label": "List Item 3"
+          },
+          {
+            "type": "url",
+            "id": "list_item_3_link",
+            "label": "Item 3 Link"
           },
           {
             "type": "text",
@@ -209,9 +226,19 @@
             "label": "List Item 4"
           },
           {
+            "type": "url",
+            "id": "list_item_4_link",
+            "label": "Item 4 Link"
+          },
+          {
             "type": "text",
             "id": "list_item_5",
             "label": "List Item 5"
+          },
+          {
+            "type": "url",
+            "id": "list_item_5_link",
+            "label": "Item 5 Link"
           },
           {
             "type": "text",
@@ -219,24 +246,19 @@
             "label": "List Item 6"
           },
           {
+            "type": "url",
+            "id": "list_item_6_link",
+            "label": "Item 6 Link"
+          },
+          {
             "type": "text",
             "id": "list_item_7",
             "label": "List Item 7"
           },
           {
-            "type": "text",
-            "id": "list_item_8",
-            "label": "List Item 8"
-          },
-          {
-            "type": "text",
-            "id": "list_item_9",
-            "label": "List Item 9"
-          },
-          {
-            "type": "text",
-            "id": "list_item_10",
-            "label": "List Item 10"
+            "type": "url",
+            "id": "list_item_7_link",
+            "label": "Item 7 Link"
           }
         ]
       },

@@ -1,17 +1,7 @@
-$bg: #FEF3EE;
-$gold: #D6AD8D;
-$black: #000000;
 $grey: rgba(96,94,92,1);
 $darkGray: rgba(33,35,34,1);
 $milk: rgba(227,227,227,1);
 $white: rgba(241,241,241,1);
-
-$text-minimal: 12px; //calc(0.95vw); // 
-$text-middle: 14px; //calc(1vw); // 
-$text-large: 16px; //calc(1.1vw); // 
-$extra_text-minimal: 20px; //calc(1.48vw); // 
-$extra_text-middle: 36px; //calc(2.5vw); // 
-$extra_text-large: 48px; //calc(3.5vw); // 
 
 .container{
     margin: 0 auto;
@@ -31,6 +21,9 @@ $extra_text-large: 48px; //calc(3.5vw); //
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    @media(max-width: 767px) {
+        flex-direction: column;
+    }
 }
 .footer__column{
     display: flex;
@@ -38,10 +31,16 @@ $extra_text-large: 48px; //calc(3.5vw); //
     justify-content: start;
     align-items: start!important;
     width: 100%;
+    @media(max-width: 767px) {
+        padding-bottom: 24px;
+    }
 }
 .footer__column-title{
     padding-bottom: 16px;
     color: $white;
+    @media(max-width: 767px) {
+        padding-bottom: 8;
+    }
 }
 .footer__column-item{
     margin-bottom: 8px;
@@ -50,7 +49,7 @@ $extra_text-large: 48px; //calc(3.5vw); //
 .email-input {
     background: transparent; /* без фону */
     border: none; /* без стандартної обводки */
-    border-bottom: 2px solid #000; /* нижня біла рамка товщиною 2 пікселі */
+    border-bottom: 2px solid $milk; /* нижня біла рамка товщиною 2 пікселі */
     padding: 10px; /* внутрішній відступ */
     font-size: 16px; /* розмір шрифту */
     width: 250px; /* ширина поля */
@@ -170,7 +169,7 @@ $extra_text-large: 48px; //calc(3.5vw); //
     }
     
 }
-
+ 
 
 .footer__content-top{
     display: none;
