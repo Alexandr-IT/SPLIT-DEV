@@ -1,1 +1,150 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}}},"block_order":["announcement-bar-0"],"settings":{"color_scheme":"scheme-1","show_line_separator":true,"show_social":false,"auto_rotate":false,"change_slides_speed":5,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"scheme-1","menu_color_scheme":"scheme-1","enable_country_selector":true,"enable_language_selector":true,"enable_customer_avatar":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "disabled": true,
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "announcement_bar_new_fJYyDN": {
+      "type": "Announcement-bar-new",
+      "settings": {
+        "heading": "FREE UNITED KINGDOM SHIPPING $200+",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "header_navigation_KHQNMA": {
+      "type": "header-navigation",
+      "blocks": {
+        "text_TwReGi": {
+          "type": "text",
+          "settings": {
+            "point": "Crew Necks",
+            "text_link": ""
+          }
+        },
+        "text_kzF4qw": {
+          "type": "text",
+          "settings": {
+            "point": "V-Necks",
+            "text_link": ""
+          }
+        },
+        "text_xdGJ3i": {
+          "type": "text",
+          "settings": {
+            "point": "Activewear",
+            "text_link": ""
+          }
+        },
+        "list_FzwDdd": {
+          "type": "list",
+          "settings": {
+            "list_name": "Bundles",
+            "list_item_1": "One",
+            "list_item_1_link": "",
+            "list_item_2": "Two",
+            "list_item_3": "Tree",
+            "list_item_4": "Four",
+            "list_item_5": "Five",
+            "list_item_6": "Six",
+            "list_item_7": "Seven",
+            "list_item_8": "",
+            "list_item_9": "",
+            "list_item_10": ""
+          }
+        },
+        "image_picker_fdcVFc": {
+          "type": "image_picker",
+          "settings": {
+            "icon": "shopify://shop_images/Search.svg",
+            "hide_on_mobile": true,
+            "right__icon_link": ""
+          }
+        },
+        "image_picker_RfgyEd": {
+          "type": "image_picker",
+          "settings": {
+            "icon": "shopify://shop_images/User.svg",
+            "hide_on_mobile": true,
+            "right__icon_link": ""
+          }
+        },
+        "image_picker_PAzeaw": {
+          "type": "image_picker",
+          "settings": {
+            "icon": "shopify://shop_images/Bag.svg",
+            "hide_on_mobile": false,
+            "right__icon_link": ""
+          }
+        },
+        "image_HbqKAt": {
+          "type": "image",
+          "settings": {
+            "icon__mobile": "shopify://shop_images/Ic_Burger.svg",
+            "left__icon_link": ""
+          }
+        },
+        "image_hweqqw": {
+          "type": "image",
+          "settings": {
+            "icon__mobile": "shopify://shop_images/Search.svg",
+            "left__icon_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_TwReGi",
+        "text_kzF4qw",
+        "text_xdGJ3i",
+        "list_FzwDdd",
+        "image_picker_fdcVFc",
+        "image_picker_RfgyEd",
+        "image_picker_PAzeaw",
+        "image_HbqKAt",
+        "image_hweqqw"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Black.svg",
+        "logo_link": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "header",
+    "announcement_bar_new_fJYyDN",
+    "header_navigation_KHQNMA"
+  ]
+}
