@@ -1,58 +1,60 @@
 <link rel="stylesheet" href="{{ 'header-navigation.min.css' | asset_url }}" type="text/css" />
 
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="header-navigation section-{{ section.id }}">
     <div class="container">
         <div class="navigation">
             <div class="navigation__logo">
+              <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
                 <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
+              </a>
             </div>
             <div class="navigation_left">
-    {% for block in section.blocks %}
-        {% if block.type == 'text' %}
-            <div class="navigation_left__point p2">{{ block.settings.point }}</div>
-        {% elsif block.type == 'list' %}
-            <div class="dropdown">
-                <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
-                <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
-                <ul class="dropdown__list">
-                    {% if block.settings.list_item_1 != blank %}<li><a href="#">{{ block.settings.list_item_1 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_2 != blank %}<li><a href="#">{{ block.settings.list_item_2 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_3 != blank %}<li><a href="#">{{ block.settings.list_item_3 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_4 != blank %}<li><a href="#">{{ block.settings.list_item_4 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_5 != blank %}<li><a href="#">{{ block.settings.list_item_5 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_6 != blank %}<li><a href="#">{{ block.settings.list_item_6 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_7 != blank %}<li><a href="#">{{ block.settings.list_item_7 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_8 != blank %}<li><a href="#">{{ block.settings.list_item_8 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_9 != blank %}<li><a href="#">{{ block.settings.list_item_9 }}</a></li>{% endif %}
-                    {% if block.settings.list_item_10 != blank %}<li><a href="#">{{ block.settings.list_item_10 }}</a></li>{% endif %}
-                </ul>
+              {% for block in section.blocks %}
+                  {% if block.type == 'text' %}
+                    <a href="{{ block.settings.text_link }}" target="_self" rel="stylesheet">
+                      <div class="navigation_left__point p2 desktop">{{ block.settings.point }}</div>
+                    </a>
+                  {% elsif block.type == 'list' %}
+                      <div class="dropdown desktop">
+                        <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
+                        <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
+                        <ul class="dropdown__list">
+                            {% if block.settings.list_item_1 != blank %}<li><a href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_2 != blank %}<li><a href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_3 != blank %}<li><a href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_4 != blank %}<li><a href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_5 != blank %}<li><a href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_6 != blank %}<li><a href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_7 != blank %}<li><a href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_8 != blank %}<li><a href="{{ block.settings.list_item_8_link }}">{{ block.settings.list_item_8 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_9 != blank %}<li><a href="{{ block.settings.list_item_9_link }}">{{ block.settings.list_item_9 }}</a></li>{% endif %}
+                            {% if block.settings.list_item_10 != blank %}<li><a href="{{ block.settings.list_item_10_link }}">{{ block.settings.list_item_10 }}</a></li>{% endif %}
+                        </ul>
+                      </div>
+                  {% elsif block.type == 'image' %}
+                      <div class="navigation_left_icon mobile">
+                        <a href="{{ block.settings.left__icon_link }}" target="_self" rel="stylesheet">
+                          <img class="navigation_left_icon_img" src="{{ block.settings.icon__mobile | img_url: 'master' }}" alt="Image">
+                        </a>
+                      </div>
+                  {% endif %}
+              {% endfor %}
             </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+
 
 
             <div class="navigation_right">
               {% for block in section.blocks %}
-                {% if block.type == 'image_picker' %}
-                  <div class="navigation_right__point">
-                    <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
-                  </div>
-                {% endif %}
+                  {% if block.type == 'image_picker' %}
+                    <div class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
+                        <a href="{{ block.settings.right__icon_link }}" target="_self" rel="stylesheet">
+                          <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
+                        </a>
+                    </div>
+                  {% endif %}
               {% endfor %}
             </div>
+
         </div>
     </div>
 </section>
@@ -72,13 +74,6 @@
     });
   });
 </script> {% endcomment %}
-
-
-
-
-
-
-
 
 
 
@@ -106,12 +101,6 @@
 
 
 
-
-
-
-
-
-
 {% schema %}
     {
       "name": "header-navigation",
@@ -120,6 +109,11 @@
             "type": "image_picker",
             "id": "logo",
             "label": "Image Logo"
+        },
+        {
+          "type": "url",
+          "id": "logo_link",
+          "label": "Logo Link"
         },
         {
             "type": "range",
@@ -172,6 +166,11 @@
             "type": "text",
             "id": "point",
             "label": "Text Point"
+          },
+          {
+            "type": "url",
+            "id": "text_link",
+            "label": "Text Link"
           }
         ]
       },
@@ -188,6 +187,11 @@
             "type": "text",
             "id": "list_item_1",
             "label": "List Item 1"
+          },
+          {
+            "type": "url",
+            "id": "list_item_1_link",
+            "label": "Item 1 Link"
           },
           {
             "type": "text",
@@ -238,15 +242,42 @@
       },
       {
         "type": "image_picker",
-        "name": "Icon",
+        "name": "Right Icon",
         "settings": [
           {
             "type": "image_picker",
             "id": "icon",
-            "label": "Icon"
+            "label": "Right Icon"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_on_mobile",
+            "label": "Hide on mobile"
+          },
+          {
+            "type": "url",
+            "id": "right__icon_link",
+            "label": "Link for this icon"
           }
+          
         ]
-      }
+      },
+      {
+      "type": "image",
+      "name": "Left Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon__mobile",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "left__icon_link", 
+          "label": "Link for this icon"
+        }
+      ]
+    }
     ],
     "presets": [
       {

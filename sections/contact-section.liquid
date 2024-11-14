@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="{{ 'contact-section.min.css' | asset_url }}" type="text/css" />
+
+<section class="section-{{ section.id }}">
+    <div class="wrapper container">
+        
+        {% for block in section.blocks %}
+            {% case block.type %}
+            
+                {% when 'text_message' %}
+                <div class="wrapper__title body_1">{{ block.settings.text_message }}</div>
+
+                {% when 'contact_info' %}
+                <div class="wrapper__email">
+                    <div class="wrapper__email_icon">
+                        <img src="{{ block.settings.email_icon | img_url: 'master' }}">  
+                    </div>
+                    {% if block.settings.contact_label_1 != blank and block.settings.contact_email_1 != blank %}
+                        <div class="wrapper__email_contact">
+                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_1 }}</div>
+                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_1 }}</div>
+                        </div>
+                    {% endif %}
+                
+                    {% if block.settings.contact_label_2 != blank and block.settings.contact_email_2 != blank %}
+                        <div class="wrapper__email_contact">
+                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_2 }}</div>
+                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_2 }}</div>
+                        </div>
+                    {% endif %}
+                
+                    {% if block.settings.contact_label_3 != blank and block.settings.contact_email_3 != blank %}
+                        <div class="wrapper__email_contact">
+                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_3 }}</div>
+                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_3 }}</div>
+                        </div>
+                    {% endif %}
+                
+                    {% if block.settings.contact_label_4 != blank and block.settings.contact_email_4 != blank %}
+                        <div class="wrapper__email_contact">
+                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_4 }}</div>
+                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_4 }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% when 'address' %}
+                <div class="wrapper__email_address">
+                    <img src="{{ block.settings.address_icon | img_url: 'master' }}">
+                    <div class="wrapper__email_address-text">
+                        {% if block.settings.address_line_1 != blank %}
+                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_1 }}</p>
+                        {% endif %}
+                        {% if block.settings.address_line_2 != blank %}
+                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_2 }}</p>
+                        {% endif %}
+                        {% if block.settings.address_line_3 != blank %}
+                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_3 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endcase %}
+        {% endfor %}
+        
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Contact Section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "text_message",
+            "name": "Text Message",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text_message",
+                    "label": "Text Message"
+                }
+            ]
+        },
+        {
+            "type": "contact_info",
+            "name": "Contact Information",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "email_icon",
+                    "label": "Icon for e-Mail"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_label_1",
+                    "label": "Contact Label 1"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_email_1",
+                    "label": "Contact Email 1"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_label_2",
+                    "label": "Contact Label 2"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_email_2",
+                    "label": "Contact Email 2"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_label_3",
+                    "label": "Contact Label 3"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_email_3",
+                    "label": "Contact Email 3"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_label_4",
+                    "label": "Contact Label 4"
+                },
+                {
+                    "type": "text",
+                    "id": "contact_email_4",
+                    "label": "Contact Email 4"
+                }
+            ]
+        },
+        {
+            "type": "address",
+            "name": "Address",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "address_icon",
+                    "label": "Icon for marker"
+                },
+                {
+                    "type": "text",
+                    "id": "address_line_1",
+                    "label": "Address Line 1"
+                },
+                {
+                    "type": "text",
+                    "id": "address_line_2",
+                    "label": "Address Line 2"
+                },
+                {
+                    "type": "text",
+                    "id": "address_line_3",
+                    "label": "Address Line 3"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Contact Section",
+            "category": "Custom sections"
+        }
+    ]
+}
+{% endschema %}
+

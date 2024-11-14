@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="{{ 'central-text.min.css' | asset_url }}" type="text/css" />
+
+<section class="section-{{ section.settings.section_id }}">
+    <div class="wrapper">
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.alt_text }}" class="wrapper__bg">
+        <div class="wrapper__title">{{ section.settings.title }}</div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Central Text Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "unique-id"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Image Alt Text",
+      "default": "Description of the image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+    "presets": [
+        {
+            "name": "Central Text Section",
+            "category": "Custom sections"
+        }
+    ]
+}
+{% endschema %}

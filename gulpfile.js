@@ -63,8 +63,20 @@ function footerNew(){
     .pipe(dest('assets'))
     .pipe(browserSync.stream())
 }
-
-
+function centralText(){
+    return src('dev/scss/central-text.scss') 
+    .pipe(concat('central-text.min.css'))
+    .pipe(scss({outputStyle: 'compressed'})) 
+    .pipe(dest('assets'))
+    .pipe(browserSync.stream())
+}
+function contactSection(){
+    return src('dev/scss/contact-section.scss') 
+    .pipe(concat('contact-section.min.css'))
+    .pipe(scss({outputStyle: 'compressed'}))
+    .pipe(dest('assets'))
+    .pipe(browserSync.stream())
+}
 function header() {
     return src('dev/scss/header.scss') 
     .pipe(concat('header.min.css'))
@@ -116,6 +128,8 @@ function watching() {
     watch(['dev/scss/header-navigation.scss'], headerNavigation)
     watch(['dev/scss/image-with-text-new.scss'], imageWithTextNew) 
     watch(['dev/scss/footer-new.scss'], footerNew)
+    watch(['dev/scss/central-text.scss'],centralText)
+    watch(['dev/scss/contact-section.scss'], contactSection)
     watch(['dev/scss/header.scss'], header)
     watch(['dev/scss/fonts.scss'], fonts)
     watch(['dev/scss/hero.scss'], hero) 
@@ -143,6 +157,8 @@ exports.announcementBarNew = announcementBarNew;
 exports.headerNavigation = headerNavigation;
 exports.imageWithTextNew = imageWithTextNew;
 exports.footerNew = footerNew;
+exports.centralText = centralText;
+exports.contactSection = contactSection;
 exports.header = header;
 exports.hero = hero; 
 exports.collection = collection;
@@ -153,4 +169,4 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
 
-exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, imageWithTextNew, footerNew, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);
+exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, imageWithTextNew, footerNew, centralText, contactSection, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);
