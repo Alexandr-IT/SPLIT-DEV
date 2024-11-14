@@ -3,10 +3,12 @@ $darkGray: rgba(33,35,34,1);
 $milk: rgba(227,227,227,1);
 $white: rgba(241,241,241,1);
 
-.container{
-    margin: 0 auto;
-    padding: 0 114px;
-    width: 100%;
+
+.container-footer{
+    padding: 0 56px;
+    @media(max-width: 767px) {
+        padding: 0 55px;
+    }
 }
 
 .footer{
@@ -31,7 +33,13 @@ $white: rgba(241,241,241,1);
     justify-content: start;
     align-items: start!important;
     width: 100%;
+    padding-right: 10px;
     @media(max-width: 767px) {
+        padding-right: 0px;
+        padding-bottom: 24px;
+    }
+    @media(min-width: 1500px) {
+        padding-right: 40px;
         padding-bottom: 24px;
     }
 }
@@ -101,12 +109,27 @@ $white: rgba(241,241,241,1);
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    @media(max-width: 767px) {
+        flex-direction: row;
+    }
 }
 
 .footer__down_logo{
     width: 224px;
     height: 64.74px;
     margin: 56px auto 0 auto;
+    @media(max-width: 767px) {
+        width: 66px;
+        height: 66px;
+        margin: 0;
+    }
+}
+.footer__down_text{
+    color: $milk;
+    text-align: center;
+    @media(max-width: 767px) {
+        padding: 15px 16px;
+    }
 }
 .footer__cubes{
     display: flex;
@@ -122,6 +145,9 @@ $white: rgba(241,241,241,1);
 }
 
 .footer__cube_left {
+    @media(max-width: 767px) {
+        display: none;
+    }
     &::before{
        content: "";
         top: -68px;
@@ -156,6 +182,10 @@ $white: rgba(241,241,241,1);
         border-radius: 50%;
         background-color: $grey;
         position: absolute; 
+        @media(max-width: 767px) {
+            top: -471px;
+            left: -129px;
+        }
     }
     &::after{
         content: "";
@@ -166,10 +196,21 @@ $white: rgba(241,241,241,1);
         width: 240px;
         height: 240px;
         position: absolute; 
+        @media(max-width: 767px) {
+            top: -605px;
+            left: -67px;
+            transform: rotate(-45deg);
+            width: 280px;
+            height: 280px;
+        }
     }
     
 }
- 
+.p2__footer{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
 
 .footer__content-top{
     display: none;

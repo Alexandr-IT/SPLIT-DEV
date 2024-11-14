@@ -1,7 +1,7 @@
 $darkgray: rgba(33,35,34,1);
 $gray: rgba(96,94,92,1);
 $white: rgba(250,250,248,1);
-$lightgray: rgba(227,227,227,1);
+$lightgray: rgba(227,227,227,1); 
 $middlegray: rgba(239,239,239,1);
 
 .hero{
@@ -32,7 +32,9 @@ $middlegray: rgba(239,239,239,1);
     background-color: unset;
     padding: 16px 20px;
     transform: translateX(-20px);
-
+    &:active{
+        font-weight: bold;
+    }
     
     @media(max-width: 767px) {
         position: relative;

@@ -12,7 +12,7 @@
               <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
                 <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
               </a>
-            </div>
+            </div> 
             <div class="navigation_left">
               {% for block in section.blocks %}
                   {% if block.type == 'text' %}
