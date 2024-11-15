@@ -1,0 +1,245 @@
+<link rel="stylesheet" href="{{ 'product.min.css' | asset_url }}" type="text/css" />
+
+<section class="section-{{ section.id }}">
+    <div class="container product">
+        <div class="product__left">
+            <div class="start_swiper">
+                <div class="swiper-pagination-custom">
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №1.jpg" alt="Slide 1" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №2.jpg" alt="Slide 2" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №3.jpg" alt="Slide 3" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №4.jpg" alt="Slide 4" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №5.jpg" alt="Slide 5" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №6.jpg" alt="Slide 6" class="swiper-pagination-thumb">
+                    </div>
+                    <div class="swiper-pagination_container">
+                        <img src="./image/Photos/Start Kit №7.jpg" alt="Slide 7" class="swiper-pagination-thumb">
+                    </div>
+                </div>
+
+                <div class="swiper-wrapper swiper-wrapper_start">
+                    <div class="swiper-slide mobile start-slide">
+                        <img src="./image/Photos/Start Kit №1 Mobile.jpg" alt="Slide 1">
+                    </div>
+                    <div class="swiper-slide desktop start-slide">
+                        <img src="./image/Photos/Start Kit №1.jpg" alt="Slide 1">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №2.jpg" alt="Slide 2">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №3.jpg" alt="Slide 3">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №4.jpg" alt="Slide 4">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №5.jpg" alt="Slide 5">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №6.jpg" alt="Slide 6">
+                    </div>
+                    <div class="swiper-slide start-slide">
+                        <img src="./image/Photos/Start Kit №7.jpg" alt="Slide 7">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product__right">
+            <div class="product__right_wrapper">
+                <h5 class="product__title Bold_24_32">{{ section.settings.product_title }}</h5>
+                <div class="product__prices">
+                    {% if product.compare_at_price > product.price %}
+                        <p class="product__price_new price">
+                            {{ product.price | money }}
+                        </p>
+                        <p class="product__price_old price--compare">
+                            {{ product.compare_at_price | money }}
+                        </p>
+                    {% else %}
+                        <p class="product__price_new price">
+                            {{ product.price | money }}
+                        </p>
+                    {% endif %}
+                </div>
+                <div class="product__sizes">
+                    <div class="product__sizes_title">
+                        <p class="product__sizes_title-static">SIZE:</p>
+                        <span>{{ section.settings.sizes_title }}</span>
+                    </div>
+                    <div class="product__size">
+                        {% for block in section.blocks %}
+                            <div class="product__size_option">
+                                <input type="radio" id="size-{{ block.id }}" name="size" value="{{ block.settings.size_option }}">
+                                <label for="size-{{ block.id }}">{{ block.settings.size_option }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="product__purchase">
+                    <div class="product__purchase_number">
+                        <input type="number" value="{{ section.settings.default_quantity }}" min="1">
+                    </div>
+                    <button class="product__purchase_button">{{ section.settings.purchase_button_text }}</button>
+                </div>
+                <div class="product__purchase_accordeon">
+                    <button class="product__accordeon_button">{{ section.settings.accordion_button_text }}</button>
+                    <div class="product__accordeon_panel">
+                        <p>{{ section.settings.accordion_panel_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</section>
+
+{%- style -%}
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  
+    @media screen and (min-width: 767px) {
+      .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  
+
+{% schema %}
+    {
+      "name": "product",
+      "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top_mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom_mobile",
+            "default": 0
+        },
+        {
+            "type": "text",
+            "id": "product_title",
+            "label": "Product Title"
+        },
+        {
+            "type": "text",
+            "id": "new_price",
+            "label": "New Price"
+        },
+        {
+            "type": "text",
+            "id": "old_price",
+            "label": "Old Price"
+        },
+        {
+            "type": "text",
+            "id": "sizes_title",
+            "label": "Sizes Title"
+        },
+        {
+            "type": "text",
+            "id": "size_options",
+            "label": "Size Options"
+        },
+        {
+            "type": "number",
+            "id": "default_quantity",
+            "label": "Default Quantity"
+        },
+        {
+            "type": "text",
+            "id": "purchase_button_text",
+            "label": "Purchase Button Text"
+        },
+        {
+            "type": "text",
+            "id": "accordion_button_text",
+            "label": "Accordion Button Text"
+        },
+        {
+            "type": "textarea",
+            "id": "accordion_panel_text",
+            "label": "Accordion Panel Text"
+        }
+    ],
+    "blocks": [
+        {
+        "type": "size_option",
+        "name": "Size Option",
+        "settings": [
+            {
+            "type": "text",
+            "id": "size_option",
+            "label": "Size",
+            "default": "S"
+            }
+        ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "product",
+        "category": "Custom sections"
+      }
+    ]
+  }
+  {% endschema %}
