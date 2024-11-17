@@ -143,12 +143,55 @@
         "title": "About PuriBloc",
         "title_alignment": "center"
       }
+    },
+    "rich_text_jEdVdG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YByJ3V": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_zDEBeW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_TJdaU9": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_YByJ3V",
+        "text_zDEBeW",
+        "button_TJdaU9"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "hero_KJ7BrR",
     "image_with_text_new_NyNCyG",
-    "image_with_text_new_mEmWEq"
+    "image_with_text_new_mEmWEq",
+    "rich_text_jEdVdG"
   ]
 }
