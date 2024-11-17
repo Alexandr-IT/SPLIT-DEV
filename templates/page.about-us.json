@@ -1,0 +1,154 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero_KJ7BrR": {
+      "type": "hero",
+      "blocks": {
+        "word_block_UqmPF8": {
+          "type": "word_block",
+          "settings": {
+            "word": "MAKE",
+            "italic_text": false,
+            "italic_margin": false
+          }
+        },
+        "word_block_4RMdLT": {
+          "type": "word_block",
+          "settings": {
+            "word": "A",
+            "italic_text": false,
+            "italic_margin": false
+          }
+        },
+        "word_block_YMBqdK": {
+          "type": "word_block",
+          "settings": {
+            "word": "GREAT",
+            "italic_text": true,
+            "italic_margin": true
+          }
+        },
+        "word_block_RkXV8n": {
+          "type": "word_block",
+          "settings": {
+            "word": "FIRST",
+            "italic_text": false,
+            "italic_margin": false
+          }
+        },
+        "word_block_8VXmm9": {
+          "type": "word_block",
+          "settings": {
+            "word": "IMPRESSION",
+            "italic_text": false,
+            "italic_margin": false
+          }
+        }
+      },
+      "block_order": [
+        "word_block_UqmPF8",
+        "word_block_4RMdLT",
+        "word_block_YMBqdK",
+        "word_block_RkXV8n",
+        "word_block_8VXmm9"
+      ],
+      "settings": {
+        "bg_mobile": "shopify://shop_images/Stones.jpg",
+        "bg_desktop": "shopify://shop_images/Stones.jpg",
+        "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
+        "hero_button": "Shop now"
+      }
+    },
+    "image_with_text_new_NyNCyG": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "paragraph_DE6yG9": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph_text": "GOpure was launched by Bloc Enterprises, a specialized distribution & marketing company introducing consumer products distinguished by innovation, technology and disruptive solutions to everyday problems that improve the health and well-being of people and pets. The company strives to practice sustainability principles in all operations and be a good steward of the earth."
+          }
+        },
+        "paragraph_Ae37N9": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph_text": "Like many amazing innovations, the inspiration for the GOpure Pod happened the instant its inventor in Ireland was determined to find a better solution after removing many dozens of used plastic water bottles from his car, most over half full. He was ashamed and disgusted by this wasteful consumption and inefficiency so he sought out world-renowned microbiologist, Dr Ronald Russell at Trinity College in Dublin, to help realize his vision of introducing a portable water purifier for everyday use and eliminate the need for single use plastic water bottles."
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_DE6yG9",
+        "paragraph_Ae37N9"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0,
+        "image": "shopify://shop_images/photos_right.jpg",
+        "image_position": "right",
+        "title": "Our Company",
+        "title_alignment": "left"
+      }
+    },
+    "image_with_text_new_mEmWEq": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "paragraph_xpqn4y": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph_text": "PuriBloc is the innovative water purification, preservation technology inside GOpure, a portable, environmentally friendly Pod that keeps drinking water clean and safe, while also greatly improving taste. Within seconds, contaminants found in ordinary tap water are neutralized and the pH balance is optimized for healthy hydration. Unlike carbon water filters that only work once, PuriBloc technology works continuously through a natural process known as ionic exchange and keeps pure water fresh and great tasting for months."
+          }
+        },
+        "paragraph_T6cx8q": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph_text": "The adsorptive power of GOpure’s advanced microporous ceramic core is mind-boggling due to the enormous surface area for its volume with which water can react. This high porosity surface area carries millions of negatively charged binding sites, which attract and adsorb heavy metals along with other chemical or organic impurities, including bacteria."
+          }
+        },
+        "paragraph_3jxKVX": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph_text": "The GOpure Pod is changing the way the world drinks water by continually purifying and enhancing your drinking water on the go while also helping to save our planet: using one GOpure Pod in a personal re-usable bottle replaces 2,000 single-use water bottles with zero plastic waste."
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_xpqn4y",
+        "paragraph_T6cx8q",
+        "paragraph_3jxKVX"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0,
+        "image": "shopify://shop_images/Rectangle_28.jpg",
+        "image_position": "left",
+        "title": "About PuriBloc",
+        "title_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_KJ7BrR",
+    "image_with_text_new_NyNCyG",
+    "image_with_text_new_mEmWEq"
+  ]
+}
