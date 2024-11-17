@@ -1,104 +1,122 @@
 <link rel="stylesheet" href="{{ 'product.min.css' | asset_url }}" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 <section class="section-{{ section.id }}">
     <div class="container product">
-        <div class="product__left">
-            <div class="start_swiper">
-                <div class="swiper-pagination-custom">
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №1.jpg" alt="Slide 1" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №2.jpg" alt="Slide 2" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №3.jpg" alt="Slide 3" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №4.jpg" alt="Slide 4" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №5.jpg" alt="Slide 5" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №6.jpg" alt="Slide 6" class="swiper-pagination-thumb">
-                    </div>
-                    <div class="swiper-pagination_container">
-                        <img src="./image/Photos/Start Kit №7.jpg" alt="Slide 7" class="swiper-pagination-thumb">
-                    </div>
-                </div>
-
-                <div class="swiper-wrapper swiper-wrapper_start">
-                    <div class="swiper-slide mobile start-slide">
-                        <img src="./image/Photos/Start Kit №1 Mobile.jpg" alt="Slide 1">
-                    </div>
-                    <div class="swiper-slide desktop start-slide">
-                        <img src="./image/Photos/Start Kit №1.jpg" alt="Slide 1">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №2.jpg" alt="Slide 2">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №3.jpg" alt="Slide 3">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №4.jpg" alt="Slide 4">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №5.jpg" alt="Slide 5">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №6.jpg" alt="Slide 6">
-                    </div>
-                    <div class="swiper-slide start-slide">
-                        <img src="./image/Photos/Start Kit №7.jpg" alt="Slide 7">
-                    </div>
-                </div>
-            </div>
+      <div class="product__left">
+        <!-- Міні-слайдер для ескізів -->
+        <div class="swiper-mini">
+          <div class="swiper-wrapper">
+            {% for image in product.images %}
+              <div class="swiper-slide swiper-slide_mini">
+                <img src="{{ image | img_url: 'medium' }}" alt="Thumbnail">
+              </div>
+            {% endfor %}
+          </div>
         </div>
+
+        <!-- Основний слайдер -->
+        <div class="swiper-main">
+          <div class="swiper-wrapper">
+            {% for image in product.images %}
+              <div class="swiper-slide">
+                <div class="swiper-slide__wrapper">
+                  {% if product.metafields.custom.selling_fast == true %}
+                    <div class="selling-fast System_12_20">SELLING FAST</div>
+                  {% endif %}
+                  {% if product.variants.first.inventory_quantity <= 0 %}
+                    <div class="sold-out System_12_20">SOLD OUT</div>
+                  {% endif %}
+                  {% if product.metafields.custom.discount_percentage %}
+                    <div class="discount-block">{{ product.metafields.custom.discount_percentage }}% OFF</div>
+                  {% endif %}
+                </div>
+                <img src="{{ image | img_url: 'medium' }}" alt="Main slide">
+              </div>
+            {% endfor %}
+            </div>
+          <div class="swiper-pagination main-pagination"></div>
+          <div class="swiper-button-prev main-prev"></div>
+          <div class="swiper-button-next main-next"></div>
+        </div>
+      </div>
+
+    
         <div class="product__right">
             <div class="product__right_wrapper">
-                <h5 class="product__title Bold_24_32">{{ section.settings.product_title }}</h5>
+                <h5 class="product__title Bold_24_32">{{ product.title }}</h5>
                 <div class="product__prices">
-                    {% if product.compare_at_price > product.price %}
-                        <p class="product__price_new price">
-                            {{ product.price | money }}
-                        </p>
-                        <p class="product__price_old price--compare">
-                            {{ product.compare_at_price | money }}
-                        </p>
-                    {% else %}
-                        <p class="product__price_new price">
-                            {{ product.price | money }}
-                        </p>
-                    {% endif %}
+                    <p class="product__price_new Pargraph_18_26">
+                        <span id="product-price" class="product__price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+                        {% if product.compare_at_price > product.selected_or_first_available_variant.price %}
+                            <span class="product__price_old price--compare">
+                                {{ product.compare_at_price | money_without_trailing_zeros }}
+                            </span>
+                        {% endif %}
+                    </p>
                 </div>
                 <div class="product__sizes">
                     <div class="product__sizes_title">
                         <p class="product__sizes_title-static">SIZE:</p>
-                        <span>{{ section.settings.sizes_title }}</span>
+                        <p id="selected-size-label">Select a size</p>
                     </div>
                     <div class="product__size">
-                        {% for block in section.blocks %}
-                            <div class="product__size_option">
-                                <input type="radio" id="size-{{ block.id }}" name="size" value="{{ block.settings.size_option }}">
-                                <label for="size-{{ block.id }}">{{ block.settings.size_option }}</label>
+                        {% assign sizes = "S|M|L|XL|2XL|3XL|4XL" | split: "|" %}
+                        {% for size in sizes %}
+                            {% assign is_available = false %}
+                            {% for variant in product.variants %}
+                                {% if variant.option1 == size and variant.available %}
+                                    {% assign is_available = true %}
+                                    {% break %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="product__size_option {% unless is_available %}unavailable{% endunless %}">
+                                <input type="radio" id="size-{{ size }}" name="size" value="{{ size }}" class="size-radio" {% unless is_available %}disabled{% endunless %}>
+                                <label for="size-{{ size }}">{{ size }}</label>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="product__purchase">
-                    <div class="product__purchase_number">
-                        <input type="number" value="{{ section.settings.default_quantity }}" min="1">
+                    <div class="product__purchase-wrapper">
+                        <button class="product__purchase-btn product__purchase-btn-minus" type="button" aria-label="Decrease product__purchase"></button>
+                        <input class="product__purchase-input" type="number" value="1" min="1" aria-label="Product product__purchase">
+                        <button class="product__purchase-btn product__purchase-btn-plus" type="button" aria-label="Increase product__purchase"></button>
                     </div>
-                    <button class="product__purchase_button">{{ section.settings.purchase_button_text }}</button>
+                    <button class="product__purchase_button body_p2">{{ section.settings.purchase_button_text }}</button>
                 </div>
-                <div class="product__purchase_accordeon">
-                    <button class="product__accordeon_button">{{ section.settings.accordion_button_text }}</button>
-                    <div class="product__accordeon_panel">
-                        <p>{{ section.settings.accordion_panel_text }}</p>
+                <div class="product__accordeon basic">
+                    <button class="product__accordeon-button body_p2">
+                      {{ section.settings.accordeon__title_basic }}
+                    </button>
+                    <div class="product__accordeon-panel body_p2">
+                      <p>{{ product.description }}</p>
                     </div>
                 </div>
+
+                {% if section.settings.show_accordeon_1 %}
+                  <div class="product__accordeon">
+                    <button class="product__accordeon-button body_p2">
+                      {{ section.settings.accordeon_title_1 }}
+                    </button>
+                    <div class="product__accordeon-panel body_p2">
+                      <p>{{ section.settings.accordeon_subtitle_1 }}</p>
+                    </div>
+                  </div>
+                {% endif %}
+                
+                {% if section.settings.show_accordeon_2 %}
+                  <div class="product__accordeon">
+                    <button class="product__accordeon-button">
+                      {{ section.settings.accordeon_title_2 }}
+                    </button>
+                    <div class="product__accordeon-panel">
+                      <p>{{ section.settings.accordeon_subtitle_2 }}</p>
+                    </div>
+                  </div>
+                {% endif %}
+                
+
             </div>
         </div>
 
@@ -110,10 +128,117 @@
 
 
 
-
-
-
 </section>
+<script>
+document.querySelectorAll('.size-radio').forEach(radio => {
+radio.addEventListener('change', function () {
+    const labels = {
+        S: 'Small',
+        M: 'Medium',
+        L: 'Large',
+        XL: 'Extra Large',
+        '2XL': '2x Extra Large',
+        '3XL': '3x Extra Large',
+        '4XL': '4x Extra Large'
+    };
+    const selectedLabel = labels[this.value] || 'Select a size';
+    document.getElementById('selected-size-label').textContent = selectedLabel;
+    });
+});
+
+function formatMoney(cents, format) {
+    return format
+        .replace("{{amount}}", (cents / 100).toFixed(2))
+        .replace(".00", "");
+}
+
+document.querySelectorAll('.size-radio').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedSize = this.value;
+        const productVariants = {{ product.variants | json }};
+        const selectedVariant = productVariants.find(variant => variant.option1 === selectedSize);
+
+        if (selectedVariant) {
+
+            const formattedPrice = Shopify.formatMoney
+                ? Shopify.formatMoney(selectedVariant.price, "{{ shop.money_format }}")
+                : cleanMoneyFormat(selectedVariant.price);
+            document.getElementById('product-price').textContent = formattedPrice;
+        }
+    });
+});
+
+// лютий костиль
+function cleanMoneyFormat(price) {
+    const amount = "₴" + price / 100; 
+    return amount; 
+}
+
+document.querySelectorAll('.product__purchase-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const input = this.parentElement.querySelector('.product__purchase-input');
+        const currentValue = parseInt(input.value, 10);
+        const isMinus = this.classList.contains('product__purchase-btn-minus');
+
+        if (isMinus && currentValue > 1) {
+            input.value = currentValue - 1;
+        } else if (!isMinus) {
+            input.value = currentValue + 1;
+        }
+    });
+});
+
+var accordeons = document.querySelectorAll('.product__accordeon');
+
+accordeons.forEach(function(accordeon) {
+  const button = accordeon.querySelector('.product__accordeon-button');
+  const panel = accordeon.querySelector('.product__accordeon-panel');
+
+  button.addEventListener('click', function() {
+    // Перевіряємо чи панель вже відкрита
+    const isOpen = panel.style.maxHeight;
+
+    // Відкриваємо або закриваємо поточну панель
+    panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
+  });
+});
+
+
+// Ініціалізація Swiper для основного слайдера
+var thumbnailSwiper = new Swiper('.swiper-mini', {
+    direction: 'vertical', // Вертикальна орієнтація
+    spaceBetween: 0, // Відстань між слайдами
+    slidesPerView: 6, // Кількість ескізів, що відображаються
+    loop: false, // Безкінечний цикл
+    watchSlidesProgress: true, // Стеження за станом слайдів
+  });
+
+  // Ініціалізація основного слайдера
+  // Ініціалізація основного слайдера
+var mainSwiper = new Swiper('.swiper-main', {
+  spaceBetween: 0, // Відстань між слайдами
+  loop: false, // Безкінечний цикл
+  pagination: {
+        el: '.main-pagination',
+        clickable: false, // Дозволяє натискати на пагінацію
+    },
+  navigation: {
+    nextEl: '.swiper-button-next', // Наступний слайд
+    prevEl: '.swiper-button-prev', // Попередній слайд
+  },
+  thumbs: {
+    swiper: thumbnailSwiper, // Підключення міні-слайдера
+  },
+});
+
+
+
+
+
+
+</script>
+
+
 
 {%- style -%}
     .section-{{ section.id }} {
@@ -130,116 +255,103 @@
   {%- endstyle -%}
 
   
-
 {% schema %}
     {
       "name": "product",
       "settings": [
         {
-            "type": "range",
-            "id": "padding_top",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_top",
-            "default": 0
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 0
         },
         {
-            "type": "range",
-            "id": "padding_bottom",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_bottom",
-            "default": 0
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom",
+          "default": 0
         },
         {
-            "type": "range",
-            "id": "padding_top_mobile",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_top_mobile",
-            "default": 0
+          "type": "range",
+          "id": "padding_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top_mobile",
+          "default": 0
         },
         {
-            "type": "range",
-            "id": "padding_bottom_mobile",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_bottom_mobile",
-            "default": 0
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom_mobile",
+          "default": 0
         },
         {
-            "type": "text",
-            "id": "product_title",
-            "label": "Product Title"
+          "type": "text",
+          "id": "purchase_button_text",
+          "label": "Purchase Button Text"
         },
         {
-            "type": "text",
-            "id": "new_price",
-            "label": "New Price"
+          "type": "text",
+          "id": "accordeon__title_basic",
+          "label": "Title For Description",
+          "default": "Default Title"
         },
         {
-            "type": "text",
-            "id": "old_price",
-            "label": "Old Price"
+          "type": "text",
+          "id": "accordeon_button_text",
+          "label": "Description Button"
         },
         {
-            "type": "text",
-            "id": "sizes_title",
-            "label": "Sizes Title"
+          "type": "checkbox",
+          "id": "show_accordeon_1",
+          "label": "Add Description 1"
         },
         {
-            "type": "text",
-            "id": "size_options",
-            "label": "Size Options"
+          "type": "text",
+          "id": "accordeon_title_1",
+          "label": "Title Description 1"
         },
         {
-            "type": "number",
-            "id": "default_quantity",
-            "label": "Default Quantity"
+          "type": "text",
+          "id": "accordeon_subtitle_1",
+          "label": "Subtitle Description 1"
         },
         {
-            "type": "text",
-            "id": "purchase_button_text",
-            "label": "Purchase Button Text"
+          "type": "checkbox",
+          "id": "show_accordeon_2",
+          "label": "Add Description 2"
         },
         {
-            "type": "text",
-            "id": "accordion_button_text",
-            "label": "Accordion Button Text"
+          "type": "text",
+          "id": "accordeon_title_2",
+          "label": "Title Description 2"
         },
         {
-            "type": "textarea",
-            "id": "accordion_panel_text",
-            "label": "Accordion Panel Text"
+          "type": "text",
+          "id": "accordeon_subtitle_2",
+          "label": "Subitle Description 2"
         }
-    ],
-    "blocks": [
+      ],
+      "presets": [
         {
-        "type": "size_option",
-        "name": "Size Option",
-        "settings": [
-            {
-            "type": "text",
-            "id": "size_option",
-            "label": "Size",
-            "default": "S"
-            }
-        ]
+          "name": "product",
+          "category": "Custom sections"
         }
-    ],
-    "presets": [
-      {
-        "name": "product",
-        "category": "Custom sections"
-      }
-    ]
-  }
-  {% endschema %}
+      ]
+    }
+    {% endschema %}
+    

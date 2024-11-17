@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="{{ 'filter-panel.min.css' | asset_url }}" type="text/css" />
+
+<section class="collection-section">
+
+  <div class="sort-buttons">
+    <button class="sort-btn" data-sort="price-asc">Ціна: Від меншої до більшої</button>
+    <button class="sort-btn" data-sort="price-desc">Ціна: Від більшої до меншої</button>
+    <button class="sort-btn" data-sort="color">Колір</button>
+    <button class="sort-btn" data-sort="size">Розмір</button>
+  </div>
+
+
+  <div class="grid-wrapper">
+    {% for product in collections[section.settings.collection].products %}
+      <div class="grid-item" 
+           data-price="{{ product.price }}" 
+           data-color="{{ product.metafields.custom.color }}" 
+           data-size="{{ product.metafields.custom.size }}">
+        <a href="{{ product.url }}">
+          <img class="image" src="{{ product.featured_image | img_url: '500x500' }}" alt="{{ product.title }}">
+          <div class="product-info">
+            <h3>{{ product.title }}</h3>
+            <p class="product-price">{{ product.price | money_without_trailing_zeros }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const gridWrapper = document.querySelector(".grid-wrapper");
+    const sortButtons = document.querySelectorAll(".sort-btn");
+
+    sortButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const sortType = button.getAttribute("data-sort");
+        let items = Array.from(gridWrapper.children);
+
+        if (sortType === "price-asc") {
+          items.sort((a, b) => a.getAttribute("data-price") - b.getAttribute("data-price"));
+        } else if (sortType === "price-desc") {
+          items.sort((a, b) => b.getAttribute("data-price") - a.getAttribute("data-price"));
+        } else if (sortType === "color") {
+          items.sort((a, b) => a.getAttribute("data-color").localeCompare(b.getAttribute("data-color")));
+        } else if (sortType === "size") {
+          items.sort((a, b) => a.getAttribute("data-size").localeCompare(b.getAttribute("data-size")));
+        }
+
+        // Оновлення DOM
+        items.forEach(item => gridWrapper.appendChild(item));
+      });
+    });
+  });
+</script>
+{% schema %}
+    {
+      "name": "Filter Panel",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Колекція"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sorting",
+          "label": "Показувати сортування",
+          "default": true
+        }
+      ],
+      "presets": [
+        {
+          "name": "Filter Panel",
+          "category": "Колекції"
+        }
+      ]
+    }
+    {% endschema %}
+    
+  

@@ -74,13 +74,16 @@ $red: rgba(159,17,17,1);
         padding-bottom: 0;
     } 
 }
+.opacity_05 {
+    opacity: 0.5;
+}
 .collection__slide{
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     position: relative;
 }
-.collection__sold-cloud{
+.sold-out-cloud{
     position: absolute;
     top: 0;
     left: 0;
@@ -90,6 +93,7 @@ $red: rgba(159,17,17,1);
     opacity: 0.3;
     z-index: 2000;
 }
+
 .collection__slide-wrapper{
     position: relative;
     width: 100%;
@@ -101,6 +105,55 @@ $red: rgba(159,17,17,1);
     top: 0;
     left: 0;
 }
+.collection__slide-hover{
+    position: absolute;
+    opacity: 0;
+    z-index: 1000;
+    
+}
+.collection__slide:hover .collection__slide-hover{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 8px;
+        bottom: 18px;
+        width: calc(100% - 16px);
+        background-color: $darkgray;
+        height: 50px;
+        border-radius: 6px;
+        opacity: 1;
+        @media (max-width: 767px) { 
+            display: none;
+        } 
+        
+}
+.collection__slide-hover-text{
+    color: $white;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: "";
+        width: 16px;
+        height: 1px;
+        border-radius: 1px;
+        background-color: white;
+        bottom: 50%;
+        right: -40%;
+        transform: rotate(90deg);
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        width: 16px;
+        height: 1px;
+        border-radius: 1px;
+        background-color: white;
+        bottom: 50%;
+        right: -40%;
+    }
+}
+
 .collection__options{
     top: 0;
     width: 100%;
@@ -116,7 +169,7 @@ $red: rgba(159,17,17,1);
         padding-top: 7px;
     } 
 }
-.collection__fast, .collection__sold{
+.selling-fast, .sold-out{
     position: static;
     top: auto;
     margin-top: 5px;
@@ -133,15 +186,15 @@ $red: rgba(159,17,17,1);
     text-align: center;
     word-wrap: break-word;
     @media (max-width: 767px) { 
-        position: absolute;
+
         top: 7px;
     } 
 }
-.collection__fast{
+.selling-fast{
     background-color: $darkgray;
     z-index: 1000;
 }
-.collection__action{
+.discount-block{
     margin-top: 5px;
     left: 0;
     position: static;
@@ -192,23 +245,30 @@ $red: rgba(159,17,17,1);
     } 
 }
 
-.collection__sold{
+.sold-out{
     background-color: $darkgray;
     z-index: 1000;
 }
 .collection__slide-discription-wrapper{
-    display: grid;
-    grid-template-columns: 47px auto 28px;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-.collection__slide-discription-product_name{
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
+.collection__slide-discription-wrapper-left{
+    width: calc(100% - 28px);
 }
+.collection__slide-discription-wrapper-right{
+    width: 28px;
+}
+
 .collection__slide-discription-price{
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    max-width: 100%;
+}
+.collection__slide-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    max-width: 100%;
 }
 .collection__slide-discription-price-red{
     color: $red;
@@ -216,20 +276,20 @@ $red: rgba(159,17,17,1);
     font-weight: 400;
     font-size: 16px;
     line-height: 16px;
+    margin-right: 8px;
     @media (max-width: 767px) { 
         font-size: 14px;
         line-height: 20px;
     } 
 }
 .collection__slide-discription-old_price{
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     text-decoration: line-through;
     color: $gray;
     font-family: "Inter";
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    transform: translateY(-2px);
     @media (max-width: 767px) { 
         font-size: 12px;
         line-height: 18px;
@@ -237,16 +297,20 @@ $red: rgba(159,17,17,1);
     
 }
 .collection__slide-discription-bag{
-    margin-top: 5px;
-    grid-column: 3 / 4;
-    grid-row: 1 / 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $darkgray;
-    border-radius: 6px;
-    width: 28px;
-    height: 28px;
+    display: none;
+    @media (max-width: 767px) { 
+        margin-top: 5px;
+        grid-column: 3 / 4;
+        grid-row: 1 / 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $darkgray;
+        border-radius: 6px;
+        width: 28px;
+        height: 28px;
+    } 
+   
 }
 .collection__slide-discription-bag img{
     filter: invert(1);

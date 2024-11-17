@@ -84,6 +84,21 @@ function product(){
     .pipe(dest('assets'))
     .pipe(browserSync.stream())
 } 
+function liquidHeroText(){ 
+    return src('dev/scss/liquid-hero-text.scss') 
+    .pipe(concat('liquid-hero-text.min.css'))
+    .pipe(scss({outputStyle: 'compressed'}))
+    .pipe(dest('assets'))
+    .pipe(browserSync.stream())
+} 
+function filterPanel(){ 
+    return src('dev/scss/filter-panel.scss') 
+    .pipe(concat('filter-panel.min.css'))
+    .pipe(scss({outputStyle: 'compressed'}))
+    .pipe(dest('assets'))
+    .pipe(browserSync.stream())
+} 
+
 function header() {
     return src('dev/scss/header.scss') 
     .pipe(concat('header.min.css'))
@@ -138,6 +153,8 @@ function watching() {
     watch(['dev/scss/central-text.scss'],centralText)
     watch(['dev/scss/contact-section.scss'], contactSection)
     watch(['dev/scss/product.scss'],product)
+    watch(['dev/scss/liquid-hero-text.scss'], liquidHeroText)
+    watch(['dev/scss/filter-panel.scss'],filterPanel)
     watch(['dev/scss/header.scss'], header)
     watch(['dev/scss/fonts.scss'], fonts)
     watch(['dev/scss/hero.scss'], hero) 
@@ -168,6 +185,8 @@ exports.footerNew = footerNew;
 exports.centralText = centralText;
 exports.contactSection = contactSection;
 exports.product = product;
+exports.liquidHeroText = liquidHeroText;
+exports.filterPanel = filterPanel;
 exports.header = header;
 exports.hero = hero; 
 exports.collection = collection;
@@ -178,4 +197,4 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
 
-exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, imageWithTextNew, footerNew, centralText, contactSection, product, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);
+exports.default = parallel(style, fonts, typography, announcementBarNew, headerNavigation, imageWithTextNew, footerNew, centralText, contactSection, product, liquidHeroText, filterPanel, header, button, hero, collection, properties, sweep, scripts, browsersync, watching);

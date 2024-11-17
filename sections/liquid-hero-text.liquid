@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="{{ 'liquid-hero-text.min.css' | asset_url }}" type="text/css" />
+
+<section class="section-{{ section.id }}">
+    <div class="hero">
+       <div class="hero__bg">
+            <div class="cube"></div>
+            <img class="desktop" src="{{ section.settings.image | img_url: 'master' }}" alt="">
+            <img class="mobile" src="{{ section.settings.image_mobile | img_url: 'master' }}" alt="">
+       </div> 
+       <h3 class="hero__title">{{ section.settings.title }}</h3>
+    </div>
+
+</section>
+
+{% schema %}
+    {
+      "name": "Liquid Hero Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Select Image For Mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Select Title"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Liquid Hero Text",
+          "category": "Custom sections"
+        }
+      ]
+    }
+{% endschema %}

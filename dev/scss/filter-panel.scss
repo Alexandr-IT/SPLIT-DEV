@@ -1,0 +1,32 @@
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(432px, 1fr));
+    gap: 16px;
+  }
+  
+  .grid-item {
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .image{
+    width: 100%;
+  }
+  .sort-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .sort-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s;
+  }
+  
+  .sort-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
