@@ -11,6 +11,77 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "footer_new_LQa3aN": {
+      "type": "footer-new",
+      "blocks": {
+        "column_jh8igF": {
+          "type": "column",
+          "settings": {
+            "column_title": "SHOP",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Best Sellers",
+            "text_item_2": "Crew Neck",
+            "text_item_3": "V - Neck",
+            "text_item_4": "Bundle Builder"
+          }
+        },
+        "column_iLRmJN": {
+          "type": "column",
+          "settings": {
+            "column_title": "CONTACT",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Palm St, 456",
+            "text_item_2": "London, UK",
+            "text_item_3": "+ (345) 789 89 98",
+            "text_item_4": ""
+          }
+        },
+        "column_BtJzrW": {
+          "type": "column",
+          "settings": {
+            "column_title": "MORE INFO",
+            "column_type": "regular",
+            "text_for_email": "",
+            "text_item_1": "Blog",
+            "text_item_2": "Terms and conditions",
+            "text_item_3": "Private Policy",
+            "text_item_4": ""
+          }
+        },
+        "column_QQihPe": {
+          "type": "column",
+          "settings": {
+            "column_title": "GET 10% OF CASHBACK",
+            "column_type": "email",
+            "text_for_email": "Your E-mail",
+            "text_item_1": "",
+            "text_item_2": "",
+            "text_item_3": "",
+            "text_item_4": "",
+            "column_icon_1": "shopify://shop_images/Vector.svg",
+            "column_icon_2": "shopify://shop_images/uil_facebook-f.svg",
+            "column_icon_3": "shopify://shop_images/ri_instagram-fill.svg"
+          }
+        }
+      },
+      "block_order": [
+        "column_jh8igF",
+        "column_iLRmJN",
+        "column_BtJzrW",
+        "column_QQihPe"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0,
+        "logo": "shopify://shop_images/Mask_group.svg",
+        "logo_mobile": "shopify://shop_images/Mask_group2_1_967cc862-ae3d-4242-b79b-ffa361d20c37.svg",
+        "footer_down_text": "© 2023 | Focused Fits | All Rights Reserved."
+      }
+    },
     "footer": {
       "type": "footer",
       "disabled": true,
@@ -31,6 +102,7 @@
     }
   },
   "order": [
+    "footer_new_LQa3aN",
     "footer"
   ]
 }
