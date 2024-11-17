@@ -138,27 +138,86 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "hero": {
+        "type": "hero",
+        "blocks": {
+          "word_block_Rm3Nhk": {
+            "type": "word_block",
+            "settings": {
+              "word": "MAKE",
+              "italic_text": false,
+              "italic_margin": false
+            }
+          },
+          "word_block_mcQcKL": {
+            "type": "word_block",
+            "settings": {
+              "word": "A",
+              "italic_text": false,
+              "italic_margin": false
+            }
+          },
+          "word_block_aH9yf7": {
+            "type": "word_block",
+            "settings": {
+              "word": "GREAT",
+              "italic_text": true,
+              "italic_margin": true
+            }
+          },
+          "word_block_6VfcRX": {
+            "type": "word_block",
+            "settings": {
+              "word": "FIRST",
+              "italic_text": false,
+              "italic_margin": false
+            }
+          },
+          "word_block_6eh8wi": {
+            "type": "word_block",
+            "settings": {
+              "word": "IMPRESSION",
+              "italic_text": false,
+              "italic_margin": false
+            }
+          }
+        },
+        "block_order": [
+          "word_block_Rm3Nhk",
+          "word_block_mcQcKL",
+          "word_block_aH9yf7",
+          "word_block_6VfcRX",
+          "word_block_6eh8wi"
+        ],
+        "settings": {
+          "bg_mobile": "shopify://shop_images/Banner_Photo_Mobile_9df9fe40-e9c6-4c6b-8546-b13a4526f223.jpg",
+          "bg_desktop": "shopify://shop_images/Banner_Photo_1_1.jpg",
+          "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
+          "hero_button": "Shop now"
+        }
       }
     },
+    "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#FFFFFF",
+          "background": "#ffffff",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
-          "button_label": "#FFFFFF",
+          "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
       },
       "scheme-2": {
         "settings": {
-          "background": "#F3F3F3",
+          "background": "#f3f3f3",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
-          "button_label": "#F3F3F3",
+          "button_label": "#f3f3f3",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
@@ -167,10 +226,10 @@
         "settings": {
           "background": "#242833",
           "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
+          "text": "#ffffff",
+          "button": "#ffffff",
           "button_label": "#000000",
-          "secondary_button_label": "#FFFFFF",
+          "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
       },
@@ -178,21 +237,21 @@
         "settings": {
           "background": "#121212",
           "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
+          "text": "#ffffff",
+          "button": "#ffffff",
           "button_label": "#121212",
-          "secondary_button_label": "#FFFFFF",
+          "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#334FB4",
+          "background": "#334fb4",
           "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#334FB4",
-          "secondary_button_label": "#FFFFFF",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#334fb4",
+          "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
       }
