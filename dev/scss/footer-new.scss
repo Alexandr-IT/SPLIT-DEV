@@ -55,33 +55,33 @@ $white: rgba(241,241,241,1);
     color: $white;
 }
 .email-input {
-    background: transparent; /* без фону */
-    border: none; /* без стандартної обводки */
-    border-bottom: 2px solid $milk; /* нижня біла рамка товщиною 2 пікселі */
-    padding: 10px; /* внутрішній відступ */
-    font-size: 16px; /* розмір шрифту */
-    width: 250px; /* ширина поля */
-    outline: none; /* забрати виділення при фокусуванні */
-    position: relative; /* для розташування псевдоелемента */
+    background: transparent; 
+    border: none; 
+    border-bottom: 2px solid $milk; 
+    padding: 10px; 
+    font-size: 16px; 
+    width: 250px; 
+    outline: none; 
+    position: relative; 
 }
 
 .email-input:focus {
-    border-color: #007bff; /* зміна кольору рамки при фокусуванні */
+    border-color: #007bff; 
 }
 .email-input::placeholder {
-    color: $milk; /* Задайте бажаний колір */
-    opacity: 1; /* Щоб колір не був напівпрозорим (значення 1 – це 100% видимість) */
+    color: $milk; 
+    opacity: 1; 
 }
 .footer__column_form{
     position: relative;
 }
-/* Псевдоелемент у вигляді стрілки */
+
 .footer__column_form::after {
-    content: ""; /* символ стрілки */
+    content: ""; 
     position: absolute;
-    right: 11.5px; /* відстань від правого краю */
+    right: 11.5px; 
     top: 50%;
-    transform: translateY(-50%) rotate(45deg); /* вертикальне вирівнювання */
+    transform: translateY(-50%) rotate(45deg); 
     z-index: 10;
     width: 10px;
     height: 10px;

@@ -319,11 +319,11 @@ $red: rgba(159,17,17,1);
 }
 .collection-pagination {
     position: absolute;
-    bottom: 0!important; /* Під слайдером */
+    bottom: 0!important; 
     left: 0;
     width: 150%!important;
-    height: 3px; /* Товщина лінії пагінації */
-    background-color: #d3d3d3; /* Сірий фон */
+    height: 3px; 
+    background-color: #d3d3d3; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,9 +332,9 @@ $red: rgba(159,17,17,1);
 }
 
 .collection-pagination .swiper-pagination-bullet {
-    width: 32%; /* Ширина маркера пагінації */
-    height: 3px; /* Висота маркера пагінації */
-    background-color: #d3d3d3; /* Чорний колір маркера */
+    width: 32%; 
+    height: 3px; 
+    background-color: #d3d3d3; 
     opacity: 1; 
     border-radius: 0;
 }

@@ -170,7 +170,7 @@ $lightgray: rgba(227,227,227,1);
 
 }
 
-/* Стилі для стрілочок біля label */
+
 .dropdown__label::before,
 .dropdown__label::after {
     content: "";
@@ -193,7 +193,7 @@ $lightgray: rgba(227,227,227,1);
     transform: translate(-50%, -50%) rotate(45deg); 
 }
 
-/* Прихований список */
+
 .dropdown__list {
     display: none;
     position: absolute;
@@ -219,7 +219,7 @@ $lightgray: rgba(227,227,227,1);
     background-color: #f0f0f0;
 }
 
-/* Коли чекбокс увімкнений, показуємо список і змінюємо стрілочки */
+
 .dropdown__checkbox:checked + .dropdown__label + .dropdown__list {
     display: block;
 }

@@ -4,7 +4,7 @@
 <section class="section-{{ section.id }}">
     <div class="container product">
       <div class="product__left">
-        <!-- Міні-слайдер для ескізів -->
+        
         <div class="swiper-mini">
           <div class="swiper-wrapper">
             {% for image in product.images %}
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <!-- Основний слайдер -->
+        
         <div class="swiper-main">
           <div class="swiper-wrapper">
             {% for image in product.images %}
@@ -195,39 +195,38 @@ accordeons.forEach(function(accordeon) {
   const panel = accordeon.querySelector('.product__accordeon-panel');
 
   button.addEventListener('click', function() {
-    // Перевіряємо чи панель вже відкрита
+   
     const isOpen = panel.style.maxHeight;
 
-    // Відкриваємо або закриваємо поточну панель
+    
     panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
   });
 });
 
 
-// Ініціалізація Swiper для основного слайдера
+
 var thumbnailSwiper = new Swiper('.swiper-mini', {
-    direction: 'vertical', // Вертикальна орієнтація
-    spaceBetween: 0, // Відстань між слайдами
-    slidesPerView: 6, // Кількість ескізів, що відображаються
-    loop: false, // Безкінечний цикл
-    watchSlidesProgress: true, // Стеження за станом слайдів
+    direction: 'vertical', 
+    spaceBetween: 0, 
+    slidesPerView: 6, 
+    loop: false,
+    watchSlidesProgress: true, 
   });
 
-  // Ініціалізація основного слайдера
-  // Ініціалізація основного слайдера
+
 var mainSwiper = new Swiper('.swiper-main', {
-  spaceBetween: 0, // Відстань між слайдами
-  loop: false, // Безкінечний цикл
+  spaceBetween: 0, 
+  loop: false, 
   pagination: {
         el: '.main-pagination',
-        clickable: false, // Дозволяє натискати на пагінацію
+        clickable: false, 
     },
   navigation: {
-    nextEl: '.swiper-button-next', // Наступний слайд
-    prevEl: '.swiper-button-prev', // Попередній слайд
+    nextEl: '.swiper-button-next', 
+    prevEl: '.swiper-button-prev', 
   },
   thumbs: {
-    swiper: thumbnailSwiper, // Підключення міні-слайдера
+    swiper: thumbnailSwiper, 
   },
 });
 

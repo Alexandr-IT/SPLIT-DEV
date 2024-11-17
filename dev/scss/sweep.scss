@@ -215,13 +215,13 @@ $line: rgba(227,219,207,1);
   .controller {
     position: absolute;
     top: 4px;
-    left: 92%; /* Початкове положення смужки по центру */
+    left: 92%; 
     transform: translateX(-50%);
     width: 5px;
     height: 100%;
     background-color: black;
     cursor: ew-resize;
-    z-index: 3; /* Переміщувана смужка */
+    z-index: 3;
   }
 .controller-circle {
     position: absolute;
@@ -232,8 +232,8 @@ $line: rgba(227,219,207,1);
     height: 84px;
     border-radius: 50%; 
     border: 1.5px $gray solid;
-    background-color: $white; /* Колір круга */
-    z-index: 4; /* Вище за контролер */
+    background-color: $white; 
+    z-index: 4; 
     &::before{
         content: "";
         position: absolute;

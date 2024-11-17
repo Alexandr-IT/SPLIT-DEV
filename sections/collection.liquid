@@ -15,7 +15,7 @@
         <div class="collection__wrapper swiper-wrapper">
           {% for product in collections[section.settings.collection].products %}
             <div class="swiper-slide collection__slide {% if product.variants.first.inventory_quantity <= 0 %}opacity_05{% endif %}">
-              <a href="{{ product.url }}" class="collection__slide-link"> <!-- Додано посилання на сторінку продукту -->
+              <a href="{{ product.url }}" class="collection__slide-link"> 
                 <div class="collection__slide-wrapper">
                   <img class="collection__bg" src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
                   <div class="collection__slide-hover">
@@ -73,7 +73,7 @@
 
 
 <script>
-  // Функція для ініціалізації Swiper
+
   function initializeSwiper() {
     const swiper_reviews = new Swiper('.collection', {
       direction: 'horizontal',
@@ -94,12 +94,11 @@
     });
   }
 
-  // Ініціалізація Swiper при першому завантаженні сторінки
+
   initializeSwiper();
 
-  // Додавання обробника події для вибору колекції
+
   document.querySelector('#select-collection').addEventListener('change', function() {
-    // Коли змінюється вибір колекції, перезапускаємо Swiper
     initializeSwiper();
   });
 </script>
