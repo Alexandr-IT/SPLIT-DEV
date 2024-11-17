@@ -322,6 +322,24 @@
           "address_LBYnYR"
         ],
         "settings": {}
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0,
+          "purchase_button_text": "Add to cart",
+          "accordeon__title_basic": "Product details",
+          "accordeon_button_text": "",
+          "show_accordeon_1": true,
+          "accordeon_title_1": "Product features",
+          "accordeon_subtitle_1": "The men's t-shirt crew-neck collection offers a range of stylish and comfortable t-shirts designed specifically for men.  The t-shirts are crafted with high-quality materials to ensure durability and a soft feel against the skin. Whether you're looking for a casual everyday t-shirt or something more versatile, the men's t-shirt crew-neck collection provides a variety of options to choose from.",
+          "show_accordeon_2": false,
+          "accordeon_title_2": "",
+          "accordeon_subtitle_2": ""
+        }
       }
     },
     "content_for_index": [],
