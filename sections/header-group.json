@@ -72,14 +72,17 @@
             "list_item_1": "One",
             "list_item_1_link": "",
             "list_item_2": "Two",
+            "list_item_2_link": "",
             "list_item_3": "Tree",
+            "list_item_3_link": "",
             "list_item_4": "Four",
+            "list_item_4_link": "",
             "list_item_5": "Five",
+            "list_item_5_link": "",
             "list_item_6": "Six",
+            "list_item_6_link": "",
             "list_item_7": "Seven",
-            "list_item_8": "",
-            "list_item_9": "",
-            "list_item_10": ""
+            "list_item_7_link": ""
           }
         },
         "image_picker_fdcVFc": {
@@ -134,7 +137,8 @@
       ],
       "settings": {
         "logo": "shopify://shop_images/Black.svg",
-        "logo_link": "",
+        "logo_bg": "shopify://shop_images/Alter_logo_ee1ae19a-e093-4e5f-a4f3-29b9efc24c35.png",
+        "logo_link": "shopify://pages/hero",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
