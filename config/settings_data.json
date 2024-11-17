@@ -274,6 +274,54 @@
           "title": "About PuriBloc",
           "title_alignment": "center"
         }
+      },
+      "central-text": {
+        "type": "central-text",
+        "settings": {
+          "section_id": "unique-id",
+          "image": "shopify://shop_images/Hero_banner.jpg",
+          "title": "Contact Us"
+        }
+      },
+      "contact-section": {
+        "type": "contact-section",
+        "blocks": {
+          "text_message_FjFqqm": {
+            "type": "text_message",
+            "settings": {
+              "text_message": "We appreciate your business and want to ensure you are satisfied with your GOpure product! Please contact us with any questions you have about the product, or if we can help you in any way."
+            }
+          },
+          "contact_info_aT6Ndy": {
+            "type": "contact_info",
+            "settings": {
+              "email_icon": "shopify://shop_images/email_1.svg",
+              "contact_label_1": "For customer support:",
+              "contact_email_1": "contact@gopurepod.com",
+              "contact_label_2": "For sales inquiries:",
+              "contact_email_2": "jim@blocenterprises.com",
+              "contact_label_3": "For press inquiries:",
+              "contact_email_3": "info@blocenterprises.com",
+              "contact_label_4": "",
+              "contact_email_4": ""
+            }
+          },
+          "address_LBYnYR": {
+            "type": "address",
+            "settings": {
+              "address_icon": "shopify://shop_images/pin_1.svg",
+              "address_line_1": "Mailing Address:",
+              "address_line_2": "Bloc Enterprises, LLC, 11 Grumman Hill Road, Suite 1A",
+              "address_line_3": "Wilton, CT 06897"
+            }
+          }
+        },
+        "block_order": [
+          "text_message_FjFqqm",
+          "contact_info_aT6Ndy",
+          "address_LBYnYR"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [],
