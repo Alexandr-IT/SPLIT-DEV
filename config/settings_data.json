@@ -340,6 +340,21 @@
           "accordeon_title_2": "",
           "accordeon_subtitle_2": ""
         }
+      },
+      "liquid-hero-text": {
+        "type": "liquid-hero-text",
+        "settings": {
+          "image": "shopify://shop_images/man-port_1.jpg",
+          "image_mobile": "shopify://shop_images/man-port_1_256841d0-1e6e-4d62-ac8b-436b54eca8d5.jpg",
+          "title": "Men’s Crew Necks"
+        }
+      },
+      "filter-panel": {
+        "type": "filter-panel",
+        "settings": {
+          "collection": "t-shirt-collection",
+          "show_sorting": true
+        }
       }
     },
     "content_for_index": [],
