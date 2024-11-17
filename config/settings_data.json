@@ -196,6 +196,165 @@
           "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
           "hero_button": "Shop now"
         }
+      },
+      "hero-about-us": {
+        "type": "hero-about-us",
+        "settings": {
+          "bg_mobile": "shopify://shop_images/Stones.jpg",
+          "bg_desktop": "shopify://shop_images/Stones.jpg",
+          "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
+          "hero_button": "Shop now"
+        }
+      },
+      "image-with-text-new": {
+        "type": "image-with-text-new",
+        "blocks": {
+          "paragraph_deKcGU": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph_text": "GOpure was launched by Bloc Enterprises, a specialized distribution & marketing company introducing consumer products distinguished by innovation, technology and disruptive solutions to everyday problems that improve the health and well-being of people and pets. The company strives to practice sustainability principles in all operations and be a good steward of the earth."
+            }
+          },
+          "paragraph_qPY4fM": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph_text": "Like many amazing innovations, the inspiration for the GOpure Pod happened the instant its inventor in Ireland was determined to find a better solution after removing many dozens of used plastic water bottles from his car, most over half full. He was ashamed and disgusted by this wasteful consumption and inefficiency so he sought out world-renowned microbiologist, Dr Ronald Russell at Trinity College in Dublin, to help realize his vision of introducing a portable water purifier for everyday use and eliminate the need for single use plastic water bottles."
+            }
+          }
+        },
+        "block_order": [
+          "paragraph_deKcGU",
+          "paragraph_qPY4fM"
+        ],
+        "settings": {
+          "padding_top": 60,
+          "padding_bottom": 0,
+          "padding_top_mobile": 40,
+          "padding_bottom_mobile": 0,
+          "image": "shopify://shop_images/photos_right.jpg",
+          "image_position": "right",
+          "title": "Our Company",
+          "title_alignment": "left"
+        }
+      },
+      "image-with-text-new2": {
+        "type": "image-with-text-new2",
+        "blocks": {
+          "paragraph_WXMrWx": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph_text": "PuriBloc is the innovative water purification, preservation technology inside GOpure, a portable, environmentally friendly Pod that keeps drinking water clean and safe, while also greatly improving taste. Within seconds, contaminants found in ordinary tap water are neutralized and the pH balance is optimized for healthy hydration. Unlike carbon water filters that only work once, PuriBloc technology works continuously through a natural process known as ionic exchange and keeps pure water fresh and great tasting for months."
+            }
+          },
+          "paragraph_tzPXJc": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph_text": "The adsorptive power of GOpure’s advanced microporous ceramic core is mind-boggling due to the enormous surface area for its volume with which water can react. This high porosity surface area carries millions of negatively charged binding sites, which attract and adsorb heavy metals along with other chemical or organic impurities, including bacteria."
+            }
+          },
+          "paragraph_bmtAMe": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph_text": "The GOpure Pod is changing the way the world drinks water by continually purifying and enhancing your drinking water on the go while also helping to save our planet: using one GOpure Pod in a personal re-usable bottle replaces 2,000 single-use water bottles with zero plastic waste."
+            }
+          }
+        },
+        "block_order": [
+          "paragraph_WXMrWx",
+          "paragraph_tzPXJc",
+          "paragraph_bmtAMe"
+        ],
+        "settings": {
+          "padding_top": 60,
+          "padding_bottom": 0,
+          "padding_top_mobile": 40,
+          "padding_bottom_mobile": 0,
+          "image": "shopify://shop_images/Rectangle_28.jpg",
+          "image_position": "right",
+          "title": "About PuriBloc",
+          "title_alignment": "center"
+        }
+      },
+      "central-text": {
+        "type": "central-text",
+        "settings": {
+          "section_id": "unique-id",
+          "image": "shopify://shop_images/Hero_banner.jpg",
+          "title": "Contact Us"
+        }
+      },
+      "contact-section": {
+        "type": "contact-section",
+        "blocks": {
+          "text_message_FjFqqm": {
+            "type": "text_message",
+            "settings": {
+              "text_message": "We appreciate your business and want to ensure you are satisfied with your GOpure product! Please contact us with any questions you have about the product, or if we can help you in any way."
+            }
+          },
+          "contact_info_aT6Ndy": {
+            "type": "contact_info",
+            "settings": {
+              "email_icon": "shopify://shop_images/email_1.svg",
+              "contact_label_1": "For customer support:",
+              "contact_email_1": "contact@gopurepod.com",
+              "contact_label_2": "For sales inquiries:",
+              "contact_email_2": "jim@blocenterprises.com",
+              "contact_label_3": "For press inquiries:",
+              "contact_email_3": "info@blocenterprises.com",
+              "contact_label_4": "",
+              "contact_email_4": ""
+            }
+          },
+          "address_LBYnYR": {
+            "type": "address",
+            "settings": {
+              "address_icon": "shopify://shop_images/pin_1.svg",
+              "address_line_1": "Mailing Address:",
+              "address_line_2": "Bloc Enterprises, LLC, 11 Grumman Hill Road, Suite 1A",
+              "address_line_3": "Wilton, CT 06897"
+            }
+          }
+        },
+        "block_order": [
+          "text_message_FjFqqm",
+          "contact_info_aT6Ndy",
+          "address_LBYnYR"
+        ],
+        "settings": {}
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0,
+          "purchase_button_text": "Add to cart",
+          "accordeon__title_basic": "Product details",
+          "accordeon_button_text": "",
+          "show_accordeon_1": true,
+          "accordeon_title_1": "Product features",
+          "accordeon_subtitle_1": "The men's t-shirt crew-neck collection offers a range of stylish and comfortable t-shirts designed specifically for men.  The t-shirts are crafted with high-quality materials to ensure durability and a soft feel against the skin. Whether you're looking for a casual everyday t-shirt or something more versatile, the men's t-shirt crew-neck collection provides a variety of options to choose from.",
+          "show_accordeon_2": false,
+          "accordeon_title_2": "",
+          "accordeon_subtitle_2": ""
+        }
+      },
+      "liquid-hero-text": {
+        "type": "liquid-hero-text",
+        "settings": {
+          "image": "shopify://shop_images/man-port_1.jpg",
+          "image_mobile": "shopify://shop_images/man-port_1_256841d0-1e6e-4d62-ac8b-436b54eca8d5.jpg",
+          "title": "Men’s Crew Necks"
+        }
+      },
+      "filter-panel": {
+        "type": "filter-panel",
+        "settings": {
+          "collection": "t-shirt-collection",
+          "show_sorting": true
+        }
       }
     },
     "content_for_index": [],
