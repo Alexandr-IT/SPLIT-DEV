@@ -1,15 +1,15 @@
 $gray: rgba(90,91,92,1);
 
-.container{
+.container-contact{
     padding: 0 160px;
 }
 .wrapper{
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     flex-direction: column;
 }
 
-.wrapper__title{
+.wrapper__title_new{
     margin-top: 80px;
     text-align: center;
     width: 100%;
