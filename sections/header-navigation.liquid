@@ -3,78 +3,135 @@
 <section class="header-navigation section-{{ section.id }}">
     <div class="container">
         <div class="navigation">
-          <div class="navigation__logo_background">
-              <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
-                <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
-              </a>
+            <!-- Логотип -->
+            <div class="navigation__logo_background">
+                <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
+                    <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
+                </a>
             </div>
             <div class="navigation__logo">
-              <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
-                <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
-              </a>
-            </div> 
+                <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
+                    <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
+                </a>
+            </div>
+
+            <!-- Ліва частина меню -->
             <div class="navigation_left">
-              {% for block in section.blocks %}
-                  {% if block.type == 'text' %}
-                    <a href="{{ block.settings.text_link }}" target="_self" rel="stylesheet">
-                      <div class="navigation_left__point p2 desktop">{{ block.settings.point }}</div>
-                    </a>
-                  {% elsif block.type == 'list' %}
-                      <div class="dropdown desktop">
-                        <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
-                        <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
-                        <ul class="dropdown__list">
-                            {% if block.settings.list_item_1 != blank %}<li><a href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_2 != blank %}<li><a href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_3 != blank %}<li><a href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_4 != blank %}<li><a href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_5 != blank %}<li><a href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_6 != blank %}<li><a href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>{% endif %}
-                            {% if block.settings.list_item_7 != blank %}<li><a href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>{% endif %}
-                        </ul>
-                      </div>
-                  {% elsif block.type == 'image' %}
-                      <div class="navigation_left_icon mobile">
-                        <a href="{{ block.settings.left__icon_link }}" target="_self" rel="stylesheet">
-                          <img class="navigation_left_icon_img" src="{{ block.settings.icon__mobile | img_url: 'master' }}" alt="Image">
+                {% for block in section.blocks %}
+                    {% if block.type == 'text' %}
+                        <a href="{{ block.settings.text_link }}" target="_self" rel="stylesheet">
+                            <div class="navigation_left__point p2 desktop">{{ block.settings.point }}</div>
                         </a>
-                      </div>
-                  {% endif %}
-              {% endfor %}
+                    {% elsif block.type == 'list' %}
+                        <div class="dropdown desktop">
+                            <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
+                            <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
+                            <ul class="dropdown__list">
+                                {% if block.settings.list_item_1 != blank %}<li><a href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_2 != blank %}<li><a href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_3 != blank %}<li><a href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_4 != blank %}<li><a href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_5 != blank %}<li><a href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_6 != blank %}<li><a href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>{% endif %}
+                                {% if block.settings.list_item_7 != blank %}<li><a href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>{% endif %}
+                            </ul>
+                        </div>
+                    {% elsif block.type == 'image' %}
+                        <div class="navigation_left_icon mobile">
+                            <a href="{{ block.settings.left__icon_link }}" target="_self" rel="stylesheet">
+                                <img class="navigation_left_icon_img" src="{{ block.settings.icon__mobile | img_url: 'master' }}" alt="Image">
+                            </a>
+                        </div>
+                    {% elsif block.type == 'burger' %}
+                        <div class="navigation_left_icon mobile">
+                            <img class="navigation_left_icon_img burger-toggle" src="{{ block.settings.icon__burger | img_url: 'master' }}" alt="Burger Menu Icon">
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
 
-
-
+            <!-- Права частина меню -->
             <div class="navigation_right">
-              {% for block in section.blocks %}
-                  {% if block.type == 'image_picker' %}
-                    <div class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
-                        <a href="{{ block.settings.right__icon_link }}" target="_self" rel="stylesheet">
-                          <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
-                        </a>
-                    </div>
-                  {% endif %}
-              {% endfor %}
+                {% for block in section.blocks %}
+                    {% if block.type == 'image_picker' %}
+                        <div class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
+                            <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
+        </div>
+    </div>
 
+    <!-- Шторка для бургер-меню -->
+    <div id="burger-menu" class="burger-menu">
+        <button class="burger-menu__close" onclick="closeBurgerMenu()">&times;</button>
+        <div class="burger-menu__content">
+            <p>123</p>
         </div>
     </div>
 </section>
 
 
+
+
+
+<script>
+document.addEventListener('click', function(event) {
+    const burgerButton = document.querySelector('.navigation_left_icon.mobile');
+    const burgerRect = burgerButton.getBoundingClientRect(); // Отримуємо координати бургера
+
+    // Перевірка, чи курсор миші всередині бургер-кнопки
+    if (
+        event.clientX >= burgerRect.left &&
+        event.clientX <= burgerRect.right &&
+        event.clientY >= burgerRect.top &&
+        event.clientY <= burgerRect.bottom
+    ) {
+        toggleBurgerMenu();
+    }
+});
+
+function toggleBurgerMenu() {
+    const burgerMenu = document.getElementById('burger-menu');
+    if (burgerMenu) {
+        burgerMenu.classList.toggle('active');
+    }
+}
+
+function closeBurgerMenu() {
+    const burgerMenu = document.getElementById('burger-menu');
+    if (burgerMenu && burgerMenu.classList.contains('active')) {
+        burgerMenu.classList.remove('active');
+    }
+}
+
+
+document.addEventListener('click', function(event) {
+    console.log(event.target);
+});
+
+
+
+
+// document.addEventListener('click', function(event) {
+//     document.querySelectorAll('.dropdown').forEach(dropdown => {
+//       const checkbox = dropdown.querySelector('.dropdown__checkbox');
+//       const dropdownList = dropdown.querySelector('.dropdown__list');
+//       const label = dropdown.querySelector('.dropdown__label');
+//               console.log(checkbox)
+//       if (checkbox && !label.contains(event.target) && !dropdownList.contains(event.target)) {
+//         checkbox.checked = true;
+//       }
+//     });
+//   });
+
+</script>
+
+
 {% comment %} 
 <script>
-  document.addEventListener('click', function(event) {
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-      const checkbox = dropdown.querySelector('.dropdown__checkbox');
-      const dropdownList = dropdown.querySelector('.dropdown__list');
-      const label = dropdown.querySelector('.dropdown__label');
-              console.log(checkbox)
-      if (checkbox && !label.contains(event.target) && !dropdownList.contains(event.target)) {
-        checkbox.checked = true;
-      }
-    });
-  });
+ 
 </script> {% endcomment %}
 
 
@@ -300,6 +357,18 @@
         }
       ]
     }
+    ,
+      {
+      "type": "burger",
+      "name": "Burger",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon__burger",
+          "label": "Burger"
+        }
+      ]
+    }
     ],
     "presets": [
       {
@@ -308,4 +377,4 @@
       }
     ]
   }
-  {% endschema %}
+  {% endschema %} 
