@@ -60,6 +60,11 @@ $red: rgba(159,17,17,1);
     right: 0;
     transform: translateY(-50%) rotate(45deg); 
 }
+.collection__header-title{
+    @media (max-width: 400px) { 
+        font-size: 20px;
+    } 
+}
 .collection{
     width: 100%;
     overflow: hidden;
@@ -342,4 +347,4 @@ $red: rgba(159,17,17,1);
 .collection-pagination .swiper-pagination-bullet-active {
     background-color: $darkgray; 
     z-index: 11;
-}
+} 

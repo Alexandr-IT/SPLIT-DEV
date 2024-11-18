@@ -10,7 +10,7 @@
         <a href="{{ collections[section.settings.collection].url }}" class="p2 collection__header-subtitle">
           View All
         </a>
-      </div>
+      </div> 
       <div class="collection swiper-container"> 
         <div class="collection__wrapper swiper-wrapper">
           {% for product in collections[section.settings.collection].products %}
@@ -113,6 +113,11 @@
         "type": "collection",
         "id": "collection",
         "label": "Select Collection"
+      },
+      {
+        "type": "text",
+        "id": "header-title",
+        "label": "Title"
       }
     ],
     "presets": [
