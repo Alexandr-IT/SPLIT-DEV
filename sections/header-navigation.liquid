@@ -5,12 +5,12 @@
         <div class="navigation">
 
             <div class="navigation__logo_background">
-                <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
+                <a href="{{ section.settings.logo_link }}" target="_self" >
                     <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
                 </a>
             </div>
             <div class="navigation__logo">
-                <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
+                <a href="{{ section.settings.logo_link }}" target="_self" >
                     <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
                 </a>
             </div>
@@ -19,7 +19,7 @@
             <div class="navigation_left">
                 {% for block in section.blocks %}
                     {% if block.type == 'text' %}
-                        <a href="{{ block.settings.text_link }}" target="_self" rel="stylesheet">
+                        <a href="{{ block.settings.text_link }}" target="_self" >
                             <div class="navigation_left__point p2 desktop">{{ block.settings.point }}</div>
                         </a>
                     {% elsif block.type == 'list' %}
@@ -38,7 +38,7 @@
                         </div>
                     {% elsif block.type == 'image' %}
                         <div class="navigation_left_icon mobile">
-                            <a href="{{ block.settings.left__icon_link }}" target="_self" rel="stylesheet">
+                            <a href="{{ block.settings.left__icon_link }}" target="_self" >
                                 <img class="navigation_left_icon_img" src="{{ block.settings.icon__mobile | img_url: 'master' }}" alt="Image">
                             </a>
                         </div>
@@ -54,9 +54,9 @@
             <div class="navigation_right">
                 {% for block in section.blocks %}
                     {% if block.type == 'image_picker' %}
-                        <div class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
+                        <a href="{{ block.settings.right__icon_link }}" class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
                             <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
-                        </div>
+                        </a>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -67,7 +67,7 @@
     <div id="burger-menu" class="burger-menu">
         <button class="burger-menu__close">&times;</button>
         <div class="burger-menu__content">
-            <p>123</p>
+            <p>Burger menu</p>
         </div>
     </div>
 </section>
@@ -132,34 +132,9 @@ function closeBurgerMenu() {
 
 
 
-// document.addEventListener('click', function(event) {
-//     console.log(event.target); // у хедері - натискаю мишею на блок - воно зчитує цілий блок секції. У всіх інших секціях - все працює правильно. Це впливає на неправильне закривання шторки, але коли обновити сторінку - все починає правльно працювати
-// });
 
-
-
-
-// document.addEventListener('click', function(event) {
-//     document.querySelectorAll('.dropdown').forEach(dropdown => {
-//       const checkbox = dropdown.querySelector('.dropdown__checkbox');
-//       const dropdownList = dropdown.querySelector('.dropdown__list');
-//       const label = dropdown.querySelector('.dropdown__label');
-//               console.log(checkbox)
-//       if (checkbox && !label.contains(event.target) && !dropdownList.contains(event.target)) {
-//         checkbox.checked = true;
-//       }
-//     });
-//   }); - це код так само не працює правильно доки не обновляти сторінку
 
 </script>
-
-
-{% comment %} 
-<script>
- 
-</script> {% endcomment %}
-
-
 
 
 

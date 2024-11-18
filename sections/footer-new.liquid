@@ -17,11 +17,11 @@
                                 <input type="email" class="email-input" placeholder="{{ block.settings.text_for_email }}">
                             </form>
                             <div class="footer__column-icons">
-                            {% if block.settings.column_icon_1 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt="">{% endif %}
-                            {% if block.settings.column_icon_2 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt="">{% endif %}
-                            {% if block.settings.column_icon_3 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt="">{% endif %}
-                            {% if block.settings.column_icon_4 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt="">{% endif %}
-                            {% if block.settings.column_icon_5 != blank %}<img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt="">{% endif %}
+                            {% if block.settings.column_icon_1 != blank %}<a href="{{ block.settings.link_icon_1 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt=""></a>{% endif %}
+                            {% if block.settings.column_icon_2 != blank %}<a href="{{ block.settings.link_icon_2 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt=""></a>{% endif %}
+                            {% if block.settings.column_icon_3 != blank %}<a href="{{ block.settings.link_icon_3 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt=""></a>{% endif %}
+                            {% if block.settings.column_icon_4 != blank %}<a href="{{ block.settings.link_icon_4 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt=""></a>{% endif %}
+                            {% if block.settings.column_icon_5 != blank %}<a href="{{ block.settings.link_icon_5 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt=""></a>{% endif %}
                             </div>
                         {% endif %}
                     </div>
@@ -39,7 +39,7 @@
         </div>
     </footer>
 </section>
-
+ 
 {%- style -%}
   .section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top_mobile }}px;
@@ -171,9 +171,19 @@
               "label": "Column Icon 1"
             },
             {
+              "type": "url",
+              "id": "link_icon_1",
+              "label": "Link_Icon 1"
+            },
+            {
               "type": "image_picker",
               "id": "column_icon_2",
               "label": "Column Icon 2"
+            },
+            {
+              "type": "url",
+              "id": "link_icon_2",
+              "label": "Link_Icon 2"
             },
             {
               "type": "image_picker",
@@ -181,14 +191,29 @@
               "label": "Column Icon 3"
             },
             {
+              "type": "url",
+              "id": "link_icon_3",
+              "label": "Link_Icon 3"
+            },
+            {
               "type": "image_picker",
               "id": "column_icon_4",
               "label": "Column Icon 4"
             },
             {
+              "type": "url",
+              "id": "link_icon_4",
+              "label": "Link_Icon 4"
+            },
+            {
               "type": "image_picker",
               "id": "column_icon_5",
               "label": "Column Icon 5"
+            },
+            {
+              "type": "url",
+              "id": "link_icon_5",
+              "label": "Link_Icon 5"
             }
           ]
         }
