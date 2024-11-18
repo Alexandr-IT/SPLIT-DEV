@@ -109,11 +109,10 @@
             "right__icon_link": ""
           }
         },
-        "image_HbqKAt": {
-          "type": "image",
+        "burger_mF7FE8": {
+          "type": "burger",
           "settings": {
-            "icon__mobile": "shopify://shop_images/Ic_Burger.svg",
-            "left__icon_link": ""
+            "icon__burger": "shopify://shop_images/Ic_Burger.svg"
           }
         },
         "image_hweqqw": {
@@ -132,7 +131,7 @@
         "image_picker_fdcVFc",
         "image_picker_RfgyEd",
         "image_picker_PAzeaw",
-        "image_HbqKAt",
+        "burger_mF7FE8",
         "image_hweqqw"
       ],
       "settings": {
