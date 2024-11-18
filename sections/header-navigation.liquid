@@ -79,29 +79,29 @@
 <script>
 
 document.addEventListener('click', function(event) {
-    const burgerButton = document.querySelector('.burger-toggle'); // Знаходимо бургер-кнопку
-    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо меню
-    const burgerCloseButton = document.querySelector('.burger-menu__close'); // Знаходимо кнопку закриття меню
+    const burgerButton = document.querySelector('.burger-toggle'); 
+    const burgerMenu = document.getElementById('burger-menu'); 
+    const burgerCloseButton = document.querySelector('.burger-menu__close'); 
 
-    // Перевірка, чи меню відкрите
+    
     const isMenuOpen = burgerMenu && burgerMenu.classList.contains('active');
 
-    // Якщо меню відкрите, то бургер-кнопка не має реагувати
+    
     if (isMenuOpen) {
-        // Якщо клік не на кнопці закриття меню, меню не закривається
+        
         if (!isClickInside(event, burgerCloseButton)) {
-            return; // Якщо клік всередині меню, нічого не робимо
+            return; 
         }
-        closeBurgerMenu(); // Закриваємо меню, якщо клік на кнопку закриття
+        closeBurgerMenu(); 
     } else {
-        // Якщо меню не відкрите, обробляємо клік по бургер-кнопці
+        
         if (isClickInside(event, burgerButton)) {
-            toggleBurgerMenu(); // Відкриваємо меню, якщо клік на бургер-кнопці
+            toggleBurgerMenu(); 
         }
     }
 });
 
-// Функція для перевірки, чи клік всередині елемента
+
 function isClickInside(event, element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -113,17 +113,17 @@ function isClickInside(event, element) {
 }
 
 function toggleBurgerMenu() {
-    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо елемент меню
+    const burgerMenu = document.getElementById('burger-menu'); 
     if (burgerMenu) {
-        burgerMenu.classList.toggle('active'); // Додаємо/видаляємо клас active для відкриття/закриття
+        burgerMenu.classList.toggle('active'); 
         console.log("Menu toggled");
     }
 }
 
 function closeBurgerMenu() {
-    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо меню
+    const burgerMenu = document.getElementById('burger-menu'); 
     if (burgerMenu && burgerMenu.classList.contains('active')) {
-        burgerMenu.classList.remove('active'); // Закриваємо меню, якщо воно відкрите
+        burgerMenu.classList.remove('active'); 
         console.log("Menu closed");
     }
 }
@@ -132,9 +132,9 @@ function closeBurgerMenu() {
 
 
 
-document.addEventListener('click', function(event) {
-    console.log(event.target); // у хедері - натискаю мишею на блок - воно зчитує цілий блок секції. У всіх інших секціях - все працює правильно. Це впливає на неправильне закривання шторки, але коли обновити сторінку - все починає правльно працювати
-});
+// document.addEventListener('click', function(event) {
+//     console.log(event.target); // у хедері - натискаю мишею на блок - воно зчитує цілий блок секції. У всіх інших секціях - все працює правильно. Це впливає на неправильне закривання шторки, але коли обновити сторінку - все починає правльно працювати
+// });
 
 
 
