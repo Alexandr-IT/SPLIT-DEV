@@ -245,7 +245,7 @@ $lightgray: rgba(227,227,227,1);
     transform: translate(-50%, -50%) rotate(135deg); 
 }
 
-/* Шторка за замовчуванням прихована */
+
 .burger-menu {
     position: fixed;
     top: 0;
@@ -270,7 +270,7 @@ $lightgray: rgba(227,227,227,1);
     text-align: center;
 }
 
-/* Кнопка закриття шторки */
+
 .burger-menu__close {
     display: block;
     position: absolute;
@@ -285,4 +285,5 @@ $lightgray: rgba(227,227,227,1);
     height: 50px;
     cursor: pointer;
 }
+
 

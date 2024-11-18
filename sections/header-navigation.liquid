@@ -3,7 +3,7 @@
 <section class="header-navigation section-{{ section.id }}">
     <div class="container">
         <div class="navigation">
-            <!-- Логотип -->
+
             <div class="navigation__logo_background">
                 <a href="{{ section.settings.logo_link }}" target="_self" rel="stylesheet">
                     <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
@@ -15,7 +15,7 @@
                 </a>
             </div>
 
-            <!-- Ліва частина меню -->
+ 
             <div class="navigation_left">
                 {% for block in section.blocks %}
                     {% if block.type == 'text' %}
@@ -50,7 +50,7 @@
                 {% endfor %}
             </div>
 
-            <!-- Права частина меню -->
+
             <div class="navigation_right">
                 {% for block in section.blocks %}
                     {% if block.type == 'image_picker' %}
@@ -63,9 +63,9 @@
         </div>
     </div>
 
-    <!-- Шторка для бургер-меню -->
+
     <div id="burger-menu" class="burger-menu">
-        <button class="burger-menu__close" onclick="closeBurgerMenu()">&times;</button>
+        <button class="burger-menu__close">&times;</button>
         <div class="burger-menu__content">
             <p>123</p>
         </div>
@@ -77,38 +77,63 @@
 
 
 <script>
-document.addEventListener('click', function(event) {
-    const burgerButton = document.querySelector('.navigation_left_icon.mobile');
-    const burgerRect = burgerButton.getBoundingClientRect(); // Отримуємо координати бургера
 
-    // Перевірка, чи курсор миші всередині бургер-кнопки
-    if (
-        event.clientX >= burgerRect.left &&
-        event.clientX <= burgerRect.right &&
-        event.clientY >= burgerRect.top &&
-        event.clientY <= burgerRect.bottom
-    ) {
-        toggleBurgerMenu();
+document.addEventListener('click', function(event) {
+    const burgerButton = document.querySelector('.burger-toggle'); // Знаходимо бургер-кнопку
+    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо меню
+    const burgerCloseButton = document.querySelector('.burger-menu__close'); // Знаходимо кнопку закриття меню
+
+    // Перевірка, чи меню відкрите
+    const isMenuOpen = burgerMenu && burgerMenu.classList.contains('active');
+
+    // Якщо меню відкрите, то бургер-кнопка не має реагувати
+    if (isMenuOpen) {
+        // Якщо клік не на кнопці закриття меню, меню не закривається
+        if (!isClickInside(event, burgerCloseButton)) {
+            return; // Якщо клік всередині меню, нічого не робимо
+        }
+        closeBurgerMenu(); // Закриваємо меню, якщо клік на кнопку закриття
+    } else {
+        // Якщо меню не відкрите, обробляємо клік по бургер-кнопці
+        if (isClickInside(event, burgerButton)) {
+            toggleBurgerMenu(); // Відкриваємо меню, якщо клік на бургер-кнопці
+        }
     }
 });
 
+// Функція для перевірки, чи клік всередині елемента
+function isClickInside(event, element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+    );
+}
+
 function toggleBurgerMenu() {
-    const burgerMenu = document.getElementById('burger-menu');
+    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо елемент меню
     if (burgerMenu) {
-        burgerMenu.classList.toggle('active');
+        burgerMenu.classList.toggle('active'); // Додаємо/видаляємо клас active для відкриття/закриття
+        console.log("Menu toggled");
     }
 }
 
 function closeBurgerMenu() {
-    const burgerMenu = document.getElementById('burger-menu');
+    const burgerMenu = document.getElementById('burger-menu'); // Знаходимо меню
     if (burgerMenu && burgerMenu.classList.contains('active')) {
-        burgerMenu.classList.remove('active');
+        burgerMenu.classList.remove('active'); // Закриваємо меню, якщо воно відкрите
+        console.log("Menu closed");
     }
 }
 
 
+
+
+
 document.addEventListener('click', function(event) {
-    console.log(event.target);
+    console.log(event.target); // у хедері - натискаю мишею на блок - воно зчитує цілий блок секції. У всіх інших секціях - все працює правильно. Це впливає на неправильне закривання шторки, але коли обновити сторінку - все починає правльно працювати
 });
 
 
@@ -124,7 +149,7 @@ document.addEventListener('click', function(event) {
 //         checkbox.checked = true;
 //       }
 //     });
-//   });
+//   }); - це код так само не працює правильно доки не обновляти сторінку
 
 </script>
 
