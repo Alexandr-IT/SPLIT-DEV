@@ -123,7 +123,8 @@
     "collection_xT3ynt": {
       "type": "collection",
       "settings": {
-        "collection": "t-shirt-collection"
+        "collection": "t-shirt-collection",
+        "header-title": "Recommended"
       }
     }
   },
