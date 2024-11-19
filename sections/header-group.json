@@ -48,21 +48,21 @@
           "type": "text",
           "settings": {
             "point": "Crew Necks",
-            "text_link": ""
+            "text_link": "shopify://products/t-shirt"
           }
         },
         "text_kzF4qw": {
           "type": "text",
           "settings": {
             "point": "V-Necks",
-            "text_link": ""
+            "text_link": "shopify://pages/contact-us"
           }
         },
         "text_xdGJ3i": {
           "type": "text",
           "settings": {
             "point": "Activewear",
-            "text_link": ""
+            "text_link": "shopify://pages/contact-us"
           }
         },
         "list_FzwDdd": {
@@ -106,7 +106,7 @@
           "settings": {
             "icon": "shopify://shop_images/Bag.svg",
             "hide_on_mobile": false,
-            "right__icon_link": ""
+            "right__icon_link": "shopify://collections/t-shirt-collection"
           }
         },
         "burger_mF7FE8": {
