@@ -17,7 +17,13 @@
             <div class="swiper-slide collection__slide {% if product.variants.first.inventory_quantity <= 0 %}opacity_05{% endif %}">
               <a href="{{ product.url }}" class="collection__slide-link"> 
                 <div class="collection__slide-wrapper">
-                  <img class="collection__bg" src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                  {{ product.featured_image | image_url: width: 3840 | image_tag:
+                      width: product.featured_image.width,
+                      height: product.featured_image.height,
+                      class: 'collection__bg',
+                      sizes: '100vw',
+                      alt: product.title,
+                      widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
                   <div class="collection__slide-hover">
                     <div class="collection__slide-hover-text">
                       Quick Add
@@ -55,7 +61,7 @@
                   </div>
                   <div class="collection__slide-discription-wrapper-right">
                     <a class="collection__slide-discription-bag" href="{{ product.url }}">
-                      <img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag" class="collection__slide-discription-img_bag">
+                      <img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag" class="collection__slide-discription-img_bag"> {% comment %} чи дрібні іконки також потрібно обгортати? {% endcomment %}
                     </a>
                   </div>
                 </div>
@@ -70,7 +76,19 @@
 </section>
 
 
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
 
+  @media screen and (min-width: 767px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
 
 <script>
 
@@ -109,6 +127,46 @@
   {
     "name": "Collection",
     "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top_mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom_mobile",
+        "default": 0
+      },
       {
         "type": "collection",
         "id": "collection",

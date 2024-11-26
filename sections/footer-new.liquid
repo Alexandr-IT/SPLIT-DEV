@@ -4,32 +4,53 @@
     <footer class="footer">
         <div class="container-footer">
             <div class="footer__columns">
-                {% for block in section.blocks %}
+                {%- for block in section.blocks -%}
                     <div class="footer__column">
                         <div class="footer__column-title p2">{{ block.settings.column_title }}</div>
-                        {% if block.settings.column_type == 'regular' %}
+                        {%- if block.settings.column_type == 'regular' -%}
                             <p class="footer__column-item p2">{{ block.settings.text_item_1 }}</p>
                             <p class="footer__column-item p2">{{ block.settings.text_item_2 }}</p>
                             <p class="footer__column-item p2">{{ block.settings.text_item_3 }}</p>
                             <p class="footer__column-item p2">{{ block.settings.text_item_4 }}</p>
-                        {% elsif block.settings.column_type == 'email' %}
-                            <form action="#" method="post" class="footer__column_form">
+                        {%- elsif block.settings.column_type == 'email' -%}
+                            <form action="#" method="post" class="footer__column_form" role="form">
                                 <input type="email" class="email-input" placeholder="{{ block.settings.text_for_email }}">
                             </form>
                             <div class="footer__column-icons">
-                            {% if block.settings.column_icon_1 != blank %}<a href="{{ block.settings.link_icon_1 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt=""></a>{% endif %}
-                            {% if block.settings.column_icon_2 != blank %}<a href="{{ block.settings.link_icon_2 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt=""></a>{% endif %}
-                            {% if block.settings.column_icon_3 != blank %}<a href="{{ block.settings.link_icon_3 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt=""></a>{% endif %}
-                            {% if block.settings.column_icon_4 != blank %}<a href="{{ block.settings.link_icon_4 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt=""></a>{% endif %}
-                            {% if block.settings.column_icon_5 != blank %}<a href="{{ block.settings.link_icon_5 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt=""></a>{% endif %}
+                            {%- if block.settings.column_icon_1 != blank -%}<a href="{{ block.settings.link_icon_1 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_1 | img_url: 'master' }}" alt=""></a>{%- endif -%}
+                            {%- if block.settings.column_icon_2 != blank -%}<a href="{{ block.settings.link_icon_2 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_2 | img_url: 'master' }}" alt=""></a>{%- endif -%}
+                            {%- if block.settings.column_icon_3 != blank -%}<a href="{{ block.settings.link_icon_3 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_3 | img_url: 'master' }}" alt=""></a>{%- endif -%}
+                            {%- if block.settings.column_icon_4 != blank -%}<a href="{{ block.settings.link_icon_4 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_4 | img_url: 'master' }}" alt=""></a>{%- endif -%}
+                            {%- if block.settings.column_icon_5 != blank -%}<a href="{{ block.settings.link_icon_5 }}"><img class="footer__column-icon" src="{{ block.settings.column_icon_5 | img_url: 'master' }}" alt=""></a>{%- endif -%}
                             </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+                        {%- endif -%}
+                    </div> 
+                {%- endfor -%}
             </div>
             <div class="footer__down">
-                <img class="footer__down_logo desktop" src="{{ section.settings.logo | img_url: 'master' }}" alt="">
-                <img class="footer__down_logo mobile" src="{{ section.settings.logo_mobile | img_url: 'master' }}" alt="">
+                <picture class="footer__down_logo">
+                  <source
+                    media="(max-width: 766.99px)"
+                    srcset="
+                      {{ section.settings.logo_mobile | img_url: '375x' }} 375w,
+                      {{ section.settings.logo_mobile | img_url: '550x' }} 550w,
+                      {{ section.settings.logo_mobile | img_url: '750x' }} 750w"
+                    sizes="100vw">
+              
+                  <source
+                    media="(min-width: 767px)"
+                    srcset="
+                      {{ section.settings.logo | img_url: '750x' }} 750w,
+                      {{ section.settings.logo | img_url: '1100x' }} 1100w,
+                      {{ section.settings.logo | img_url: '1500x' }} 1500w,
+                      {{ section.settings.logo | img_url: '2000x' }} 2000w,
+                      {{ section.settings.logo | img_url: '3840x' }} 3840w"
+                    sizes="(min-width: 1200px) 100vw, 100vw">
+                  <img 
+                    src="{{ section.settings.logo | img_url: '1500x' }}" 
+                    alt="Logo" 
+                    class="">
+                </picture>
                 <div class="p2 footer__down_text p2__footer">{{ section.settings.footer_down_text }}</div>
             </div>
             <div class="footer__cubes">

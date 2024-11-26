@@ -4,19 +4,102 @@
     <div class="hero">
        <div class="hero__bg">
             <div class="cube"></div>
-            <img class="desktop" src="{{ section.settings.image | img_url: 'master' }}" alt="">
-            <img class="mobile" src="{{ section.settings.image_mobile | img_url: 'master' }}" alt="">
+ 
+            <picture>
+              {%- if section.settings.bg_mobile -%}
+                <source
+                  media="(max-width: 766.99px)"
+                  srcset="
+                    {{ section.settings.image_mobile | img_url: '375x' }} 375w,
+                    {{ section.settings.image_mobile | img_url: '550x' }} 550w,
+                    {{ section.settings.image_mobile | img_url: '750x' }} 750w"
+                  sizes="100vw">
+              {%- endif -%}
+            
+              {%- if section.settings.bg_desktop -%}
+                <source
+                  media="(min-width: 767px)"
+                  srcset="
+                    {{ section.settings.image | img_url: '750x' }} 750w,
+                    {{ section.settings.image | img_url: '1100x' }} 1100w,
+                    {{ section.settings.image | img_url: '1500x' }} 1500w,
+                    {{ section.settings.image | img_url: '2000x' }} 2000w,
+                    {{ section.settings.image | img_url: '3840x' }} 3840w"
+                  sizes="(min-width: 1200px) 100vw, 100vw">
+              {%- endif -%}
+            
+              <img 
+                src="{{ section.settings.image | img_url: '1500x' }}" 
+                alt="Background image for the hero section" 
+                class="">
+            </picture>   
        </div> 
-       <h3 class="hero__title">{{ section.settings.title }}</h3>
+      {%- if section.settings.title -%}
+        <h3 class="hero__title">{{ section.settings.title }}</h3>
+      {%- endif -%}
     </div>
 
 </section>
+
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 767px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
 
 {% schema %}
     {
       "name": "Liquid Hero Text",
       "settings": [
+          {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 0
+        },
         {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top_mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom_mobile",
+          "default": 0
+        },
+        { 
           "type": "image_picker",
           "id": "image",
           "label": "Select Image"

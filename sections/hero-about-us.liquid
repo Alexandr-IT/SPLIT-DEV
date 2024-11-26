@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="{{ 'hero-about-us.min.css' | asset_url }}" type="text/css" />
  
-<section class="hero-section">
+<section class="hero-section section-{{ section.id }}">
   <div class="hero">
     <div class="hero__bg desktop">
         <img src="{{ section.settings.bg_desktop | img_url: 'master' }}" alt="" class="hero__bg-img">

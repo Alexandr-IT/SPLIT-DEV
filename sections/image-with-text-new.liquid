@@ -4,7 +4,13 @@
   <div class="container_limited">
     <div class="image-text-wrapper{% if section.settings.image_position == 'right' %} reverse{% endif %}">
       <div class="image-text-wrapper__image">
-        <img src="{{ section.settings.image | img_url: 'master' }}" alt="Image" />
+        {{ section.settings.image | image_url: width: 3840 | image_tag:
+            width: section.settings.image.width,
+            height: section.settings.image.height,
+            class: '',
+            sizes: '100vw',
+            alt:"Image",
+            widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
       </div>
       <div class="text-content">
         <h2 class="text-content__title" style="text-align: {{ section.settings.title_alignment }};">{{ section.settings.title }}</h2>
@@ -14,7 +20,7 @@
       </div>
     </div> 
   </div>
-</section>
+</section> 
  
 {%- style -%}
   .section-{{ section.id }} {

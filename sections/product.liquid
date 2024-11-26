@@ -6,34 +6,46 @@
       <div class="product__left">
         
         <div class="swiper-mini">
-          <div class="swiper-wrapper">
-            {% for image in product.images %}
+          <div class="swiper-wrapper swiper-wrapper_mini">
+            {%- for image in product.images -%}
               <div class="swiper-slide swiper-slide_mini">
-                <img src="{{ image | img_url: 'medium' }}" alt="Thumbnail">
+                {{ image | image_url: width: 3840 | image_tag:
+                    width: image.width,
+                    height: image.height,
+                    class: '',
+                    sizes: '100vw',
+                    alt:"Thumbnail",
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
               </div>
-            {% endfor %}
+            {%- endfor -%}
           </div>
         </div>
 
-        
+         
         <div class="swiper-main">
           <div class="swiper-wrapper">
-            {% for image in product.images %}
+            {%- for image in product.images -%}
               <div class="swiper-slide">
                 <div class="swiper-slide__wrapper">
-                  {% if product.metafields.custom.selling_fast == true %}
-                    <div class="selling-fast System_12_20">SELLING FAST</div>
-                  {% endif %}
-                  {% if product.variants.first.inventory_quantity <= 0 %}
-                    <div class="sold-out System_12_20">SOLD OUT</div>
-                  {% endif %}
-                  {% if product.metafields.custom.discount_percentage %}
-                    <div class="discount-block">{{ product.metafields.custom.discount_percentage }}% OFF</div>
-                  {% endif %}
+                  {%- if product.metafields.custom.selling_fast == true -%}
+                    <div class="pdp__selling-fast System_12_20">SELLING FAST</div>
+                  {%- endif -%}
+                  {%- if product.variants.first.inventory_quantity <= 0 -%}
+                    <div class="pdp__sold-out System_12_20">SOLD OUT</div>
+                  {%- endif -%}
+                  {%- if product.metafields.custom.discount_percentage -%}
+                    <div class="pdp__discount-block">{{ product.metafields.custom.discount_percentage }}% OFF</div>
+                  {%- endif -%}
                 </div>
-                <img src="{{ image | img_url: 'medium' }}" alt="Main slide">
+                {{ image | image_url: width: 3840 | image_tag:
+                    width: image.width,
+                    height: image.height,
+                    class: '',
+                    sizes: '100vw',
+                    alt:"Main slide",
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
               </div>
-            {% endfor %}
+            {%- endfor -%}
             </div>
           <div class="swiper-pagination main-pagination"></div>
           <div class="swiper-button-prev main-prev"></div>
@@ -48,11 +60,11 @@
                 <div class="product__prices">
                     <p class="product__price_new Pargraph_18_26">
                         <span id="product-price" class="product__price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
-                        {% if product.compare_at_price > product.selected_or_first_available_variant.price %}
+                        {%- if product.compare_at_price > product.selected_or_first_available_variant.price -%}
                             <span class="product__price_old price--compare">
                                 {{ product.compare_at_price | money_without_trailing_zeros }}
                             </span>
-                        {% endif %}
+                        {%- endif -%}
                     </p>
                 </div>
                 <div class="product__sizes">
@@ -61,20 +73,20 @@
                         <p id="selected-size-label">Select a size</p>
                     </div>
                     <div class="product__size">
-                        {% assign sizes = "S|M|L|XL|2XL|3XL|4XL" | split: "|" %}
-                        {% for size in sizes %}
-                            {% assign is_available = false %}
-                            {% for variant in product.variants %}
-                                {% if variant.option1 == size and variant.available %}
-                                    {% assign is_available = true %}
-                                    {% break %}
-                                {% endif %}
-                            {% endfor %}
+                        {%- assign sizes = "S|M|L|XL|2XL|3XL|4XL" | split: "|" -%}
+                        {%- for size in sizes -%}
+                            {%- assign is_available = false -%}
+                            {%- for variant in product.variants -%}
+                                {%- if variant.option1 == size and variant.available -%}
+                                    {%- assign is_available = true -%}
+                                    {%- break -%}
+                                {%- endif -%}
+                            {%- endfor -%}
                             <div class="product__size_option {% unless is_available %}unavailable{% endunless %}">
                                 <input type="radio" id="size-{{ size }}" name="size" value="{{ size }}" class="size-radio" {% unless is_available %}disabled{% endunless %}>
                                 <label for="size-{{ size }}">{{ size }}</label>
                             </div>
-                        {% endfor %}
+                        {%- endfor -%}
                     </div>
                 </div>
                 <div class="product__purchase">
@@ -94,7 +106,7 @@
                     </div>
                 </div>
 
-                {% if section.settings.show_accordeon_1 %}
+                {%- if section.settings.show_accordeon_1 -%}
                   <div class="product__accordeon">
                     <button class="product__accordeon-button body_p2">
                       {{ section.settings.accordeon_title_1 }}
@@ -103,9 +115,9 @@
                       <p>{{ section.settings.accordeon_subtitle_1 }}</p>
                     </div>
                   </div>
-                {% endif %}
+                {%- endif -%}
                 
-                {% if section.settings.show_accordeon_2 %}
+                {%- if section.settings.show_accordeon_2 -%}
                   <div class="product__accordeon">
                     <button class="product__accordeon-button">
                       {{ section.settings.accordeon_title_2 }}
@@ -114,7 +126,7 @@
                       <p>{{ section.settings.accordeon_subtitle_2 }}</p>
                     </div>
                   </div>
-                {% endif %}
+                {%- endif -%}
                 
 
             </div>
@@ -130,6 +142,7 @@
 
 </section>
 <script>
+  // встановлення надпису розміру
 document.querySelectorAll('.size-radio').forEach(radio => {
 radio.addEventListener('change', function () {
     const labels = {
@@ -151,7 +164,7 @@ function formatMoney(cents, format) {
         .replace("{{amount}}", (cents / 100).toFixed(2))
         .replace(".00", "");
 }
-
+// оновлення ціни
 document.querySelectorAll('.size-radio').forEach(radio => {
     radio.addEventListener('change', function () {
         const selectedSize = this.value;
@@ -173,7 +186,7 @@ function cleanMoneyFormat(price) {
     const amount = "₴" + price / 100; 
     return amount; 
 }
-
+// панелька + і -
 document.querySelectorAll('.product__purchase-btn').forEach(button => {
     button.addEventListener('click', function () {
         const input = this.parentElement.querySelector('.product__purchase-input');
@@ -204,7 +217,7 @@ accordeons.forEach(function(accordeon) {
 });
 
 
-
+// міні свайпер
 var thumbnailSwiper = new Swiper('.swiper-mini', {
     direction: 'vertical', 
     spaceBetween: 0, 
@@ -232,9 +245,6 @@ var mainSwiper = new Swiper('.swiper-main', {
 
 
 
-
-
-
 </script>
 
 
@@ -251,7 +261,7 @@ var mainSwiper = new Swiper('.swiper-main', {
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
-  {%- endstyle -%}
+{%- endstyle -%}
 
   
 {% schema %}

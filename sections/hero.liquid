@@ -1,45 +1,71 @@
 
 <link rel="stylesheet" href="{{ 'hero.min.css' | asset_url }}" type="text/css" />
  
-<section class="hero-section">
+<section class="hero section-{{ section.id }}" role="banner">
   <div class="hero">
-    <div class="hero__bg desktop">
-        <img src="{{ section.settings.bg_desktop | img_url: 'master' }}" alt="" class="hero__bg-img">
+    <div class="hero__bg">
+      <picture>
+        {%- if section.settings.bg_mobile -%}
+          <source
+            media="(max-width: 766.99px)"
+            srcset="
+              {{ section.settings.bg_mobile | img_url: '375x' }} 375w,
+              {{ section.settings.bg_mobile | img_url: '550x' }} 550w,
+              {{ section.settings.bg_mobile | img_url: '750x' }} 750w"
+            sizes="100vw">
+        {%- endif -%}
+      
+        {%- if section.settings.bg_desktop -%}
+          <source
+            media="(min-width: 767px)"
+            srcset="
+              {{ section.settings.bg_desktop | img_url: '750x' }} 750w,
+              {{ section.settings.bg_desktop | img_url: '1100x' }} 1100w,
+              {{ section.settings.bg_desktop | img_url: '1500x' }} 1500w,
+              {{ section.settings.bg_desktop | img_url: '2000x' }} 2000w,
+              {{ section.settings.bg_desktop | img_url: '3840x' }} 3840w"
+            sizes="(min-width: 1200px) 100vw, 100vw">
+        {%- endif -%}
+      
+        <img 
+          src="{{ section.settings.bg_desktop | img_url: '1500x' }}" 
+          alt="Background image for the hero section" 
+          class="hero__bg-img">
+      </picture>   
     </div>
+
     <div class="container crutches">
-      <div class="hero__wrapper-text ">
+      <div class="hero__wrapper-text "> 
 
           <h1 class="hero__wrapper-text--title Mobile_H1 mobile">
-            {% for block in section.blocks %}
+            {%- for block in section.blocks -%}
               <span class="hero__wrapper-text--span 
                 {% if block.settings.italic_text %} italic {% endif %}
                 {% if block.settings.italic_margin %} italic_margin {% endif %}
               ">
                 {{ block.settings.word }}
               </span>
-            {% endfor %}
+            {%- endfor -%}
           </h1>
           
           <div class="hero__wrapper-text--subtitle p2 mobile">{{ section.settings.hero_subtitle }}</div>
           
           <h2 class="hero__wrapper-text--title desktop">
-            {% for block in section.blocks %}
+            {%- for block in section.blocks -%}
               <span class="hero__wrapper-text--span 
                 {% if block.settings.italic_text %} italic {% endif %}
                 {% if block.settings.italic_margin %} italic_margin {% endif %}
               ">
                 {{ block.settings.word }}
               </span>
-            {% endfor %}
+            {%- endfor -%}
           </h2>
           
           <div class="hero__wrapper-text--subtitle css18_26 desktop">{{ section.settings.hero_subtitle }}</div>
           <div class="button">{{ section.settings.hero_button }}</div>
       </div>
     </div>
-    <div class="hero__bg mobile">
-        <img src="{{ section.settings.bg_mobile | img_url: 'master' }}" alt="" class="hero__bg-img">
-    </div>
+    
   </div> 
 </section>
 

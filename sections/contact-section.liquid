@@ -3,64 +3,64 @@
 <section class="section-{{ section.id }}">
     <div class="wrapper container-contact">
         
-        {% for block in section.blocks %}
-            {% case block.type %}
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
             
-                {% when 'text_message' %}
+                {%- when 'text_message' -%}
                 <div class="wrapper__title_new body_1">{{ block.settings.text_message }}</div>
 
-                {% when 'contact_info' %}
+                {%- when 'contact_info' -%}
                 <div class="wrapper__email">
                     <div class="wrapper__email_icon">
-                        <img src="{{ block.settings.email_icon | img_url: 'master' }}">  
+                         <img src="{{ block.settings.email_icon | img_url: 'master' }}">  {% comment %} чи потрібно це загортати в picture? {% endcomment %}
                     </div>
-                    {% if block.settings.contact_label_1 != blank and block.settings.contact_email_1 != blank %}
+                    {%- if block.settings.contact_label_1 != blank and block.settings.contact_email_1 != blank -%}
                         <div class="wrapper__email_contact">
                             <div class="wrapper__email_contact-left">{{ block.settings.contact_label_1 }}</div>
                             <div class="wrapper__email_contact-right">{{ block.settings.contact_email_1 }}</div>
                         </div>
-                    {% endif %}
+                    {%- endif -%}
                 
-                    {% if block.settings.contact_label_2 != blank and block.settings.contact_email_2 != blank %}
+                    {%- if block.settings.contact_label_2 != blank and block.settings.contact_email_2 != blank -%}
                         <div class="wrapper__email_contact">
                             <div class="wrapper__email_contact-left">{{ block.settings.contact_label_2 }}</div>
                             <div class="wrapper__email_contact-right">{{ block.settings.contact_email_2 }}</div>
                         </div>
-                    {% endif %}
+                    {%- endif -%}
                 
-                    {% if block.settings.contact_label_3 != blank and block.settings.contact_email_3 != blank %}
+                    {%- if block.settings.contact_label_3 != blank and block.settings.contact_email_3 != blank -%}
                         <div class="wrapper__email_contact">
                             <div class="wrapper__email_contact-left">{{ block.settings.contact_label_3 }}</div>
                             <div class="wrapper__email_contact-right">{{ block.settings.contact_email_3 }}</div>
                         </div>
-                    {% endif %}
+                    {%- endif -%}
                 
-                    {% if block.settings.contact_label_4 != blank and block.settings.contact_email_4 != blank %}
+                    {%- if block.settings.contact_label_4 != blank and block.settings.contact_email_4 != blank -%}
                         <div class="wrapper__email_contact">
                             <div class="wrapper__email_contact-left">{{ block.settings.contact_label_4 }}</div>
                             <div class="wrapper__email_contact-right">{{ block.settings.contact_email_4 }}</div>
                         </div>
-                    {% endif %}
+                    {%- endif -%}
                 </div>
 
-                {% when 'address' %}
+                {%- when 'address' -%}
                 <div class="wrapper__email_address">
                     <img src="{{ block.settings.address_icon | img_url: 'master' }}">
                     <div class="wrapper__email_address-text">
-                        {% if block.settings.address_line_1 != blank %}
+                        {%- if block.settings.address_line_1 != blank -%}
                             <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_1 }}</p>
-                        {% endif %}
-                        {% if block.settings.address_line_2 != blank %}
+                        {%- endif -%}
+                        {%- if block.settings.address_line_2 != blank -%}
                             <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_2 }}</p>
-                        {% endif %}
-                        {% if block.settings.address_line_3 != blank %}
+                        {%- endif -%}
+                        {%- if block.settings.address_line_3 != blank -%}
                             <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_3 }}</p>
-                        {% endif %}
+                        {%- endif -%}
                     </div>
                 </div>
 
-            {% endcase %}
-        {% endfor %}
+            {%- endcase -%}
+        {%- endfor -%}
         
     </div>
 </section>

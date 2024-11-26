@@ -1,76 +1,157 @@
 <link rel="stylesheet" href="{{ 'header-navigation.min.css' | asset_url }}" type="text/css" />
 
 <section class="header-navigation section-{{ section.id }}">
-    <div class="container">
-        <div class="navigation">
+    <header class="container">
+        <nav class="navigation" role="navigation">
 
             <div class="navigation__logo_background">
-                <a href="{{ section.settings.logo_link }}" target="_self" >
-                    <img class="navigation__logo_img" src="{{ section.settings.logo_bg | img_url: 'master' }}">
-                </a>
+              <a href="{{ section.settings.logo_link }}">
+                {{ section.settings.logo_bg | image_url: width: 3840 | image_tag: 
+                  width: section.settings.logo_bg.width, 
+                  height: section.settings.logo_bg.height, 
+                  class: 'navigation__logo_img', 
+                  alt: 'Logo background', 
+                  sizes: '100vw', 
+                  widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+              </a>
             </div>
+
             <div class="navigation__logo">
-                <a href="{{ section.settings.logo_link }}" target="_self" >
-                    <img class="navigation__logo_img" src="{{ section.settings.logo | img_url: 'master' }}">
-                </a>
+              <a href="{{ section.settings.logo_link }}">
+                {{ section.settings.logo | image_url: width: 3840 | image_tag: 
+                  width: section.settings.logo.width, 
+                  height: section.settings.logo.height, 
+                  class: 'navigation__logo_img', 
+                  alt: 'Logo', 
+                  sizes: '100vw', 
+                  widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+              </a>
             </div>
 
- 
-            <div class="navigation_left">
-                {% for block in section.blocks %}
-                    {% if block.type == 'text' %}
-                        <a href="{{ block.settings.text_link }}" target="_self" >
-                            <div class="navigation_left__point p2 desktop">{{ block.settings.point }}</div>
-                        </a>
-                    {% elsif block.type == 'list' %}
-                        <div class="dropdown desktop">
-                            <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
-                            <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
-                            <ul class="dropdown__list">
-                                {% if block.settings.list_item_1 != blank %}<li><a href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_2 != blank %}<li><a href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_3 != blank %}<li><a href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_4 != blank %}<li><a href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_5 != blank %}<li><a href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_6 != blank %}<li><a href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>{% endif %}
-                                {% if block.settings.list_item_7 != blank %}<li><a href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>{% endif %}
+            <ul class="navigation_left">
+                {%- for block in section.blocks -%}
+                    {%- if block.type == 'text' -%}
+                        <li class="navigation_left__point p2 desktop">
+                            <a href="{{ block.settings.text_link }}">{{ block.settings.point }}</a>
+                        </li>
+                        {%- elsif block.type == 'list' -%}
+                          <li class="dropdown desktop">
+                              <input type="checkbox" class="dropdown__checkbox" id="dropdownToggle-{{ block.id }}">
+                              <label for="dropdownToggle-{{ block.id }}" class="dropdown__label p2">{{ block.settings.list_name }}</label>
+                              <ul class="dropdown__list">
+                                {%- if block.settings.list_item_1 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_2 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_3 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_4 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_5 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_6 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>
+                                {%- endif -%}
+                                {%- if block.settings.list_item_7 != blank -%}
+                                  <li><a class="p2" href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>
+                                {%- endif -%}
                             </ul>
-                        </div>
-                    {% elsif block.type == 'image' %}
-                        <div class="navigation_left_icon mobile">
-                            <a href="{{ block.settings.left__icon_link }}" target="_self" >
-                                <img class="navigation_left_icon_img" src="{{ block.settings.icon__mobile | img_url: 'master' }}" alt="Image">
-                            </a>
-                        </div>
-                    {% elsif block.type == 'burger' %}
-                        <div class="navigation_left_icon mobile">
-                            <img class="navigation_left_icon_img burger-toggle" src="{{ block.settings.icon__burger | img_url: 'master' }}" alt="Burger Menu Icon">
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+                        </li>
+                    {%- elsif block.type == 'image' -%}
+                        <li class="navigation_left_icon mobile">
+                          <a href="{{ block.settings.left__icon_link }}" role="menuitem">
+                            {{ block.settings.icon__mobile | image_url: width: 3840 | image_tag: 
+                              width: block.settings.icon__mobile.width, 
+                              height: block.settings.icon__mobile.height, 
+                              class: 'navigation_left_icon_img', 
+                              alt: 'Mobile icon', 
+                              sizes: '100vw', 
+                              widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                          </a>
+                        </li>
+                    {%- elsif block.type == 'burger' -%}
+                      <li class="navigation_left_icon mobile" role="none">
+                        {{ block.settings.icon__burger | image_url: width: 3840 | image_tag: 
+                          width: block.settings.icon__burger.width, 
+                          height: block.settings.icon__burger.height, 
+                          class: 'navigation_left_icon_img burger-toggle', 
+                          alt: 'Burger icon', 
+                          sizes: '100vw', 
+                          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                      </li>
+                    {%- endif -%}
+                {%- endfor -%}
+            </ul>
 
-
-            <div class="navigation_right">
-                {% for block in section.blocks %}
-                    {% if block.type == 'image_picker' %}
-                        <a href="{{ block.settings.right__icon_link }}" class="navigation_right__point {% if block.settings.hide_on_mobile %} desktop{% endif %}">
-                            <img class="navigation_right__point_img" src="{{ block.settings.icon | img_url: 'master' }}" alt="Icon">
-                        </a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+            <ul class="navigation_right">
+                {%- for block in section.blocks -%}
+                    {%- if block.type == 'image_picker' -%}
+                        <li class="navigation_right__point {% if block.settings.hide_on_mobile %}desktop{% endif %}">
+                          <a href="{{ block.settings.right__icon_link }}" role="menuitem">
+                            {{ block.settings.icon | image_url: width: 3840 | image_tag: 
+                              width: block.settings.icon.width, 
+                              height: block.settings.icon.height, 
+                              class: 'navigation_right__point_img', 
+                              alt: 'Icon right side', 
+                              sizes: '100vw', 
+                              widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                          </a>
+                        </li>
+                    {%- endif -%}
+                {%- endfor -%}
+            </ul>
+        </nav>
     </div>
 
 
-    <div id="burger-menu" class="burger-menu">
-        <button class="burger-menu__close">&times;</button>
-        <div class="burger-menu__content">
-            <p>Burger menu</p>
-        </div>
-    </div>
+    <div id="burger-menu" class="burger-menu" aria-hidden="true">
+    <button class="burger-menu__close" aria-label="Закрити меню">&times;</button>
+    <ul class="burger-menu__list">
+        {%- for block in section.blocks -%}
+            {%- if block.type == 'text' -%}
+                <li class="burger-menu__item">
+                    <a class="p2" href="{{ block.settings.text_link }}">{{ block.settings.point }}</a>
+                </li>
+            {%- elsif block.type == 'list' -%}
+              <li class="dropdown mobile">
+                <input type="checkbox" class="dropdown__checkbox_mobile" id="dropdownToggle_mobile">
+                <label for="dropdownToggle_mobile" class="dropdown__label_mobile p2">{{ block.settings.list_name }}</label>
+                <ul class="dropdown__list_mobile">
+                  {%- if block.settings.list_item_1 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_1_link }}">{{ block.settings.list_item_1 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_2 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_2_link }}">{{ block.settings.list_item_2 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_3 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_3_link }}">{{ block.settings.list_item_3 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_4 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_4_link }}">{{ block.settings.list_item_4 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_5 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_5_link }}">{{ block.settings.list_item_5 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_6 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_6_link }}">{{ block.settings.list_item_6 }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.list_item_7 != blank -%}
+                    <li><a class="p2" href="{{ block.settings.list_item_7_link }}">{{ block.settings.list_item_7 }}</a></li>
+                  {%- endif -%}
+              </ul>
+          </li>
+            {%- endif -%}
+        {%- endfor -%}
+    </ul>
+  </header>
+    
 </section>
+
 
 
 
@@ -78,11 +159,12 @@
 
 <script>
 
+
 document.addEventListener('click', function(event) {
     const burgerButton = document.querySelector('.burger-toggle'); 
     const burgerMenu = document.getElementById('burger-menu'); 
     const burgerCloseButton = document.querySelector('.burger-menu__close'); 
-
+    const screenWidth = window.innerWidth;
     
     const isMenuOpen = burgerMenu && burgerMenu.classList.contains('active');
 
@@ -160,7 +242,7 @@ function closeBurgerMenu() {
 
 
 
-{% schema %}
+{%- schema -%}
     {
       "name": "header-navigation",
       "settings": [
@@ -377,4 +459,4 @@ function closeBurgerMenu() {
       }
     ]
   }
-  {% endschema %} 
+  {%- endschema -%} 

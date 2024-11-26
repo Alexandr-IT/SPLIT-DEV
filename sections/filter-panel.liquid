@@ -8,20 +8,20 @@
     <div class="sort-window">
         <form class="sorting__form_window" method="get" action="{{ collection.url }}">
           <div class="sorting__options_window">
-            {% for option in collection.sort_options %}
+            {%- for option in collection.sort_options -%}
               <button type="submit" name="sort_by" value="{{ option.value }}" 
                       class="option p2 {% if option.value == collection.sort_by %}active{% endif %}">
-                {% case option.value %}
-                  {% when 'title-ascending' %}Title, low to high
-                  {% when 'title-descending' %}Title, high to low 
-                  {% when 'price-ascending' %}Price, low to high
-                  {% when 'price-descending' %}Price, high to low 
-                  {% when 'created-ascending' %}Created, low to high
-                  {% when 'created-descending' %}Created, high to low 
-                {% else %}{{ option.value }}
-                {% endcase %}
+                {%- case option.value -%}
+                  {%- when 'title-ascending' -%}Title, low to high
+                  {%- when 'title-descending' -%}Title, high to low 
+                  {%- when 'price-ascending' -%}Price, low to high
+                  {%- when 'price-descending' -%}Price, high to low 
+                  {%- when 'created-ascending' -%}Created, low to high
+                  {%- when 'created-descending' -%}Created, high to low 
+                {%- else -%}{{ option.value }}
+                {%- endcase -%}
               </button>
-            {% endfor %}
+            {%- endfor -%}
           </div>
         </form>
     </div>
@@ -29,31 +29,31 @@
       <h4 class="p2 sorting__title">Sort By</h4>
       <form class="sorting__form" method="get" action="{{ collection.url }}">
         <select name="sort_by" onchange="this.form.submit()">
-          {% for option in collection.sort_options %}
+          {%- for option in collection.sort_options -%}
             <option 
               class="option p2" 
               value="{{ option.value }}" 
               {% if option.value == collection.sort_by %}selected{% endif %}>
-              {% case option.value %}
-                {% when 'price-ascending' %}Price, low to high
-                {% when 'price-descending' %}Price, high to low
-                {% when 'title-ascending' %}Title, low to high
-                {% when 'title-descending' %}Title, high to low
-                {% when 'created-ascending' %}Created, low to high
-                {% when 'created-descending' %}Created, high to low
-                {% else %}{{ option.value }}
-              {% endcase %}
+              {%- case option.value -%}
+                {%- when 'price-ascending' -%}Price, low to high
+                {%- when 'price-descending' -%}Price, high to low
+                {%- when 'title-ascending' -%}Title, low to high
+                {%- when 'title-descending' -%}Title, high to low
+                {%- when 'created-ascending' -%}Created, low to high
+                {%- when 'created-descending' -%}Created, high to low
+                {%- else -%}{{ option.value }}
+              {%- endcase -%}
             </option>
-          {% endfor %}
+          {%- endfor -%}
         </select>
       </form>
 
     </div>
   </div>
-
+ 
 
   <div class="filter__wrapper">
-    {% for product in collection.products %}
+    {%- for product in collection.products -%}
     <div class="filter__slide {% if product.variants.first.inventory_quantity <= 0 %}opacity_05{% endif %}">
       <a href="{{ product.url }}" class="filter__slide-link">
         <div class="filter__slide-wrapper">
@@ -64,21 +64,21 @@
             </div>
           </div>
           <div class="filter__options">
-            {% if product.variants.first.inventory_quantity <= 0 %}
+            {%- if product.variants.first.inventory_quantity <= 0 -%}
               <div class="sold-out System_12_20">SOLD OUT</div>
-            {% endif %}
-            {% if product.metafields.custom.selling_fast %}
+            {%- endif -%}
+            {%- if product.metafields.custom.selling_fast -%}
               <div class="selling-fast System_12_20">SELLING FAST</div>
-            {% endif %}
-            {% if product.metafields.custom.discount_percentage %}
+            {%- endif -%}
+            {%- if product.metafields.custom.discount_percentage -%}
               <div class="discount-block">-{{ product.metafields.custom.discount_percentage }}%</div>
-            {% endif %}
+            {%- endif -%}
           </div>
         </div>
         <div class="filter__slide-discription-wrapper">
           <div class="filter__slide-discription-wrapper-left">
             <div class="filter__slide-discription-product_name p2">{{ product.title }}</div>
-            {% if product.metafields.custom.discount_percentage %}
+            {%- if product.metafields.custom.discount_percentage -%}
               <div class="filter__slide-price">
                 <div class="filter__slide-discription-price-red">
                   {{ product.price | money_without_trailing_zeros }}
@@ -87,11 +87,11 @@
                   {{ product.compare_at_price | money_without_trailing_zeros }}
                 </div>
               </div>
-            {% else %}
+            {%- else -%}
               <div class="filter__slide-discription-price p2">
                 {{ product.price | money_without_trailing_zeros }}
               </div>
-            {% endif %}
+            {%- endif -%}
           </div>
           <div class="filter__slide-discription-wrapper-right">
             <a class="filter__slide-discription-bag" href="{{ product.url }}">
@@ -101,7 +101,7 @@
         </div>
       </a>
     </div>
-  {% endfor %}
+  {%- endfor -%}
 </div>
 
 </section>
@@ -109,26 +109,6 @@
 <script>
 
 
-  document.getElementById('apply-filters-btn').addEventListener('click', function() {
-    var selectedFilters = [];
-    var checkboxes = document.querySelectorAll('input[name^="filter.v.option."]:checked');
-    
-    checkboxes.forEach(function(checkbox) {
-      selectedFilters.push(checkbox.value);
-    });
-
-    var url = new URL(window.location.href);
-    var params = new URLSearchParams(url.search);
-
-
-    params.set('filter.v.option.Size', selectedFilters.join(','));
-    params.set('filter.v.option.Color', selectedFilters.join(','));
-    params.set('filter.available', selectedFilters.join(','));
-    params.set('filter.v.option.product_type', selectedFilters.join(','));
-
-    window.location.href = url.pathname + '?' + params.toString();
-
-});
 
 </script>
 
