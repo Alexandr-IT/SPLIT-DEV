@@ -43,105 +43,10 @@
     },
     "header_navigation_KHQNMA": {
       "type": "header-navigation",
-      "blocks": {
-        "text_TwReGi": {
-          "type": "text",
-          "settings": {
-            "point": "Crew Necks",
-            "text_link": "shopify://products/t-shirt"
-          }
-        },
-        "text_kzF4qw": {
-          "type": "text",
-          "settings": {
-            "point": "V-Necks",
-            "text_link": "shopify://pages/contact-us-1"
-          }
-        },
-        "text_xdGJ3i": {
-          "type": "text",
-          "settings": {
-            "point": "Activewear",
-            "text_link": "shopify://pages/about-us"
-          }
-        },
-        "list_FzwDdd": {
-          "type": "list",
-          "settings": {
-            "list_name": "Bundles",
-            "list_item_1": "Hero",
-            "list_item_1_link": "shopify://pages/hero",
-            "list_item_2": "About Us",
-            "list_item_2_link": "shopify://pages/about-us",
-            "list_item_3": "Contact Us",
-            "list_item_3_link": "shopify://pages/contact-us-1",
-            "list_item_4": "PDP",
-            "list_item_4_link": "shopify://products/t-shirt",
-            "list_item_5": "Collection",
-            "list_item_5_link": "shopify://collections/t-shirt-collection",
-            "list_item_6": "",
-            "list_item_6_link": "",
-            "list_item_7": "",
-            "list_item_7_link": ""
-          }
-        },
-        "image_picker_fdcVFc": {
-          "type": "image_picker",
-          "settings": {
-            "icon": "shopify://shop_images/Search.svg",
-            "hide_on_mobile": true,
-            "right__icon_link": ""
-          }
-        },
-        "image_picker_RfgyEd": {
-          "type": "image_picker",
-          "settings": {
-            "icon": "shopify://shop_images/User.svg",
-            "hide_on_mobile": true,
-            "right__icon_link": ""
-          }
-        },
-        "image_picker_PAzeaw": {
-          "type": "image_picker",
-          "settings": {
-            "icon": "shopify://shop_images/Bag.svg",
-            "hide_on_mobile": false,
-            "right__icon_link": "shopify://collections/t-shirt-collection"
-          }
-        },
-        "burger_mF7FE8": {
-          "type": "burger",
-          "settings": {
-            "icon__burger": "shopify://shop_images/Ic_Burger.svg"
-          }
-        },
-        "image_hweqqw": {
-          "type": "image",
-          "settings": {
-            "icon__mobile": "shopify://shop_images/Search.svg",
-            "left__icon_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "text_TwReGi",
-        "text_kzF4qw",
-        "text_xdGJ3i",
-        "list_FzwDdd",
-        "image_picker_fdcVFc",
-        "image_picker_RfgyEd",
-        "image_picker_PAzeaw",
-        "burger_mF7FE8",
-        "image_hweqqw"
-      ],
       "settings": {
         "logo": "shopify://shop_images/Black.svg",
         "logo_bg": "shopify://shop_images/Alter_logo_ee1ae19a-e093-4e5f-a4f3-29b9efc24c35.png",
-        "logo_link": "shopify://pages/hero",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "main_menu": "menu"
       }
     }
   },
