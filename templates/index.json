@@ -12,10 +12,15 @@
     "hero_dQt8qL": {
       "type": "hero",
       "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
         "bg_mobile": "shopify://shop_images/Banner_Photo_Mobile_9df9fe40-e9c6-4c6b-8546-b13a4526f223.jpg",
         "bg_desktop": "shopify://shop_images/Banner_Photo_1_1.jpg",
         "hero_subtitle": "Add images and text to give focus to your chosen product, collection, or blog post",
-        "hero_button": "Shop Now"
+        "hero_button": "Shop Now",
+        "paragraph": "<p><strong>MAKE A</strong><em><strong> </strong></em></p><p><em>      GREAT</em><strong> FIRST IMPRESSION</strong></p>"
       }
     },
     "image_with_text_new_hF787x": {

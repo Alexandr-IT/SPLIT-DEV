@@ -144,43 +144,23 @@
         "blocks": {
           "word_block_Rm3Nhk": {
             "type": "word_block",
-            "settings": {
-              "word": "MAKE",
-              "italic_text": false,
-              "italic_margin": false
-            }
+            "settings": {}
           },
           "word_block_mcQcKL": {
             "type": "word_block",
-            "settings": {
-              "word": "A",
-              "italic_text": false,
-              "italic_margin": false
-            }
+            "settings": {}
           },
           "word_block_aH9yf7": {
             "type": "word_block",
-            "settings": {
-              "word": "GREAT",
-              "italic_text": true,
-              "italic_margin": true
-            }
+            "settings": {}
           },
           "word_block_6VfcRX": {
             "type": "word_block",
-            "settings": {
-              "word": "FIRST",
-              "italic_text": false,
-              "italic_margin": false
-            }
+            "settings": {}
           },
           "word_block_6eh8wi": {
             "type": "word_block",
-            "settings": {
-              "word": "IMPRESSION",
-              "italic_text": false,
-              "italic_margin": false
-            }
+            "settings": {}
           }
         },
         "block_order": [
