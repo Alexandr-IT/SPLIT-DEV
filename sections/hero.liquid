@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="{{ 'hero.min.css' | asset_url }}" type="text/css" />
  
-<section class="hero section-{{ section.id }}" role="banner">
+<section class="hero-section section-{{ section.id }}">
   <div class="hero">
     <div class="hero__bg">
       <picture>
@@ -33,47 +33,79 @@
           class="hero__bg-img">
       </picture>   
     </div>
-
-    <div class="container crutches">
-      <div class="hero__wrapper-text "> 
-
-          <h1 class="hero__wrapper-text--title Mobile_H1 mobile">
-            {%- for block in section.blocks -%}
-              <span class="hero__wrapper-text--span 
-                {% if block.settings.italic_text %} italic {% endif %}
-                {% if block.settings.italic_margin %} italic_margin {% endif %}
-              ">
-                {{ block.settings.word }}
+    <div class="container gray_mobile">
+      <div class="hero__wrapper-text ">
+          <h1 class="hero__wrapper-text--title fw200">
+              <span class="hero__wrapper-text--span">
+                {{ section.settings.paragraph }}
               </span>
-            {%- endfor -%}
-          </h1>
-          
-          <div class="hero__wrapper-text--subtitle p2 mobile">{{ section.settings.hero_subtitle }}</div>
-          
-          <h2 class="hero__wrapper-text--title desktop">
-            {%- for block in section.blocks -%}
-              <span class="hero__wrapper-text--span 
-                {% if block.settings.italic_text %} italic {% endif %}
-                {% if block.settings.italic_margin %} italic_margin {% endif %}
-              ">
-                {{ block.settings.word }}
-              </span>
-            {%- endfor -%}
-          </h2>
-          
-          <div class="hero__wrapper-text--subtitle css18_26 desktop">{{ section.settings.hero_subtitle }}</div>
-          <div class="button">{{ section.settings.hero_button }}</div>
+          </h1>    
+          <p class="hero__wrapper-text--subtitle p2">{{ section.settings.hero_subtitle }}</p>
+          <a href="{{ routes.cart_url }}" class="button hero__button">{{ section.settings.hero_button }}</a>
       </div>
     </div>
-    
+
   </div> 
 </section>
 
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 767px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
+    { 
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top_mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom_mobile",
+      "default": 0
+    },
     { 
       "type": "image_picker",
       "id": "bg_mobile",
@@ -93,30 +125,18 @@
       "type": "text",
       "id": "hero_button",
       "label": "Hero Button"
+    },
+    {
+      "type":"richtext",
+      "id": "paragraph",
+      "label": "Title"
     }
-
     ],
   "blocks": [
     {
       "type": "word_block",
       "name": "Word Block",
-      "settings": [
-        {
-          "id": "word",
-          "type": "text",
-          "label": "Word"
-        },
-        {
-          "id": "italic_text",
-          "type": "checkbox",
-          "label": "Italic Text"
-        },
-        {
-          "id": "italic_margin",
-          "type": "checkbox",
-          "label": "Italic Margin" 
-        }
-      ]
+      "settings": []
     }
   ],
   "presets": [
@@ -125,5 +145,5 @@
       "category": "Custom sections"
     }
   ]
-}
+} 
 {% endschema %}  
