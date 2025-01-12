@@ -278,7 +278,6 @@
       "central-text": {
         "type": "central-text",
         "settings": {
-          "section_id": "unique-id",
           "image": "shopify://shop_images/Hero_banner.jpg",
           "title": "Contact Us"
         }
@@ -352,8 +351,7 @@
       "filter-panel": {
         "type": "filter-panel",
         "settings": {
-          "collection": "t-shirt-collection",
-          "show_sorting": true
+          "collection": "t-shirt-collection"
         }
       }
     },
