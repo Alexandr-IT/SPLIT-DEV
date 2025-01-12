@@ -19,55 +19,6 @@
     },
     "hero_KJ7BrR": {
       "type": "hero",
-      "blocks": {
-        "word_block_UqmPF8": {
-          "type": "word_block",
-          "settings": {
-            "word": "MAKE",
-            "italic_text": false,
-            "italic_margin": false
-          }
-        },
-        "word_block_4RMdLT": {
-          "type": "word_block",
-          "settings": {
-            "word": "A",
-            "italic_text": false,
-            "italic_margin": false
-          }
-        },
-        "word_block_YMBqdK": {
-          "type": "word_block",
-          "settings": {
-            "word": "GREAT",
-            "italic_text": true,
-            "italic_margin": true
-          }
-        },
-        "word_block_RkXV8n": {
-          "type": "word_block",
-          "settings": {
-            "word": "FIRST",
-            "italic_text": false,
-            "italic_margin": false
-          }
-        },
-        "word_block_8VXmm9": {
-          "type": "word_block",
-          "settings": {
-            "word": "IMPRESSION",
-            "italic_text": false,
-            "italic_margin": false
-          }
-        }
-      },
-      "block_order": [
-        "word_block_UqmPF8",
-        "word_block_4RMdLT",
-        "word_block_YMBqdK",
-        "word_block_RkXV8n",
-        "word_block_8VXmm9"
-      ],
       "settings": {
         "bg_mobile": "shopify://shop_images/Stones.jpg",
         "bg_desktop": "shopify://shop_images/Stones.jpg",
