@@ -258,6 +258,10 @@
       "central-text": {
         "type": "central-text",
         "settings": {
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0,
           "image": "shopify://shop_images/Hero_banner.jpg",
           "title": "Contact Us"
         }
