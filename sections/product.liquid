@@ -1,3 +1,14 @@
+<product-info
+  id="MainProduct-{{ section.id }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+  {% if section.settings.image_zoom == 'hover' %}
+    data-zoom-on-hover
+  {% endif %}
+>
 <link rel="stylesheet" href="{{ 'product.min.css' | asset_url }}" type="text/css" />
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -9,68 +20,83 @@
           <div class="swiper-wrapper swiper-wrapper_mini">
             {%- for image in product.images -%}
               <div class="swiper-slide swiper-slide_mini">
-                {{ image | image_url: width: 3840 | image_tag:
+                {{ image | image_url: width: 750 | image_tag:
                     width: image.width,
                     height: image.height,
                     class: '',
                     sizes: '100vw',
                     alt:"Thumbnail",
-                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                    widths: '375, 550, 750' }}
               </div>
             {%- endfor -%}
           </div>
         </div>
-
+ 
          
         <div class="swiper-main">
           <div class="swiper-wrapper">
-            {%- for image in product.images -%}
-              <div class="swiper-slide">
-                <div class="swiper-slide__wrapper">
+            <div class="swiper-slide__wrapper">
                   {%- if product.metafields.custom.selling_fast == true -%}
-                    <div class="pdp__selling-fast System_12_20">SELLING FAST</div>
+                    <div class="pdp__selling-fast">{{ 'products.product.selling_fast' | t }}</div>
                   {%- endif -%}
                   {%- if product.variants.first.inventory_quantity <= 0 -%}
-                    <div class="pdp__sold-out System_12_20">SOLD OUT</div>
-                  {%- endif -%}
-                  {%- if product.metafields.custom.discount_percentage -%}
-                    <div class="pdp__discount-block">{{ product.metafields.custom.discount_percentage }}% OFF</div>
+                    <div class="pdp__sold-out">{{ 'products.product.sold_out' | t }}</div>
                   {%- endif -%}
                 </div>
-                {{ image | image_url: width: 3840 | image_tag:
+            {%- for image in product.images -%}
+              <div class="swiper-slide">
+                {{ image | image_url: width: 2000 | image_tag:
                     width: image.width,
                     height: image.height,
                     class: '',
                     sizes: '100vw',
                     alt:"Main slide",
-                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                    widths: '375, 550, 750, 1100, 1500' }}
               </div>
             {%- endfor -%}
-            </div>
+          </div>
           <div class="swiper-pagination main-pagination"></div>
           <div class="swiper-button-prev main-prev"></div>
           <div class="swiper-button-next main-next"></div>
         </div>
       </div>
-
-    
+ 
+     
         <div class="product__right">
             <div class="product__right_wrapper">
-                <h5 class="product__title Bold_24_32">{{ product.title }}</h5>
-                <div class="product__prices">
-                    <p class="product__price_new Pargraph_18_26">
-                        <span id="product-price" class="product__price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
-                        {%- if product.compare_at_price > product.selected_or_first_available_variant.price -%}
-                            <span class="product__price_old price--compare">
-                                {{ product.compare_at_price | money_without_trailing_zeros }}
-                            </span>
-                        {%- endif -%}
-                    </p>
+                <h1 class="product__title">{{ product.title }}</h1>
+                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                  {%- render 'price-new',
+                    product: product,
+                    use_variant: true,
+                    show_badges: true,
+                    price_class: 'price--large'
+                  -%}
                 </div>
-                <div class="product__sizes">
+                {%- if product.quantity_price_breaks_configured? -%}
+                  <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                    <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+                  </div>
+                {%- endif -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    {{ form | payment_terms }}
+                  {%- endform -%}
+                </div>
+                <div class="product__arrow">
+                  <svg width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="2.5" cy="50%" r="2.5" fill="#d3d3d3" />
+                    <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                    <line x1="98%" y1="25%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                    <line x1="98%" y1="75%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                  </svg>
+                </div>
+                {% comment %} <div class="product__sizes">
                     <div class="product__sizes_title">
-                        <p class="product__sizes_title-static">SIZE:</p>
-                        <p id="selected-size-label">Select a size</p>
+                        <p class="product__sizes_title-static">{{ 'products.product.size' | t }}</p>
+                        <p id="selected-size-label">{{ 'products.product.select_a_size' | t }}</p>
                     </div>
                     <div class="product__size">
                         {%- assign sizes = "S|M|L|XL|2XL|3XL|4XL" | split: "|" -%}
@@ -88,47 +114,190 @@
                             </div>
                         {%- endfor -%}
                     </div>
+                </div> {% endcomment %}
+                
+
+{%- assign product_form_id = 'product-form-' | append: section.id -%} 
+
+            <variant-selects
+            id="variant-selects-{{ section.id }}"
+            data-section="{{ section.id }}"
+            class="product__sizes"
+            {{ block.shopify_attributes }}
+            >
+            <div class="product__sizes_title">
+              <p class="product__sizes_title-static">{{ 'products.product.size' | t }}</p>
+              <p id="selected-size-label">{{ 'products.product.select_a_size' | t }}</p>
+            </div>
+
+                {%- for option in product.options_with_values -%} 
+                    <fieldset class="js product-form__input product-form__input--pill product__size">
+                        {%- for value in option.values -%}
+                            {%- liquid
+                              assign swatch_focal_point = null
+                              if value.swatch.image
+                                assign image_url = value.swatch.image | image_url: width: 50
+                                assign swatch_value = 'url(' | append: image_url | append: ')'
+                                assign swatch_focal_point = value.swatch.image.presentation.focal_point
+                              elsif value.swatch.color
+                                assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                              else
+                                assign swatch_value = null
+                              endif
+                          
+                              assign option_disabled = true
+                              if value.available
+                                assign option_disabled = false
+                              endif
+                            -%}
+                          
+                            {%- capture input_id -%}
+                              {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+                            {%- endcapture -%}
+                          
+                            {%- capture input_name -%}
+                              {{ option.name }}-{{ option.position }}
+                            {%- endcapture -%}
+                          
+                            {%- capture input_dataset -%}
+                              data-product-url="{{ value.product_url }}"
+                              data-option-value-id="{{ value.id }}"
+                            {%- endcapture -%}
+                          
+                            {%- capture label_unavailable -%}
+                              <span class="visually-hidden label-unavailable">
+                                {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+                              </span>
+                            {%- endcapture -%}
+                            <div class="product__size_option">
+                              <input
+                                type="radio"
+                                id="{{ input_id }}"
+                                name="{{ input_name | escape }}"
+                                value="{{ value | escape }}"  
+                                form="{{ product_form_id }}"
+                                class="size-radio"
+                                {% if value.selected %}
+                                  checked
+                                {% endif %}
+                                {% if option_disabled %}
+                                  class="disabled"
+                                {% endif %}
+                                {{ input_dataset }}
+                              >
+                              <label for="{{ input_id }}">
+                                {{ value -}}
+                                {{ label_unavailable }}
+                              </label>
+                            </div>
+                          
+                          {%- endfor -%}
+                    </fieldset>
+                {%- endfor -%}
+
+
+                <script type="application/json" data-selected-variant>
+                    {{ product.selected_or_first_available_variant | json }}
+                </script>
+                <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+                <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+            </variant-selects>
+
+
+
+
+
+
+
+
+
+
+                <div class="product__arrow">
+                  <svg width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="2.5" cy="50%" r="2.5" fill="#d3d3d3" />
+                    <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                    <line x1="98%" y1="25%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                    <line x1="98%" y1="75%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
+                  </svg>
                 </div>
                 <div class="product__purchase">
-                    <div class="product__purchase-wrapper">
-                        <button class="product__purchase-btn product__purchase-btn-minus" type="button" aria-label="Decrease product__purchase"></button>
+                    {% comment %} <div class="product__purchase-wrapper">
+                        <button class="product__purchase-btn product__purchase-btn-minus" type="button" aria-label="Decrease product__purchase">
+                          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                            <line x1="0" y1="5" x2="10" y2="5" stroke="black" stroke-width="1" />
+                          </svg>
+                        </button>
                         <input class="product__purchase-input" type="number" value="1" min="1" aria-label="Product product__purchase">
-                        <button class="product__purchase-btn product__purchase-btn-plus" type="button" aria-label="Increase product__purchase"></button>
+                        <button class="product__purchase-btn product__purchase-btn-plus" type="button" aria-label="Increase product__purchase">
+                          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                            <line x1="0" y1="5" x2="10" y2="5" stroke="black" stroke-width="1" />
+                            <line x1="5" y1="0" x2="5" y2="10" stroke="black" stroke-width="1" />
+                          </svg>
+                        </button>
+                    </div> {% endcomment %}
+                    {% render 'quantity-new' %}
+
+                    <div class="product__purchase_btn-wrapper">
+                      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                      {%- render 'buy-buttons-new',
+                        block: block,
+                        product: product,
+                        product_form_id: product_form_id,
+                        section_id: section.id,
+                        show_pickup_availability: true
+                      -%}
                     </div>
-                    <button class="product__purchase_button body_p2">{{ section.settings.purchase_button_text }}</button>
+                    
+
+
+
+
                 </div>
-                <div class="product__accordeon basic">
-                    <button class="product__accordeon-button body_p2">
-                      {{ section.settings.accordeon__title_basic }}
-                    </button>
-                    <div class="product__accordeon-panel body_p2">
-                      <p>{{ product.description }}</p>
-                    </div>
-                </div>
+                <details class="product__accordeon basic">
+                  <summary class="product__accordeon-button">
+                    {{ section.settings.accordeon__title_basic }}
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                      <line x1="0" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" />
+                      <line x1="10" y1="0" x2="10" y2="10" stroke="black" stroke-width="1" />
+                    </svg>
+                  </summary>
+                  <div class="product__accordeon-panel">
+                    <p>{{ product.description }}</p>
+                  </div>
+                </details>
 
                 {%- if section.settings.show_accordeon_1 -%}
-                  <div class="product__accordeon">
-                    <button class="product__accordeon-button body_p2">
+                  <details class="product__accordeon">
+                    <summary class="product__accordeon-button">
                       {{ section.settings.accordeon_title_1 }}
-                    </button>
-                    <div class="product__accordeon-panel body_p2">
+                      <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                        <line x1="0" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" />
+                        <line x1="10" y1="0" x2="10" y2="10" stroke="black" stroke-width="1" />
+                      </svg>
+                    </summary>
+                    <div class="product__accordeon-panel">
                       <p>{{ section.settings.accordeon_subtitle_1 }}</p>
                     </div>
-                  </div>
+                  </details>
                 {%- endif -%}
                 
                 {%- if section.settings.show_accordeon_2 -%}
-                  <div class="product__accordeon">
-                    <button class="product__accordeon-button">
+                  <details class="product__accordeon">
+                    <summary class="product__accordeon-button">
                       {{ section.settings.accordeon_title_2 }}
-                    </button>
+                      <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                        <line x1="0" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" />
+                        <line x1="10" y1="0" x2="10" y2="10" stroke="black" stroke-width="1" />
+                      </svg>
+                    </summary>
                     <div class="product__accordeon-panel">
                       <p>{{ section.settings.accordeon_subtitle_2 }}</p>
                     </div>
-                  </div>
+                  </details>
                 {%- endif -%}
                 
-
+ 
             </div>
         </div>
 
@@ -141,6 +310,7 @@
 
 
 </section>
+</product-info>
 <script>
   // встановлення надпису розміру
 document.querySelectorAll('.size-radio').forEach(radio => {
@@ -154,67 +324,42 @@ radio.addEventListener('change', function () {
         '3XL': '3x Extra Large',
         '4XL': '4x Extra Large'
     };
+    console.log("Basic script")
     const selectedLabel = labels[this.value] || 'Select a size';
     document.getElementById('selected-size-label').textContent = selectedLabel;
     });
 });
 
-function formatMoney(cents, format) {
-    return format
-        .replace("{{amount}}", (cents / 100).toFixed(2))
-        .replace(".00", "");
-}
+
 // оновлення ціни
-document.querySelectorAll('.size-radio').forEach(radio => {
-    radio.addEventListener('change', function () {
-        const selectedSize = this.value;
-        const productVariants = {{ product.variants | json }};
-        const selectedVariant = productVariants.find(variant => variant.option1 === selectedSize);
+// document.querySelectorAll('.size-radio').forEach(radio => {
+//     radio.addEventListener('change', function () {
+//         const selectedSize = this.value;
+//         const productVariants = {{ product.variants | json }};
+//         const selectedVariant = productVariants.find(variant => variant.option1 === selectedSize);
+//         if (selectedVariant) {
 
-        if (selectedVariant) {
 
-            const formattedPrice = Shopify.formatMoney
-                ? Shopify.formatMoney(selectedVariant.price, "{{ shop.money_format }}")
-                : cleanMoneyFormat(selectedVariant.price);
-            document.getElementById('product-price').textContent = formattedPrice;
-        }
-    });
-});
-
-// лютий костиль
-function cleanMoneyFormat(price) {
-    const amount = "₴" + price / 100; 
-    return amount; 
-}
-// панелька + і -
-document.querySelectorAll('.product__purchase-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        const input = this.parentElement.querySelector('.product__purchase-input');
-        const currentValue = parseInt(input.value, 10);
-        const isMinus = this.classList.contains('product__purchase-btn-minus');
-
-        if (isMinus && currentValue > 1) {
-            input.value = currentValue - 1;
-        } else if (!isMinus) {
-            input.value = currentValue + 1;
-        }
-    });
-});
-
-var accordeons = document.querySelectorAll('.product__accordeon');
-
-accordeons.forEach(function(accordeon) {
-  const button = accordeon.querySelector('.product__accordeon-button');
-  const panel = accordeon.querySelector('.product__accordeon-panel');
-
-  button.addEventListener('click', function() {
-   
-    const isOpen = panel.style.maxHeight;
-
-    
-    panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
-  });
-});
+//             Відображення блоку з відсотком знижки
+//             const discountBlock = document.querySelector('.pdp__discount-block');
+//             if (selectedVariant.compare_at_price > selectedVariant.price) {
+//                 const discountPercentage = Math.round((selectedVariant.compare_at_price - selectedVariant.price) / selectedVariant.compare_at_price * 100);
+//                 {% assign discount_percentage = 100 | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+//                 if (!discountBlock) {
+//                     const newDiscountBlock = document.createElement('div');
+//                     newDiscountBlock.className = 'pdp__discount-block';
+//                     newDiscountBlock.textContent = discountPercentage + "{{ 'products.product.discount-block' | t }}";
+//                     document.querySelector('.product__prices').appendChild(newDiscountBlock);
+//                 } else {
+//                     discountBlock.textContent = discountPercentage + "{{ 'products.product.discount-block' | t }}";
+//                 }
+//             } else if (discountBlock) {
+//                 // Видалити блок з відсотком знижки, якщо його більше немає
+//                 discountBlock.innerHTML = '';
+//             }
+//         }
+//     });
+// });
 
 
 // міні свайпер
