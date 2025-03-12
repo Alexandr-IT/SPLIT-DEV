@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'header-navigation.min.css' | asset_url }}" type="text/css" />
 
-<section class="header-navigation section-{{ section.id }}">
+<section class="header-navigation section-{{ section.id }} {% unless template == 'index' %} header-navigation_white{% endunless %}">
   <header class="container"> 
     <div class="navigation__logo_background">
       <a href="{{ routes.root_url }}">
@@ -10,9 +10,9 @@
           class: 'navigation__logo_img', 
           alt: 'Logo background', 
           sizes: '100vw', 
-          widths: '264' }}
+          widths: '264' }} 
       </a>
-    </div>
+    </div> 
     <div class="navigation__logo">
       <a href="{{ routes.root_url }}"> 
         {{ section.settings.logo | image_url: width: 264 | image_tag: 
@@ -58,7 +58,7 @@
             {{ 'Burger.svg' | inline_asset_content }}
           </span>
         </li>
-        <li class="navigation_left_icon mobile">
+        <li class="navigation_left_icon mobile mobile_none">
           <a href="{{ routes.search_url }}" role="menuitem">
             <span class="navigation_left_icon_img">
               {{ 'Search.svg' | inline_asset_content }}
@@ -81,7 +81,7 @@
           </span>
           </a>
         </li>
-        <li class="navigation_right__point">
+        <li class="navigation_right__point mobile_none">
           <a href="{{ routes.cart_url }}" role="menuitem">
           <span class="navigation_right__point_img">
             {{ 'Bag.svg' | inline_asset_content }}

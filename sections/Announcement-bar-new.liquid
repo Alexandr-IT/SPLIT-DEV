@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="{{ 'announcement-bar-new.min.css' | asset_url }}" type="text/css" />
-
+ 
 <section class="announcement-bar-new-section section-{{ section.id }}">
+  {% if section.settings.heading != blank %}
     <div class="announcement-bar-new">
         <p class="announcement-bar-new__text">{{ section.settings.heading }}</p>
-    </div>
+    </div> 
+  {% endif %}
 </section>
 {%- style -%}
     .section-{{ section.id }} {
@@ -19,14 +21,13 @@
     }
   {%- endstyle -%}
 {% schema %}
-    {
+    { 
       "name": "Announcement-bar-new",
       "settings": [
         {
-          "type": "text",
+          "type": "richtext",
           "id": "heading",
-          "label": "Heading",
-          "default": "FREE UNITED KINGDOM SHIPPING $200+"
+          "label": "Heading"
         },
         {
         "type": "range",

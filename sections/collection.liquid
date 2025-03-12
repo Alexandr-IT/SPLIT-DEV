@@ -1,43 +1,81 @@
 <link rel="stylesheet" href="{{ 'collection.min.css' | asset_url }}" type="text/css" />
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
+ 
 <section class="collection-section section-{{ section.id }}">
   <div class="collection_main">
-    <div class="container">
+    <div class="container collection__container">
       <div class="collection__header">
         <div class="collection__header-title Mobile_H3 mobile">{{ section.settings.header-title }}</div>
         <h3 class="collection__header-title desktop">{{ section.settings.header-title }}</h3>
         <a href="{{ collections[section.settings.collection].url }}" class="p2 collection__header-subtitle">
-          View All
+          {{ 'products.product.view_all' | t }}
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+            <line x1="0" y1="0" x2="10" y2="0" stroke="black" stroke-width="3" />
+            <line x1="10" y1="0" x2="10" y2="10" stroke="black" stroke-width="3" />
+          </svg>
         </a>
-      </div> 
+      </div>  
       <div class="collection swiper-container"> 
         <div class="collection__wrapper swiper-wrapper">
           {% for product in collections[section.settings.collection].products %}
             <div class="swiper-slide collection__slide {% if product.variants.first.inventory_quantity <= 0 %}opacity_05{% endif %}">
               <a href="{{ product.url }}" class="collection__slide-link"> 
                 <div class="collection__slide-wrapper">
-                  {{ product.featured_image | image_url: width: 3840 | image_tag:
-                      width: product.featured_image.width,
-                      height: product.featured_image.height,
-                      class: 'collection__bg',
-                      sizes: '100vw',
-                      alt: product.title,
-                      widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                  {% if product.images.size == 1 %}
+                    {{ product.featured_image | image_url: width: 1100 | image_tag:
+                        width: product.featured_image.width,
+                        height: product.featured_image.height,
+                        class: 'collection__bg', 
+                        sizes: '100vw',
+                        alt: product.title,
+                        widths: '375, 550, 750, 1100' }}
+                  {% endif %}
+                  {% if product.images.size > 1 %}
+                    {{ product.featured_image | image_url: width: 1100 | image_tag:
+                        width: product.featured_image.width,
+                        height: product.featured_image.height,
+                        class: 'collection__bg collection__bg_hover', 
+                        sizes: '100vw',
+                        alt: product.title,
+                        widths: '375, 550, 750, 1100' }}
+                    {{ product.images[1] | image_url: width: 1100 | image_tag:
+                        width: product.featured_image.width,
+                        height: product.featured_image.height,
+                        class: 'collection__bg_background',
+                        sizes: '100vw',
+                        alt: product.title,
+                        widths: '375, 550, 750, 1100' }}
+                  {% endif %}
                   <div class="collection__slide-hover">
-                    <div class="collection__slide-hover-text">
-                      Quick Add
-                    </div>
+                    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                      {%- render 'buy-buttons-new',
+                        block: block,
+                        product: product,
+                        product_form_id: product_form_id,
+                        section_id: section.id,
+                        show_pickup_availability: true,
+                        text: section.settings.button_text,
+                        plus: section.settings.button_plus
+                      -%}
+                    {% comment %} <div class="collection__slide-hover-text p2">
+                      {{ 'products.product.quick_add' | t }}
+                    </div> 
+                    <svg class="collection__arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                      <line x1="0" y1="5" x2="10" y2="5" stroke="black" stroke-width="1" />
+                      <line x1="5" y1="0" x2="5" y2="10" stroke="black" stroke-width="1" />
+                    </svg> {% endcomment %}
                   </div>
                   <div class="collection__options">
                   {% if product.variants.first.inventory_quantity <= 0 %}
-                    <div class="sold-out System_12_20">SOLD OUT</div>
+                    <div class="sold-out System_12_20">{{ 'products.product.sold_out' | t }}</div>
                   {% endif %}
                     {% if product.metafields.custom.selling_fast %}
-                      <div class="selling-fast System_12_20">SELLING FAST</div>
+                      <div class="selling-fast System_12_20">{{ 'products.product.selling_fast' | t }}</div>
                     {% endif %}
-                    {% if product.metafields.custom.discount_percentage %}
-                      <div class="discount-block">-{{ product.metafields.custom.discount_percentage }}%</div>
+                    {% if product.compare_at_price and product.compare_at_price > product.price %}
+                      {% assign discount_value = product.compare_at_price | minus: product.price %}
+                      {% assign discount_percentage = discount_value | times: 100 | divided_by: product.compare_at_price %}
+                      <div class="discount-block collection__bg_hover">{{ discount_percentage | round: 0 }}{{ 'products.product.percent' | t }}</div>
                     {% endif %}
                   </div>
                 </div>
@@ -50,7 +88,7 @@
                         {{ product.price  | money_without_trailing_zeros }}
                       </div>
                       <div class="collection__slide-discription-old_price">
-                        {{ product.compare_at_price  | money_without_trailing_zeros }}
+                        {{ product.compare_at_price | money_without_trailing_zeros }}
                       </div>
                     </div>
                   {% else %}
@@ -58,10 +96,13 @@
                       {{ product.price  | money_without_trailing_zeros }}
                     </div>
                   {% endif %}
+                  {% if product.cost_per_item %} {% comment  %} не працює, не можу знайти чому, в адмінці в продукті значення вказане. Як варіант, можу зробити метаполем, але це костиль  {% endcomment %}
+                    <span class="p2">{{ 'products.product.only' | t }}{{ product.cost_per_item | money }}{{ 'products.product.per_item' | t }}</span>
+                  {% endif %}
                   </div>
                   <div class="collection__slide-discription-wrapper-right">
                     <a class="collection__slide-discription-bag" href="{{ product.url }}">
-                      <img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag" class="collection__slide-discription-img_bag"> {% comment %} чи дрібні іконки також потрібно обгортати? {% endcomment %}
+                      <img src="{{ 'Bag.svg' | asset_url }}" alt="Icon Bag" class="collection__slide-discription-img_bag">
                     </a>
                   </div>
                 </div>
@@ -176,6 +217,16 @@
         "type": "text",
         "id": "header-title",
         "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_plus",
+        "label": "Button Plus"
       }
     ],
     "presets": [
@@ -185,4 +236,4 @@
       }
     ]
   }
-  {% endschema %}
+  {% endschema %} 

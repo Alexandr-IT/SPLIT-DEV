@@ -157,7 +157,7 @@
         --blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
         --blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
         --blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
- 
+
         --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
 
         --popup-border-width: {{ settings.popup_border_thickness }}px;
@@ -300,8 +300,7 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

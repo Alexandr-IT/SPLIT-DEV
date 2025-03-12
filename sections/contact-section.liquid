@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'contact-section.min.css' | asset_url }}" type="text/css" />
- 
+   
 <section class="section-{{ section.id }}">
     <div class="wrapper container-contact">
         
@@ -7,57 +7,59 @@
             {%- case block.type -%}
             
                 {%- when 'text_message' -%}
-                <div class="wrapper__title_new body_1">{{ block.settings.text_message }}</div>
-
+                <span class="wrapper__title_new">{{ block.settings.text_message }}</span>
+ 
                 {%- when 'contact_info' -%}
                 <div class="wrapper__email">
                     <div class="wrapper__email_icon">
-                         <img src="{{ block.settings.email_icon | img_url: 'master' }}">  {% comment %} чи потрібно це загортати в picture? {% endcomment %}
+                        {{ block.settings.email_icon | image_url: width: 200 | image_tag }}
                     </div>
                     {%- if block.settings.contact_label_1 != blank and block.settings.contact_email_1 != blank -%}
                         <div class="wrapper__email_contact">
-                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_1 }}</div>
-                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_1 }}</div>
+                            <span class="wrapper__email_contact-left">{{ block.settings.contact_label_1 }}</span>
+                            <a class="wrapper__email_contact-right" href="mailto:{{ block.settings.contact_email_1 }}">
+                                {{ block.settings.contact_email_1 }}
+                            </a>
                         </div>
                     {%- endif -%}
                 
                     {%- if block.settings.contact_label_2 != blank and block.settings.contact_email_2 != blank -%}
                         <div class="wrapper__email_contact">
-                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_2 }}</div>
-                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_2 }}</div>
+                            <span class="wrapper__email_contact-left">{{ block.settings.contact_label_2 }}</span>
+                            <a class="wrapper__email_contact-right" href="mailto:{{ block.settings.contact_email_2 }}">
+                                {{ block.settings.contact_email_2 }}
+                            </a>
                         </div>
                     {%- endif -%}
                 
                     {%- if block.settings.contact_label_3 != blank and block.settings.contact_email_3 != blank -%}
                         <div class="wrapper__email_contact">
-                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_3 }}</div>
-                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_3 }}</div>
+                            <span class="wrapper__email_contact-left">{{ block.settings.contact_label_3 }}</span>
+                            <a class="wrapper__email_contact-right" href="mailto:{{ block.settings.contact_email_3 }}">
+                                {{ block.settings.contact_email_3 }}
+                            </a>
                         </div>
                     {%- endif -%}
                 
                     {%- if block.settings.contact_label_4 != blank and block.settings.contact_email_4 != blank -%}
                         <div class="wrapper__email_contact">
-                            <div class="wrapper__email_contact-left">{{ block.settings.contact_label_4 }}</div>
-                            <div class="wrapper__email_contact-right">{{ block.settings.contact_email_4 }}</div>
+                            <span class="wrapper__email_contact-left">{{ block.settings.contact_label_4 }}</span>
+                            <a class="wrapper__email_contact-right" href="mailto:{{ block.settings.contact_email_4 }}">
+                                {{ block.settings.contact_email_4 }}
+                            </a>
                         </div>
                     {%- endif -%}
                 </div>
 
-                {%- when 'address' -%}
-                <div class="wrapper__email_address">
-                    <img src="{{ block.settings.address_icon | img_url: 'master' }}">
+                {%- when 'address' -%} 
+                <address class="wrapper__email_address">
+                    {{ block.settings.address_icon | image_url: width: 200 | image_tag }}
                     <div class="wrapper__email_address-text">
-                        {%- if block.settings.address_line_1 != blank -%}
-                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_1 }}</p>
-                        {%- endif -%}
-                        {%- if block.settings.address_line_2 != blank -%}
-                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_2 }}</p>
-                        {%- endif -%}
-                        {%- if block.settings.address_line_3 != blank -%}
-                            <p class="wrapper__email_address-text-p body_2">{{ block.settings.address_line_3 }}</p>
+                        {%- if block.settings.address_line != blank -%}
+                            <span>{{ block.settings.address_line }}</span>
                         {%- endif -%}
                     </div>
-                </div>
+                </address>
 
             {%- endcase -%}
         {%- endfor -%}
@@ -65,10 +67,65 @@
     </div>
 </section>
 
+{%- style -%}
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  
+    @media screen and (min-width: 767px) {
+      .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
 {% schema %}
 {
     "name": "Contact Section",
-    "settings": [],
+    "settings": [
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 80
+          },
+          {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom",
+          "default": 80
+          },
+          {
+          "type": "range",
+          "id": "padding_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top_mobile",
+          "default": 40
+          },
+          {
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom_mobile",
+          "default": 0
+        }
+    ],
     "blocks": [
         {
             "type": "text_message",
@@ -142,19 +199,9 @@
                     "label": "Icon for marker"
                 },
                 {
-                    "type": "text",
-                    "id": "address_line_1",
-                    "label": "Address Line 1"
-                },
-                {
-                    "type": "text",
-                    "id": "address_line_2",
-                    "label": "Address Line 2"
-                },
-                {
-                    "type": "text",
-                    "id": "address_line_3",
-                    "label": "Address Line 3"
+                    "type": "richtext",
+                    "id": "address_line",
+                    "label": "Address Line"
                 }
             ]
         }

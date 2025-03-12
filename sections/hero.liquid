@@ -1,6 +1,6 @@
 
 <link rel="stylesheet" href="{{ 'hero.min.css' | asset_url }}" type="text/css" />
- 
+  
 <section class="hero-section section-{{ section.id }}">
   <div class="hero">
     <div class="hero__bg">
@@ -35,13 +35,13 @@
     </div> 
     <div class="container gray_mobile">
       <div class="hero__wrapper-text ">
-          <h1 class="hero__wrapper-text--title fw200">
-              <span class="hero__wrapper-text--span">
-                {{ section.settings.paragraph }}
-              </span>
-          </h1>    
-          <p class="hero__wrapper-text--subtitle p2">{{ section.settings.hero_subtitle }}</p>
-          <a href="{{ routes.cart_url }}" class="button hero__button">{{ section.settings.hero_button }}</a>
+        <div class="hero__wrapper-text--title fw200">
+          <span class="hero__wrapper-text--span">
+            {{ section.settings.richtext }}
+          </span>
+        </div>    
+        <p class="hero__wrapper-text--subtitle p2">{{ section.settings.hero_subtitle }}</p>
+        <a href="{{ section.settings.hero_button_link }}" class="button hero__button">{{ section.settings.hero_button }}</a>
       </div>
     </div>
 
@@ -122,23 +122,21 @@
       "label": "Hero Subtitle"
     },
     {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Product_link"
+    },
+    {
       "type": "text",
       "id": "hero_button",
       "label": "Hero Button"
     },
     {
       "type":"richtext",
-      "id": "paragraph",
+      "id": "richtext",
       "label": "Title"
     }
     ], 
-  "blocks": [
-    {
-      "type": "word_block",
-      "name": "Word Block",
-      "settings": []
-    }
-  ],
   "presets": [
     {
       "name": "Hero",

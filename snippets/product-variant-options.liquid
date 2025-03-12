@@ -21,6 +21,7 @@
 -%}
 
 {%- for value in option.values -%}
+  <p style="height:50px; width:100px; font-size:15px">Number of value</p>
   {%- liquid
     assign swatch_focal_point = null
     if value.swatch.image
@@ -81,7 +82,7 @@
       type="radio"
       id="{{ input_id }}"
       name="{{ input_name | escape }}"
-      value="{{ value | escape }}"
+      value="{{ value | escape }}"  
       form="{{ product_form_id }}"
       {% if value.selected %}
         checked
