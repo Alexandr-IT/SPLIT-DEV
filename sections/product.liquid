@@ -93,29 +93,7 @@
                     <line x1="98%" y1="75%" x2="100%" y2="50%" stroke="#d3d3d3" stroke-width="1" />
                   </svg>
                 </div>
-                {% comment %} <div class="product__sizes">
-                    <div class="product__sizes_title">
-                        <p class="product__sizes_title-static">{{ 'products.product.size' | t }}</p>
-                        <p id="selected-size-label">{{ 'products.product.select_a_size' | t }}</p>
-                    </div>
-                    <div class="product__size">
-                        {%- assign sizes = "S|M|L|XL|2XL|3XL|4XL" | split: "|" -%}
-                        {%- for size in sizes -%}
-                            {%- assign is_available = false -%}
-                            {%- for variant in product.variants -%}
-                                {%- if variant.option1 == size and variant.available -%}
-                                    {%- assign is_available = true -%}
-                                    {%- break -%}
-                                {%- endif -%}
-                            {%- endfor -%}
-                            <div class="product__size_option {% unless is_available %}unavailable{% endunless %}">
-                                <input type="radio" id="size-{{ size }}" name="size" value="{{ size }}" class="size-radio" {% unless is_available %}disabled{% endunless %}>
-                                <label for="size-{{ size }}">{{ size }}</label>
-                            </div>
-                        {%- endfor -%}
-                    </div>
-                </div> {% endcomment %}
-                
+               
 
 {%- assign product_form_id = 'product-form-' | append: section.id -%} 
 
@@ -127,73 +105,142 @@
             >
             <div class="product__sizes_title">
               <p class="product__sizes_title-static">{{ 'products.product.size' | t }}</p>
-              <p id="selected-size-label">{{ 'products.product.select_a_size' | t }}</p>
+              <p id="selected-size-label">
+                {%- case product.selected_or_first_available_variant.option1 -%}
+                  {%- when "S" -%}Small
+                  {%- when "M" -%}Medium
+                  {%- when "L" -%}Large
+                  {%- when "XL" -%}Extra Large
+                  {%- when "2XL" -%}2x Extra Large
+                  {%- when "3XL" -%}3x Extra Large
+                  {%- when "4XL" -%}4x Extra Large
+                  {%- else -%}{{ product.selected_or_first_available_variant.option1 | escape }}
+                {%- endcase -%}
+              </p>
             </div>
-
+            {%- assign all_sizes = "S, M, L, XL, 2XL, 3XL, 4XL" | split: ", " -%}
+            {%- assign available = false -%}
                 {%- for option in product.options_with_values -%} 
+
+
+
+
+                  
                     <fieldset class="js product-form__input product-form__input--pill product__size">
-                        {%- for value in option.values -%}
-                            {%- liquid
-                              assign swatch_focal_point = null
-                              if value.swatch.image
-                                assign image_url = value.swatch.image | image_url: width: 50
-                                assign swatch_value = 'url(' | append: image_url | append: ')'
-                                assign swatch_focal_point = value.swatch.image.presentation.focal_point
-                              elsif value.swatch.color
-                                assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
-                              else
-                                assign swatch_value = null
-                              endif
-                          
-                              assign option_disabled = true
-                              if value.available
-                                assign option_disabled = false
-                              endif
-                            -%}
-                          
-                            {%- capture input_id -%}
-                              {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
-                            {%- endcapture -%}
-                          
-                            {%- capture input_name -%}
-                              {{ option.name }}-{{ option.position }}
-                            {%- endcapture -%}
-                          
-                            {%- capture input_dataset -%}
-                              data-product-url="{{ value.product_url }}"
-                              data-option-value-id="{{ value.id }}"
-                            {%- endcapture -%}
-                          
-                            {%- capture label_unavailable -%}
-                              <span class="visually-hidden label-unavailable">
-                                {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
-                              </span>
-                            {%- endcapture -%}
-                            <div class="product__size_option">
-                              <input
-                                type="radio"
-                                id="{{ input_id }}"
-                                name="{{ input_name | escape }}"
-                                value="{{ value | escape }}"  
-                                form="{{ product_form_id }}"
-                                class="size-radio"
-                                {% if value.selected %}
-                                  checked
-                                {% endif %}
-                                {% if option_disabled %}
-                                  class="disabled"
-                                {% endif %}
-                                {{ input_dataset }}
-                              >
-                              <label for="{{ input_id }}">
-                                {{ value -}}
-                                {{ label_unavailable }}
-                              </label>
-                            </div>
-                          
+                      {%- for size in all_sizes -%}
+                        {% if option.values contains size %}
+                          {%- for value in option.values -%}
+                            {% if size == value %}
+                              {%- liquid
+                                assign swatch_focal_point = null
+                                if value.swatch.image
+                                  assign image_url = value.swatch.image | image_url: width: 50
+                                  assign swatch_value = 'url(' | append: image_url | append: ')'
+                                  assign swatch_focal_point = value.swatch.image.presentation.focal_point
+                                elsif value.swatch.color
+                                  assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                                else
+                                  assign swatch_value = null
+                                endif
+
+                              -%}
+                            
+                              {%- capture input_id -%}
+                                {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+                              {%- endcapture -%}
+                            
+                              {%- capture input_name -%}
+                                {{ option.name }}-{{ option.position }}
+                              {%- endcapture -%}
+                            
+                              {%- capture input_dataset -%}
+                                data-product-url="{{ value.product_url }}"
+                                data-option-value-id="{{ value.id }}"
+                              {%- endcapture -%}
+                            
+                              {%- capture label_unavailable -%}
+                                <span class="visually-hidden label-unavailable">
+                                  {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+                                </span>
+                              {%- endcapture -%}
+                              <div class="product__size_option">
+                                <input
+                                  type="radio"
+                                  id="{{ input_id }}"
+                                  name="{{ input_name | escape }}"
+                                  value="{{ value | escape }}"  
+                                  form="{{ product_form_id }}"
+                                  class="size-radio"
+                                  {% if value.selected %}
+                                    checked
+                                  {% endif %}
+                                  {{ input_dataset }}
+                                >
+                                <label for="{{ input_id }}">
+                                  {{ value }}
+                                  {{ label_unavailable }}
+                                </label>
+                              </div>
+                            
+                            {% endif %}
                           {%- endfor -%}
+                          {%- else -%}
+                          {%- liquid
+                                assign swatch_focal_point = null
+                                if value.swatch.image
+                                  assign image_url = value.swatch.image | image_url: width: 50
+                                  assign swatch_value = 'url(' | append: image_url | append: ')'
+                                  assign swatch_focal_point = value.swatch.image.presentation.focal_point
+                                elsif value.swatch.color
+                                  assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                                else
+                                  assign swatch_value = null
+                                endif
+
+                              -%}
+                            
+                              {%- capture input_id -%}
+                                {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+                              {%- endcapture -%}
+                            
+                              {%- capture input_name -%}
+                                {{ option.name }}-{{ option.position }}
+                              {%- endcapture -%}
+                            
+                              {%- capture input_dataset -%}
+                                data-product-url="{{ value.product_url }}"
+                                data-option-value-id="{{ value.id }}"
+                              {%- endcapture -%}
+                            
+                              {%- capture label_unavailable -%}
+                                <span class="visually-hidden label-unavailable">
+                                  {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+                                </span>
+                              {%- endcapture -%}
+                              <div class="product__size_option unavailable">
+                                <input
+                                  type="radio"
+                                  id="{{ input_id }}"
+                                  name="{{ input_name | escape }}"
+                                  value="{{ value | escape }}"  
+                                  form="{{ product_form_id }}"
+                                  class="size-radio"
+                                  {% if value.selected %}
+                                    checked
+                                  {% endif %}
+                                  {{ input_dataset }}
+                                >
+                                <label for="{{ input_id }}">
+                                  {{ size }}
+                                  {{ label_unavailable }}
+                                </label>
+                              </div>
+                        {% endif %}
+                      {%- endfor -%}
                     </fieldset>
                 {%- endfor -%}
+
+                
 
 
                 <script type="application/json" data-selected-variant>
@@ -222,20 +269,7 @@
                   </svg>
                 </div>
                 <div class="product__purchase">
-                    {% comment %} <div class="product__purchase-wrapper">
-                        <button class="product__purchase-btn product__purchase-btn-minus" type="button" aria-label="Decrease product__purchase">
-                          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                            <line x1="0" y1="5" x2="10" y2="5" stroke="black" stroke-width="1" />
-                          </svg>
-                        </button>
-                        <input class="product__purchase-input" type="number" value="1" min="1" aria-label="Product product__purchase">
-                        <button class="product__purchase-btn product__purchase-btn-plus" type="button" aria-label="Increase product__purchase">
-                          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                            <line x1="0" y1="5" x2="10" y2="5" stroke="black" stroke-width="1" />
-                            <line x1="5" y1="0" x2="5" y2="10" stroke="black" stroke-width="1" />
-                          </svg>
-                        </button>
-                    </div> {% endcomment %}
+
                     {% render 'quantity-new' %}
 
                     <div class="product__purchase_btn-wrapper">
@@ -312,83 +346,32 @@
 </section>
 </product-info>
 <script>
-  // встановлення надпису розміру
-document.querySelectorAll('.size-radio').forEach(radio => {
-radio.addEventListener('change', function () {
-    const labels = {
-        S: 'Small',
-        M: 'Medium',
-        L: 'Large',
-        XL: 'Extra Large',
-        '2XL': '2x Extra Large',
-        '3XL': '3x Extra Large',
-        '4XL': '4x Extra Large'
-    };
-    console.log("Basic script")
-    const selectedLabel = labels[this.value] || 'Select a size';
-    document.getElementById('selected-size-label').textContent = selectedLabel;
+
+  // міні свайпер
+  var thumbnailSwiper = new Swiper('.swiper-mini', {
+      direction: 'vertical', 
+      spaceBetween: 0, 
+      slidesPerView: 6, 
+      loop: false,
+      watchSlidesProgress: true, 
     });
-});
 
 
-// оновлення ціни
-// document.querySelectorAll('.size-radio').forEach(radio => {
-//     radio.addEventListener('change', function () {
-//         const selectedSize = this.value;
-//         const productVariants = {{ product.variants | json }};
-//         const selectedVariant = productVariants.find(variant => variant.option1 === selectedSize);
-//         if (selectedVariant) {
-
-
-//             Відображення блоку з відсотком знижки
-//             const discountBlock = document.querySelector('.pdp__discount-block');
-//             if (selectedVariant.compare_at_price > selectedVariant.price) {
-//                 const discountPercentage = Math.round((selectedVariant.compare_at_price - selectedVariant.price) / selectedVariant.compare_at_price * 100);
-//                 {% assign discount_percentage = 100 | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
-//                 if (!discountBlock) {
-//                     const newDiscountBlock = document.createElement('div');
-//                     newDiscountBlock.className = 'pdp__discount-block';
-//                     newDiscountBlock.textContent = discountPercentage + "{{ 'products.product.discount-block' | t }}";
-//                     document.querySelector('.product__prices').appendChild(newDiscountBlock);
-//                 } else {
-//                     discountBlock.textContent = discountPercentage + "{{ 'products.product.discount-block' | t }}";
-//                 }
-//             } else if (discountBlock) {
-//                 // Видалити блок з відсотком знижки, якщо його більше немає
-//                 discountBlock.innerHTML = '';
-//             }
-//         }
-//     });
-// });
-
-
-// міні свайпер
-var thumbnailSwiper = new Swiper('.swiper-mini', {
-    direction: 'vertical', 
+  var mainSwiper = new Swiper('.swiper-main', {
     spaceBetween: 0, 
-    slidesPerView: 6, 
-    loop: false,
-    watchSlidesProgress: true, 
-  });
-
-
-var mainSwiper = new Swiper('.swiper-main', {
-  spaceBetween: 0, 
-  loop: false, 
-  pagination: {
-        el: '.main-pagination',
-        clickable: false, 
+    loop: false, 
+    pagination: {
+          el: '.main-pagination',
+          clickable: false, 
+      },
+    navigation: {
+      nextEl: '.swiper-button-next', 
+      prevEl: '.swiper-button-prev', 
     },
-  navigation: {
-    nextEl: '.swiper-button-next', 
-    prevEl: '.swiper-button-prev', 
-  },
-  thumbs: {
-    swiper: thumbnailSwiper, 
-  },
-});
-
-
+    thumbs: {
+      swiper: thumbnailSwiper, 
+    },
+  });
 
 </script>
 
